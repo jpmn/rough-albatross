@@ -1,0 +1,81 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Fichiers sources">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="Fichiers d%27en-tête">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hpp;hxx;hm;inl;inc;xsd</Extensions>
+    </Filter>
+    <Filter Include="Fichiers de ressources">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+    <Filter Include="Fichiers sources\Core">
+      <UniqueIdentifier>{43f84d39-bf2d-4bd2-806f-542382f18dad}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Fichiers d%27en-tête\Core">
+      <UniqueIdentifier>{7dd7229a-a004-4ddb-b0fa-9064820be927}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Fichiers d%27en-tête\Utils">
+      <UniqueIdentifier>{f83184d3-15fd-42cf-8ac5-7d30be2eb860}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Fichiers d%27en-tête\Core\Services">
+      <UniqueIdentifier>{9bd4413d-7b1b-4f35-b230-cb74c04461af}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Fichiers sources\Core\Services">
+      <UniqueIdentifier>{5f9fc382-1f88-46f7-98cd-9e946a4dbad5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Fichiers d%27en-tête\Core\Components">
+      <UniqueIdentifier>{63a958a2-16c3-4f6e-8e36-68978f7cfcb8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Fichiers sources\Core\Components">
+      <UniqueIdentifier>{ec6a058c-7145-4fe0-8926-0b2f7fa92133}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="Application.cpp">
+      <Filter>Fichiers sources</Filter>
+    </ClCompile>
+    <ClCompile Include="Engine.cpp">
+      <Filter>Fichiers sources\Core</Filter>
+    </ClCompile>
+    <ClCompile Include="ColorDetectionService.cpp">
+      <Filter>Fichiers sources\Core\Services</Filter>
+    </ClCompile>
+    <ClCompile Include="PatternDetectionService.cpp">
+      <Filter>Fichiers sources\Core\Services</Filter>
+    </ClCompile>
+    <ClCompile Include="NamedWindow.cpp">
+      <Filter>Fichiers sources\Core\Components</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Engine.h">
+      <Filter>Fichiers d%27en-tête\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="IEngine.h">
+      <Filter>Fichiers d%27en-tête\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="CppInterface.h">
+      <Filter>Fichiers d%27en-tête\Utils</Filter>
+    </ClInclude>
+    <ClInclude Include="ColorDetectionService.h">
+      <Filter>Fichiers d%27en-tête\Core\Services</Filter>
+    </ClInclude>
+    <ClInclude Include="IService.h">
+      <Filter>Fichiers d%27en-tête\Core\Services</Filter>
+    </ClInclude>
+    <ClInclude Include="PatternDetectionService.h">
+      <Filter>Fichiers d%27en-tête\Core\Services</Filter>
+    </ClInclude>
+    <ClInclude Include="INamedWindow.h">
+      <Filter>Fichiers d%27en-tête\Core\Components</Filter>
+    </ClInclude>
+    <ClInclude Include="NamedWindow.h">
+      <Filter>Fichiers d%27en-tête\Core\Components</Filter>
+    </ClInclude>
+  </ItemGroup>
+</Project>
