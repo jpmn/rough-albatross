@@ -1,6 +1,8 @@
 #include <cv.h>
 #include <highgui.h>
 
+#include <time.h>
+
 #include "Engine.h"
 
 using namespace Baluchon::Core::Services;
@@ -25,23 +27,21 @@ void CEngine::init(void) {
 }
 
 void CEngine::cycle(void) {
-	mNamedWindow->init();
-
 	CvCapture* capture = cvCreateCameraCapture(0);
 	IplImage* imgFrame = 0;
-
+	
 	char exitKey = 0;
-	double t = cvGetTickCount();
-	double time = 0;
 
 	while (exitKey != CEngine::mExitKey) {
+		clock_t start = clock();
+
 		imgFrame = cvQueryFrame(capture);
 
 		cvFlip(imgFrame, imgFrame, 1);
 
 		printf("Engine::cycle %d\n", mCycleCount);
 		for (unsigned int i = 0; i < mListServices.size(); i++) 
-			mListServices[i]->execute();
+			mListServices[i]->execute(imgFrame);
 		mCycleCount++;
 
 		mNamedWindow->setImage(imgFrame);
@@ -49,14 +49,9 @@ void CEngine::cycle(void) {
 
 		exitKey = cvWaitKey(10);
 
-		t = cvGetTickCount() - t;
-
-		do {
-			time = (t / cvGetTickFrequency()) * 1000;
-			printf("%f\n", time);
-		} while (time < mCycleDuration);
-
-		printf("Engine::duration %f\n", time);
+		clock_t elapsed = clock() - start;
+        long int timeMs = ((float)elapsed) / ((float)CLOCKS_PER_SEC) * 1000.0f;
+		printf("Engine::FPS %f\n", 1000.0f / timeMs);
 	}
 
 	cvReleaseCapture(&capture);
@@ -68,6 +63,17 @@ void CEngine::dispose(void) {
 
 void CEngine::registerService(IService* s) {
 	mListServices.push_back(s);
+}
+
+void CEngine::unregisterService(IService* s) {
+
+	// TODO : vérifier si ça fonctionne vraiment...
+	for (int i = 0; i < mListServices.size(); i++) {
+		if (mListServices.at(i) == s) {
+			mListServices.erase(mListServices.begin() + i);
+			break;
+		}
+	}
 }
 
 void CEngine::setNamedWindow(INamedWindow* nw) {

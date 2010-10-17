@@ -11,7 +11,7 @@ public:
 	CPatternDetectionService(void);
 	~CPatternDetectionService(void);
 
-	void execute(void);
+	void execute(IplImage* img);
 };
 
 }}};

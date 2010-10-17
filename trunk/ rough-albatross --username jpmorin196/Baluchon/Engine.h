@@ -17,6 +17,7 @@ public:
 	void cycle(void);
 	void dispose(void);
 	void registerService(IService* s);
+	void unregisterService(IService* s);
 
 	void setNamedWindow(INamedWindow* nw);
 	void setExitKey(char key);

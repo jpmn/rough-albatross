@@ -12,6 +12,9 @@ DeclareInterface(INamedWindow)
 	virtual void setName(const char* name) = 0;
 	virtual void setFlag(int flag) = 0;
 	virtual void setImage(const IplImage* image) = 0;
+
+	virtual const char* getName(void) = 0;
+	virtual const IplImage* getImage(void) = 0;
 EndInterface
 
 }}};

@@ -33,4 +33,12 @@ void CNamedWindow::setImage(const IplImage* image) {
 	mImage = image;
 }
 
+const char* CNamedWindow::getName(void) {
+	return mName;
+}
+
+const IplImage* CNamedWindow::getImage(void) {
+	return mImage;
+}
+
 }}};

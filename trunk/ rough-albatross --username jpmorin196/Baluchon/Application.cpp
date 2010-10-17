@@ -12,23 +12,18 @@
 
 using namespace Baluchon::Core;
 
-void* pthread_function(void* args) {
-	printf("test pthread\n");
-
-	return 0;
-}
-
 int main() {
 	
 	CNamedWindow* wWindow = new CNamedWindow();
 	{
 		wWindow->setName("Camera :: Query Frame");
 		wWindow->setFlag(CV_WINDOW_AUTOSIZE);
+		wWindow->init();
 	}
 
 	CColorDetectionService* wColorService = new CColorDetectionService();
 	{
-		
+		wColorService->setColorTolerance(10);
 	}
 
 	CPatternDetectionService* wPatternService = new CPatternDetectionService();
@@ -59,5 +54,5 @@ int main() {
 
 	std::cin.get();
 
-	return 0;
+	return EXIT_SUCCESS;
 }

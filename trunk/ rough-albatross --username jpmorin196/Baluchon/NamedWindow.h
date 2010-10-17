@@ -20,6 +20,9 @@ public:
 	void setFlag(int flag);
 	void setImage(const IplImage* image);
 
+	const char* getName(void);
+	const IplImage* getImage(void);
+
 private:
 	const char* mName;
 	int mFlag;

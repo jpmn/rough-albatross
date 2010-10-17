@@ -34,6 +34,12 @@
     <Filter Include="Fichiers sources\Core\Components">
       <UniqueIdentifier>{ec6a058c-7145-4fe0-8926-0b2f7fa92133}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Fichiers d%27en-tête\Core\Data">
+      <UniqueIdentifier>{f69d727d-3205-4c78-ba7d-9da15f8b2f7a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Fichiers sources\Core\Data">
+      <UniqueIdentifier>{bd6eff11-38c0-4a91-be5b-43aca748dfcb}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Application.cpp">
@@ -50,6 +56,9 @@
     </ClCompile>
     <ClCompile Include="NamedWindow.cpp">
       <Filter>Fichiers sources\Core\Components</Filter>
+    </ClCompile>
+    <ClCompile Include="Color.cpp">
+      <Filter>Fichiers sources\Core\Data</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -76,6 +85,12 @@
     </ClInclude>
     <ClInclude Include="NamedWindow.h">
       <Filter>Fichiers d%27en-tête\Core\Components</Filter>
+    </ClInclude>
+    <ClInclude Include="Color.h">
+      <Filter>Fichiers d%27en-tête\Core\Data</Filter>
+    </ClInclude>
+    <ClInclude Include="ImageWrapper.h">
+      <Filter>Fichiers d%27en-tête\Utils</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
