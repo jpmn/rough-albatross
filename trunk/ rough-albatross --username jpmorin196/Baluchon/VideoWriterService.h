@@ -1,20 +1,25 @@
 #pragma once
 
-#include "CppInterface.h"
+#include <cv.h>
+#include <highgui.h>
+
 #include "IService.h"
 
 namespace Baluchon { namespace Core { namespace Services {
 
-class CPatternDetectionService : implements IService
+class CVideoWriterService : implements IService
 {
 public:
-	CPatternDetectionService(void);
-	~CPatternDetectionService(void);
+	CVideoWriterService(void);
+	~CVideoWriterService(void);
 
 	void execute(IplImage* img);
 	void initialize(void);
 	void initializeDone(void);
 	void reset(void);
+
+private:
+	CvVideoWriter* mWriter;
 };
 
 }}};

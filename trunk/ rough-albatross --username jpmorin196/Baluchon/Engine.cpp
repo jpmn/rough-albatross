@@ -23,7 +23,11 @@ CEngine::~CEngine(void)
 }
 
 void CEngine::init(void) {
-	printf("Engine::init\n");
+	for (unsigned int i = 0; i < mListServices.size(); i++) 
+		mListServices.at(i)->initialize();
+
+	for (unsigned int i = 0; i < mListServices.size(); i++)
+		mListServices.at(i)->initializeDone();
 }
 
 void CEngine::cycle(void) {

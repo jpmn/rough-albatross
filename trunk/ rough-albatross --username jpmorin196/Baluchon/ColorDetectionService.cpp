@@ -13,14 +13,6 @@ namespace Baluchon { namespace Core { namespace Services {
 
 CColorDetectionService::CColorDetectionService(void)
 {
-	mKernel = cvCreateStructuringElementEx(5, 5, 2, 2, CV_SHAPE_ELLIPSE);
-
-	mWinColors = new CNamedWindow();
-	{
-		mWinColors->setName("Colors");
-		mWinColors->setFlag(CV_WINDOW_AUTOSIZE);
-	}
-
 	mWinThreshold = new CNamedWindow();
 	{
 		mWinThreshold->setName("Threshold");
@@ -29,14 +21,15 @@ CColorDetectionService::CColorDetectionService(void)
 
 	mColorTolerance = 0;
 
+		cvNamedWindow("Patate", 1);
+
 	cvSetMouseCallback("Camera :: Query Frame", (CvMouseCallback)CColorDetectionService::onMouseClick, (void*)this);
 }
 
 CColorDetectionService::~CColorDetectionService(void)
 {
-	cvReleaseStructuringElement(&mKernel);
-	delete mWinColors;
 	delete mWinThreshold;
+	cvDestroyWindow("Patate");
 }
 
 void CColorDetectionService::addColor(CColor color) {
@@ -52,49 +45,61 @@ void CColorDetectionService::execute(IplImage* img) {
 
 	mLastImage = img;
 
+	IplImage* imgOut = cvCreateImage(cvGetSize(img), IPL_DEPTH_8U, 3);
 	IplImage* imgHSV = cvCreateImage(cvGetSize(img), IPL_DEPTH_8U, 3);
 	cvCvtColor(img, imgHSV, CV_BGR2HSV);
-	cvSmooth(imgHSV, imgHSV, CV_GAUSSIAN);
-
-	IplImage* imgColors = cvCreateImage(cvGetSize(img), IPL_DEPTH_8U, 3);
-
-	IplImage* imgThreshold = cvCreateImage(cvGetSize(imgHSV), IPL_DEPTH_8U, 1);
-
-	RgbImage wImgColors(imgColors);
-	BwImage wImgThreshold(imgThreshold);
 
 	for (int i = 0; i < mListColors.size(); i++) {
+	
+		IplImage* imgGray = cvCreateImage(cvGetSize(img), IPL_DEPTH_8U, 1);
+		//cvSplit(img, imgGray, 0, 0, 0);
+
+		///
 		CColor color = mListColors.at(i);
-		cvZero(imgThreshold);
 
-		int h = color.getHSV().val[0], s = color.getHSV().val[1], v = color.getHSV().val[2], t = mColorTolerance;
+		int h = color.getHSV().val[0];
+		int s = color.getHSV().val[1];
 
-		cvInRangeS(imgHSV, cvScalar(h-t-1, s-t, 0), cvScalar(h+t-1, s+t, 255), imgThreshold);
+		cvInRangeS(imgHSV, cvScalar(h - mColorTolerance, s - mColorTolerance, 0), cvScalar(h + mColorTolerance, s + mColorTolerance, 255), imgGray);
+
+		///
+		CvMemStorage* storage = cvCreateMemStorage(0);
+		CvSeq* contour = 0;
+	
+		cvFindContours(imgGray, storage, &contour, sizeof(CvContour), CV_RETR_CCOMP, CV_CHAIN_APPROX_SIMPLE);
 		
-		cvDilate(imgThreshold, imgThreshold, mKernel, 5);
-		cvErode(imgThreshold, imgThreshold, mKernel, 5);
+		while (contour != 0) {
+			double wContourAreaSize = cvContourArea(contour, CV_WHOLE_SEQ);
 
-		for (int y = 0; y < imgColors->height; y++) {
-			for (int x = 0; x < imgColors->width; x++) {
+			if (wContourAreaSize > 80)
+				cvDrawContours(imgOut, contour, color.getRGB(), color.getRGB(), -1, CV_FILLED, 8);
 
-				if (wImgThreshold[y][x] == 255) { // blanc
-					wImgColors[y][x].b = color.getRGB().val[0];
-					wImgColors[y][x].g = color.getRGB().val[1];
-					wImgColors[y][x].r = color.getRGB().val[2];
-				}
-			}
+			contour = contour->h_next;
 		}
+
+		cvShowImage("Patate", imgGray);
+
+		cvReleaseImage(&imgGray);
+		cvReleaseMemStorage(&storage);
 	}
 
-	mWinColors->setImage(imgColors);
-	mWinColors->show();
+	mWinThreshold->setImage(imgOut);
+	mWinThreshold->show();
 
-	//mWinThreshold->setImage(imgThreshold);
-	//mWinThreshold->show();
-
-	cvReleaseImage(&imgThreshold);
-	cvReleaseImage(&imgColors);
 	cvReleaseImage(&imgHSV);
+	cvReleaseImage(&imgOut);
+}
+
+void CColorDetectionService::initialize(void) {
+
+}
+
+void CColorDetectionService::initializeDone(void) {
+
+}
+
+void CColorDetectionService::reset(void) {
+
 }
 
 IplImage* CColorDetectionService::getLastImage(void) {

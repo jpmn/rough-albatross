@@ -17,4 +17,16 @@ void CPatternDetectionService::execute(IplImage* img) {
 	//printf("PatternDetectionService\n");
 }
 
+void CPatternDetectionService::initialize(void) {
+
+}
+
+void CPatternDetectionService::initializeDone(void) {
+
+}
+
+void CPatternDetectionService::reset(void) {
+
+}
+
 }}};

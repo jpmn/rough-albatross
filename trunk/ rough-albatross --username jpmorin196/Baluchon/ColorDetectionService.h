@@ -22,14 +22,16 @@ public:
 	~CColorDetectionService(void);
 
 	void execute(IplImage* img);
+	void initialize(void);
+	void initializeDone(void);
+	void reset(void);
+
 	void addColor(CColor color);
 	void setColorTolerance(int t);
 
 	IplImage* getLastImage(void);
 
 private:
-	IplConvKernel* mKernel;
-	INamedWindow* mWinColors;
 	INamedWindow* mWinThreshold;
 	vector<CColor> mListColors;
 	int mColorTolerance;

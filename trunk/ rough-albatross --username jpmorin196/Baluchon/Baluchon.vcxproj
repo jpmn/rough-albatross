@@ -82,13 +82,16 @@
     <ClCompile Include="Application.cpp" />
     <ClCompile Include="Color.cpp" />
     <ClCompile Include="ColorDetectionService.cpp" />
+    <ClCompile Include="ContoursService.cpp" />
     <ClCompile Include="Engine.cpp" />
     <ClCompile Include="NamedWindow.cpp" />
     <ClCompile Include="PatternDetectionService.cpp" />
+    <ClCompile Include="VideoWriterService.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Color.h" />
     <ClInclude Include="ColorDetectionService.h" />
+    <ClInclude Include="ContoursService.h" />
     <ClInclude Include="CppInterface.h" />
     <ClInclude Include="Engine.h" />
     <ClInclude Include="IEngine.h" />
@@ -97,6 +100,7 @@
     <ClInclude Include="INamedWindow.h" />
     <ClInclude Include="NamedWindow.h" />
     <ClInclude Include="PatternDetectionService.h" />
+    <ClInclude Include="VideoWriterService.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

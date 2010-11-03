@@ -60,6 +60,12 @@
     <ClCompile Include="Color.cpp">
       <Filter>Fichiers sources\Core\Data</Filter>
     </ClCompile>
+    <ClCompile Include="VideoWriterService.cpp">
+      <Filter>Fichiers sources\Core\Services</Filter>
+    </ClCompile>
+    <ClCompile Include="ContoursService.cpp">
+      <Filter>Fichiers sources\Core\Services</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Engine.h">
@@ -91,6 +97,12 @@
     </ClInclude>
     <ClInclude Include="ImageWrapper.h">
       <Filter>Fichiers d%27en-tête\Utils</Filter>
+    </ClInclude>
+    <ClInclude Include="VideoWriterService.h">
+      <Filter>Fichiers d%27en-tête\Core\Services</Filter>
+    </ClInclude>
+    <ClInclude Include="ContoursService.h">
+      <Filter>Fichiers d%27en-tête\Core\Services</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

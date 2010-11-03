@@ -9,6 +9,8 @@
 #include "NamedWindow.h"
 #include "ColorDetectionService.h"
 #include "PatternDetectionService.h"
+#include "VideoWriterService.h"
+#include "ContoursService.h"
 
 using namespace Baluchon::Core;
 
@@ -26,10 +28,20 @@ int main() {
 		wColorService->setColorTolerance(10);
 	}
 
-	CPatternDetectionService* wPatternService = new CPatternDetectionService();
-	{
+	//CPatternDetectionService* wPatternService = new CPatternDetectionService();
+	//{
 
-	}
+	//}
+
+	//CVideoWriterService* wVideoService = new CVideoWriterService();
+	//{
+
+	//}
+
+	//CContoursService* wContoursService = new CContoursService(); 
+	//{
+
+	//}
 
 	CEngine* wEngine = new CEngine();
 	{
@@ -39,7 +51,9 @@ int main() {
 
 		// Services
 		wEngine->registerService(wColorService);
-		wEngine->registerService(wPatternService);
+		//wEngine->registerService(wPatternService);
+		//wEngine->registerService(wVideoService);
+		//wEngine->registerService(wContoursService);
 
 		// Execution
 		wEngine->init();
@@ -48,7 +62,9 @@ int main() {
 	}
 
 	delete wEngine;
-	delete wPatternService;
+	//delete wContoursService;
+	//delete wVideoService;
+	//delete wPatternService;
 	delete wColorService;
 	delete wWindow;
 

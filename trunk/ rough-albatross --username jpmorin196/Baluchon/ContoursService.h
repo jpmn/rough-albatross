@@ -1,15 +1,14 @@
 #pragma once
 
-#include "CppInterface.h"
 #include "IService.h"
 
 namespace Baluchon { namespace Core { namespace Services {
 
-class CPatternDetectionService : implements IService
+class CContoursService : implements IService
 {
 public:
-	CPatternDetectionService(void);
-	~CPatternDetectionService(void);
+	CContoursService(void);
+	~CContoursService(void);
 
 	void execute(IplImage* img);
 	void initialize(void);
