@@ -32,6 +32,9 @@ void CEngine::init(void) {
 
 void CEngine::cycle(void) {
 	CvCapture* capture = cvCreateCameraCapture(0);
+	cvSetCaptureProperty(capture, CV_CAP_PROP_FRAME_WIDTH, 320);
+	cvSetCaptureProperty(capture, CV_CAP_PROP_FRAME_HEIGHT, 240);
+
 	IplImage* imgFrame = 0;
 	
 	char exitKey = 0;

@@ -36,6 +36,7 @@ private:
 	vector<CColor> mListColors;
 	int mColorTolerance;
 	IplImage* mLastImage;
+	IplConvKernel* mMorphKernel;
 };
 
 }}};
