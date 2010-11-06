@@ -13,8 +13,8 @@ CPatternDetectionService::~CPatternDetectionService(void)
 {
 }
 
-void CPatternDetectionService::execute(IplImage* img) {
-	//printf("PatternDetectionService\n");
+void CPatternDetectionService::execute(const IplImage* imgIn, IplImage* imgOut) {
+	printf("PatternDetectionService\n");
 }
 
 void CPatternDetectionService::initialize(void) {

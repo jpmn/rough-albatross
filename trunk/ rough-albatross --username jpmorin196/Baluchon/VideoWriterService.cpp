@@ -12,8 +12,8 @@ CVideoWriterService::~CVideoWriterService(void)
 	cvReleaseVideoWriter(&mWriter);
 }
 
-void CVideoWriterService::execute(IplImage* img) {
-	cvWriteFrame(mWriter, img);
+void CVideoWriterService::execute(const IplImage* imgIn, IplImage* imgOut) {
+	cvWriteFrame(mWriter, imgIn);
 }
 
 void CVideoWriterService::initialize(void) {

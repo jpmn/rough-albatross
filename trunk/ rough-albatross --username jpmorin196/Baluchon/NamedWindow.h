@@ -5,7 +5,7 @@
 #include "CppInterface.h"
 #include "INamedWindow.h"
 
-namespace Baluchon { namespace Core { namespace Components {
+namespace Baluchon { namespace Core { namespace Components { namespace Windows {
 
 class CNamedWindow : implements INamedWindow
 {
@@ -29,4 +29,4 @@ private:
 	const IplImage* mImage;
 };
 
-}}};
+}}}};

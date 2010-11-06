@@ -37,6 +37,18 @@
     <Filter Include="Fichiers d%27en-tête\Core\Data">
       <UniqueIdentifier>{f69d727d-3205-4c78-ba7d-9da15f8b2f7a}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Fichiers d%27en-tête\Core\Components\Windows">
+      <UniqueIdentifier>{d15ce830-a646-4ee2-a251-e78d34df5f54}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Fichiers d%27en-tête\Core\Engine">
+      <UniqueIdentifier>{fe4a3313-1307-4c22-a629-f308840ff567}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Fichiers sources\Core\Components\Windows">
+      <UniqueIdentifier>{5ac16cd2-5e83-42ae-ac8d-e1558173267c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Fichiers sources\Core\Engine">
+      <UniqueIdentifier>{98edf8cc-fee0-4808-94d7-4d54d807ef8a}</UniqueIdentifier>
+    </Filter>
     <Filter Include="Fichiers sources\Core\Data">
       <UniqueIdentifier>{bd6eff11-38c0-4a91-be5b-43aca748dfcb}</UniqueIdentifier>
     </Filter>
@@ -45,17 +57,11 @@
     <ClCompile Include="Application.cpp">
       <Filter>Fichiers sources</Filter>
     </ClCompile>
-    <ClCompile Include="Engine.cpp">
-      <Filter>Fichiers sources\Core</Filter>
-    </ClCompile>
     <ClCompile Include="ColorDetectionService.cpp">
       <Filter>Fichiers sources\Core\Services</Filter>
     </ClCompile>
     <ClCompile Include="PatternDetectionService.cpp">
       <Filter>Fichiers sources\Core\Services</Filter>
-    </ClCompile>
-    <ClCompile Include="NamedWindow.cpp">
-      <Filter>Fichiers sources\Core\Components</Filter>
     </ClCompile>
     <ClCompile Include="Color.cpp">
       <Filter>Fichiers sources\Core\Data</Filter>
@@ -66,14 +72,14 @@
     <ClCompile Include="ContoursService.cpp">
       <Filter>Fichiers sources\Core\Services</Filter>
     </ClCompile>
+    <ClCompile Include="NamedWindow.cpp">
+      <Filter>Fichiers sources\Core\Components\Windows</Filter>
+    </ClCompile>
+    <ClCompile Include="Engine.cpp">
+      <Filter>Fichiers sources\Core\Engine</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Engine.h">
-      <Filter>Fichiers d%27en-tête\Core</Filter>
-    </ClInclude>
-    <ClInclude Include="IEngine.h">
-      <Filter>Fichiers d%27en-tête\Core</Filter>
-    </ClInclude>
     <ClInclude Include="CppInterface.h">
       <Filter>Fichiers d%27en-tête\Utils</Filter>
     </ClInclude>
@@ -86,12 +92,6 @@
     <ClInclude Include="PatternDetectionService.h">
       <Filter>Fichiers d%27en-tête\Core\Services</Filter>
     </ClInclude>
-    <ClInclude Include="INamedWindow.h">
-      <Filter>Fichiers d%27en-tête\Core\Components</Filter>
-    </ClInclude>
-    <ClInclude Include="NamedWindow.h">
-      <Filter>Fichiers d%27en-tête\Core\Components</Filter>
-    </ClInclude>
     <ClInclude Include="Color.h">
       <Filter>Fichiers d%27en-tête\Core\Data</Filter>
     </ClInclude>
@@ -102,6 +102,27 @@
       <Filter>Fichiers d%27en-tête\Core\Services</Filter>
     </ClInclude>
     <ClInclude Include="ContoursService.h">
+      <Filter>Fichiers d%27en-tête\Core\Services</Filter>
+    </ClInclude>
+    <ClInclude Include="IWindow.h">
+      <Filter>Fichiers d%27en-tête\Core\Components\Windows</Filter>
+    </ClInclude>
+    <ClInclude Include="INamedWindow.h">
+      <Filter>Fichiers d%27en-tête\Core\Components\Windows</Filter>
+    </ClInclude>
+    <ClInclude Include="NamedWindow.h">
+      <Filter>Fichiers d%27en-tête\Core\Components\Windows</Filter>
+    </ClInclude>
+    <ClInclude Include="IEngine.h">
+      <Filter>Fichiers d%27en-tête\Core\Engine</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine.h">
+      <Filter>Fichiers d%27en-tête\Core\Engine</Filter>
+    </ClInclude>
+    <ClInclude Include="IProcessingService.h">
+      <Filter>Fichiers d%27en-tête\Core\Services</Filter>
+    </ClInclude>
+    <ClInclude Include="IRenderingService.h">
       <Filter>Fichiers d%27en-tête\Core\Services</Filter>
     </ClInclude>
   </ItemGroup>

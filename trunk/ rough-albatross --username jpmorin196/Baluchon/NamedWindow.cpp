@@ -2,7 +2,7 @@
 
 #include "NamedWindow.h"
 
-namespace Baluchon { namespace Core { namespace Components {
+namespace Baluchon { namespace Core { namespace Components { namespace Windows {
 
 CNamedWindow::CNamedWindow(void)
 {
@@ -41,4 +41,4 @@ const IplImage* CNamedWindow::getImage(void) {
 	return mImage;
 }
 
-}}};
+}}}};

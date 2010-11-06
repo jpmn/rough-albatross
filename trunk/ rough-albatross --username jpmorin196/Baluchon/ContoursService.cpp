@@ -15,12 +15,12 @@ CContoursService::~CContoursService(void)
 	cvDestroyWindow("Contours");
 }
 
-void CContoursService::execute(IplImage* img) {
-	IplImage* img_8uc1 = cvCreateImage( cvGetSize(img), 8, 1);
+void CContoursService::execute(const IplImage* imgIn, IplImage* imgOut) {
+	IplImage* img_8uc1 = cvCreateImage( cvGetSize(imgIn), 8, 1);
 	IplImage* img_edge = cvCreateImage( cvGetSize(img_8uc1), 8, 1 );
 	IplImage* img_8uc3 = cvCreateImage( cvGetSize(img_8uc1), 8, 3 );
 
-	cvCvtColor(img, img_8uc1, CV_BGR2GRAY);
+	cvCvtColor(imgIn, img_8uc1, CV_BGR2GRAY);
 	cvThreshold( img_8uc1, img_edge, 128, 255, CV_THRESH_BINARY );
 
 	CvMemStorage* storage = cvCreateMemStorage();

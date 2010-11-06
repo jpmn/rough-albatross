@@ -3,16 +3,13 @@
 #include <cv.h>
 #include <highgui.h>
 
-#include <pthread.h>
-
 #include "Engine.h"
 #include "NamedWindow.h"
 #include "ColorDetectionService.h"
 #include "PatternDetectionService.h"
 #include "VideoWriterService.h"
-#include "ContoursService.h"
 
-using namespace Baluchon::Core;
+using namespace Baluchon::Core::Engine;
 
 int main() {
 	
@@ -25,20 +22,22 @@ int main() {
 
 	CColorDetectionService* wColorService = new CColorDetectionService();
 	{
-		wColorService->setColorTolerance(10);
+		wColorService->setColorTolerance(25);
+		wColorService->setMaxColorCount(3);
 	}
+
+	//CColorDetectionService* wColorService2 = new CColorDetectionService();
+	//{
+	//	wColorService->setColorTolerance(50);
+	//	wColorService->setMaxColorCount(2);
+	//}
 
 	//CPatternDetectionService* wPatternService = new CPatternDetectionService();
 	//{
 
 	//}
 
-	//CVideoWriterService* wVideoService = new CVideoWriterService();
-	//{
-
-	//}
-
-	//CContoursService* wContoursService = new CContoursService(); 
+	CVideoWriterService* wVideoService = new CVideoWriterService();
 	//{
 
 	//}
@@ -50,10 +49,10 @@ int main() {
 		wEngine->setExitKey('q');
 
 		// Services
-		wEngine->registerService(wColorService);
+		wEngine->registerServiceForProcessing(wColorService);
+		//wEngine->registerService(wColorService2);
 		//wEngine->registerService(wPatternService);
-		//wEngine->registerService(wVideoService);
-		//wEngine->registerService(wContoursService);
+		wEngine->registerServiceForRendering(wVideoService);
 
 		// Execution
 		wEngine->init();
@@ -62,10 +61,10 @@ int main() {
 	}
 
 	delete wEngine;
-	//delete wContoursService;
-	//delete wVideoService;
+	delete wVideoService;
 	//delete wPatternService;
 	delete wColorService;
+	//delete wColorService2;
 	delete wWindow;
 
 	std::cin.get();

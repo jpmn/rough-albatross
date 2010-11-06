@@ -7,7 +7,7 @@
 
 using namespace Baluchon::Core::Services;
 
-namespace Baluchon { namespace Core {
+namespace Baluchon { namespace Core { namespace Engine {
 
 CEngine::CEngine(void)
 {
@@ -23,36 +23,54 @@ CEngine::~CEngine(void)
 }
 
 void CEngine::init(void) {
-	for (unsigned int i = 0; i < mListServices.size(); i++) 
-		mListServices.at(i)->initialize();
+	for (unsigned int i = 0; i < mListProcessingServices.size(); i++) 
+		mListProcessingServices.at(i)->initialize();
 
-	for (unsigned int i = 0; i < mListServices.size(); i++)
-		mListServices.at(i)->initializeDone();
+	for (unsigned int i = 0; i < mListProcessingServices.size(); i++)
+		mListProcessingServices.at(i)->initializeDone();
+
+	for (unsigned int i = 0; i < mListRenderingServices.size(); i++) 
+		mListRenderingServices.at(i)->initialize();
+
+	for (unsigned int i = 0; i < mListRenderingServices.size(); i++)
+		mListRenderingServices.at(i)->initializeDone();
 }
 
 void CEngine::cycle(void) {
 	CvCapture* capture = cvCreateCameraCapture(0);
-	cvSetCaptureProperty(capture, CV_CAP_PROP_FRAME_WIDTH, 320);
-	cvSetCaptureProperty(capture, CV_CAP_PROP_FRAME_HEIGHT, 240);
+	//cvSetCaptureProperty(capture, CV_CAP_PROP_FRAME_WIDTH, 320);
+	//cvSetCaptureProperty(capture, CV_CAP_PROP_FRAME_HEIGHT, 240);
 
-	IplImage* imgFrame = 0;
-	
+	IplImage* imgIn = cvQueryFrame(capture);
+	IplImage* imgOut = cvCreateImage(cvGetSize(imgIn), IPL_DEPTH_8U, 3);
+	IplImage* imgFinal = 0;
+
 	char exitKey = 0;
 
 	while (exitKey != CEngine::mExitKey) {
 		clock_t start = clock();
 
-		imgFrame = cvQueryFrame(capture);
+		imgIn = cvQueryFrame(capture);
 
-		cvFlip(imgFrame, imgFrame, 1);
+		cvFlip(imgIn, imgIn, 1);
+		imgFinal = cvCloneImage(imgIn);
 
-		printf("Engine::cycle %d\n", mCycleCount);
-		for (unsigned int i = 0; i < mListServices.size(); i++) 
-			mListServices[i]->execute(imgFrame);
+		for (unsigned int i = 0; i < mListProcessingServices.size(); i++) {
+			mListProcessingServices[i]->execute(imgIn, imgOut);
+
+			cvAdd(imgOut, imgFinal, imgFinal);
+			cvZero(imgOut);
+		}
+
+		for (unsigned int i = 0; i < mListRenderingServices.size(); i++) {
+			mListRenderingServices[i]->execute(imgFinal);
+		}
 		mCycleCount++;
 
-		mNamedWindow->setImage(imgFrame);
+		mNamedWindow->setImage(imgFinal);
 		mNamedWindow->show();
+
+		cvReleaseImage(&imgFinal);
 
 		exitKey = cvWaitKey(10);
 
@@ -61,6 +79,7 @@ void CEngine::cycle(void) {
 		printf("Engine::FPS %f\n", 1000.0f / timeMs);
 	}
 
+	cvReleaseImage(&imgOut);
 	cvReleaseCapture(&capture);
 }
 
@@ -68,19 +87,12 @@ void CEngine::dispose(void) {
 
 }
 
-void CEngine::registerService(IService* s) {
-	mListServices.push_back(s);
+void CEngine::registerServiceForProcessing(IProcessingService* s) {
+	mListProcessingServices.push_back(s);
 }
 
-void CEngine::unregisterService(IService* s) {
-
-	// TODO : vérifier si ça fonctionne vraiment...
-	for (int i = 0; i < mListServices.size(); i++) {
-		if (mListServices.at(i) == s) {
-			mListServices.erase(mListServices.begin() + i);
-			break;
-		}
-	}
+void CEngine::registerServiceForRendering(IRenderingService* s) {
+	mListRenderingServices.push_back(s);
 }
 
 void CEngine::setNamedWindow(INamedWindow* nw) {
@@ -95,4 +107,4 @@ void CEngine::setCycleDuration(int ms) {
 	mCycleDuration = ms;
 }
 
-}};
+}}};

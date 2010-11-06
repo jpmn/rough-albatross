@@ -3,7 +3,7 @@
 #include <cv.h>
 #include "CppInterface.h"
 
-namespace Baluchon { namespace Core { namespace Components {
+namespace Baluchon { namespace Core { namespace Components { namespace Windows {
 
 DeclareInterface(INamedWindow)
 	virtual void init(void) = 0;
@@ -17,4 +17,4 @@ DeclareInterface(INamedWindow)
 	virtual const IplImage* getImage(void) = 0;
 EndInterface
 
-}}};
+}}}};

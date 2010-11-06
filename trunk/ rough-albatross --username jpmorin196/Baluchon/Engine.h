@@ -5,7 +5,7 @@
 
 using namespace std;
 
-namespace Baluchon { namespace Core {
+namespace Baluchon { namespace Core { namespace Engine {
 
 class CEngine : implements IEngine
 {
@@ -16,8 +16,8 @@ public:
 	void init(void);
 	void cycle(void);
 	void dispose(void);
-	void registerService(IService* s);
-	void unregisterService(IService* s);
+	void registerServiceForProcessing(IProcessingService* s);
+	void registerServiceForRendering(IRenderingService* s);
 
 	void setNamedWindow(INamedWindow* nw);
 	void setExitKey(char key);
@@ -28,8 +28,9 @@ private:
 	int mCycleCount;
 	char mExitKey;
 	int mCycleDuration;
-	vector<IService*> mListServices;
+	vector<IProcessingService*> mListProcessingServices;
+	vector<IRenderingService*> mListRenderingServices;
 };
 
-}};
+}}};
 

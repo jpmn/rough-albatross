@@ -11,7 +11,7 @@ public:
 	CPatternDetectionService(void);
 	~CPatternDetectionService(void);
 
-	void execute(IplImage* img);
+	void execute(const IplImage* imgIn, IplImage* imgOut);
 	void initialize(void);
 	void initializeDone(void);
 	void reset(void);

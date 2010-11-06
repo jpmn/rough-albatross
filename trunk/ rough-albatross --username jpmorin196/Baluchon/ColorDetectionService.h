@@ -2,17 +2,17 @@
 
 #include <vector>
 
-#include "IService.h"
+#include "IProcessingService.h"
 #include "INamedWindow.h"
 #include "Color.h"
 
 using namespace std;
-using namespace Baluchon::Core::Components;
+using namespace Baluchon::Core::Components::Windows;
 using namespace Baluchon::Core::Data;
 
 namespace Baluchon { namespace Core { namespace Services {
 
-class CColorDetectionService : implements IService
+class CColorDetectionService : implements IProcessingService
 {
 public:
 	static void onMouseClick(int event, int x, int y, int flags, void* param);
@@ -21,21 +21,23 @@ public:
 	CColorDetectionService(void);
 	~CColorDetectionService(void);
 
-	void execute(IplImage* img);
+	void execute(const IplImage* imgIn, IplImage* imgOut);
 	void initialize(void);
 	void initializeDone(void);
 	void reset(void);
 
 	void addColor(CColor color);
 	void setColorTolerance(int t);
+	void setMaxColorCount(int c);
 
-	IplImage* getLastImage(void);
+	const IplImage* getLastImage(void);
 
 private:
 	INamedWindow* mWinThreshold;
 	vector<CColor> mListColors;
 	int mColorTolerance;
-	IplImage* mLastImage;
+	int mMaxColorCount;
+	const IplImage* mLastImage;
 	IplConvKernel* mMorphKernel;
 };
 
