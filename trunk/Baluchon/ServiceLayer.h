@@ -1,7 +1,5 @@
 #pragma once
 
-#include <vector>
-
 #include "IService.h"
 #include "IServiceLayer.h"
 
@@ -16,9 +14,10 @@ public:
 	~ServiceLayer(void);
 
 	virtual void setLowerLayer(IServiceLayer* serviceLayer);
+	virtual IServiceLayer* getLowerLayer(void) = 0;
 	virtual void addService(IService* service);
 	virtual IService* findService(IService* service);
-	virtual vector<IService*> getServices();
+	virtual vector<IService*> getServices(void);
 
 private:
 	IServiceLayer* mLowerServiceLayer;
