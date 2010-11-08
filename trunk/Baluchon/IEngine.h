@@ -1,7 +1,6 @@
 #pragma once
 
 #include "IServiceLayer.h"
-#include "MacroInterface.h"
 
 using namespace baluchon::core::services;
 
@@ -9,6 +8,7 @@ namespace baluchon { namespace core { namespace engine {
 
 class IEngine
 {
+public:
 	virtual ~IEngine() {}
 
 	virtual void init(void) = 0;
@@ -18,6 +18,6 @@ class IEngine
 
 	virtual void setExitKey(char exitKey) = 0;
 	virtual void addServiceLayer(IServiceLayer* serviceLayer) = 0;
-}
+};
 
 }}};
