@@ -29,7 +29,7 @@ void Engine::run(void) {
 		exitKey = cvWaitKey(10);
 
 		clock_t elapsed = clock() - start;
-        long int timeMs = ((float)elapsed) / ((float)CLOCKS_PER_SEC) * 1000.0f;
+        long int timeMs = (long) (((float)elapsed) / ((float)CLOCKS_PER_SEC) * 1000.0f);
 		printf("Engine::FPS %f\n", 1000.0f / timeMs);
 	}
 }
