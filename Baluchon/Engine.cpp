@@ -84,7 +84,10 @@ void Engine::setExitKey(char exitKey) {
 }
 
 void Engine::addServiceLayer(IServiceLayer* serviceLayer) {
-	serviceLayer->setLowerLayer(mListServiceLayers.back());
+    if(!mListServiceLayers.empty())
+    {
+        serviceLayer->setLowerLayer(mListServiceLayers.back());
+    }
 	mListServiceLayers.push_back(serviceLayer);
 }
 
