@@ -20,6 +20,7 @@ IServiceLayer* ServiceLayer::getLowerLayer(void) {
 
 void ServiceLayer::addService(IService* service) {
 	mListServices.push_back(service);
+    service->setServiceLayer(this);
 }
 
 IService* ServiceLayer::findService(IService* service) {
