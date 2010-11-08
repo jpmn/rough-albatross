@@ -1,7 +1,6 @@
 #pragma once
 
 #include "ICaptureService.h"
-#include "AbstractService.h"
 
 namespace baluchon { namespace core { namespace services { namespace implementations {
 
