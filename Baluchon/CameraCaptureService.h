@@ -2,7 +2,7 @@
 
 #include "ICaptureService.h"
 
-namespace Baluchon { namespace Core { namespace Services { namespace Implementations {
+namespace baluchon { namespace core { namespace services { namespace implementations {
 
 class CameraCaptureService : implements ICaptureService
 {
@@ -10,14 +10,14 @@ public:
 	CameraCaptureService(void);
 	~CameraCaptureService(void);
 
-	virtual void Init(void);
-	virtual void InitDone(void);
-	virtual void Execute(void);
-	virtual void Reset(void);
-	virtual void Dispose(void);
+	virtual void init(void);
+	virtual void initDone(void);
+	virtual void execute(void);
+	virtual void reset(void);
+	virtual void dispose(void);
 
-	virtual void SetCapture(CvCapture* capture);
-	virtual IplImage* GetImage(void);
+	virtual void setCapture(CvCapture* capture);
+	virtual IplImage* getImage(void);
 
 private:
 	CvCapture* mCameraCapture;

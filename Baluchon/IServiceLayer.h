@@ -3,12 +3,12 @@
 #include "MacroInterface.h"
 #include "IService.h"
 
-namespace Baluchon { namespace Core { namespace Services {
+namespace baluchon { namespace core { namespace services {
 
 DeclareInterface(IServiceLayer)
-	virtual void SetLowerLayer(IServiceLayer* serviceLayer) = 0;
-	virtual void AddService(IService* service) = 0;
-	virtual IService* FindServiceInLowerLayer(IService* service) = 0;
+	virtual void setLowerLayer(IServiceLayer* serviceLayer) = 0;
+	virtual void addService(IService* service) = 0;
+	virtual IService* findServiceInLowerLayer(IService* service) = 0;
 EndInterface
 
 }}};

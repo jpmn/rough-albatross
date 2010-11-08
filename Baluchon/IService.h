@@ -2,14 +2,14 @@
 
 #include "MacroInterface.h"
 
-namespace Baluchon { namespace Core { namespace Services {
+namespace baluchon { namespace core { namespace services {
 
 DeclareInterface(IService)
-	virtual void Init(void) = 0;
-	virtual void InitDone(void) = 0;
-	virtual void Execute(void) = 0;
-	virtual void Reset(void) = 0;
-	virtual void Dispose(void) = 0;
+	virtual void init(void) = 0;
+	virtual void initDone(void) = 0;
+	virtual void execute(void) = 0;
+	virtual void reset(void) = 0;
+	virtual void dispose(void) = 0;
 EndInterface
 
 }}};

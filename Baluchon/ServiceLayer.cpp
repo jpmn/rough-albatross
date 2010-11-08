@@ -1,6 +1,6 @@
 #include "ServiceLayer.h"
 
-namespace Baluchon { namespace Core { namespace Services {
+namespace baluchon { namespace core { namespace services {
 
 ServiceLayer::ServiceLayer(void) {
 	
@@ -10,15 +10,15 @@ ServiceLayer::~ServiceLayer(void) {
 
 }
 
-void ServiceLayer::SetLowerLayer(ServiceLayer* serviceLayer) {
+void ServiceLayer::setLowerLayer(ServiceLayer* serviceLayer) {
 	mLowerServiceLayer = serviceLayer;
 }
 
-void ServiceLayer::AddService(IService* service) {
-	mListServices.push_back(service);
+void ServiceLayer::addService(IService* service) {
+	mListservices.push_back(service);
 }
 
-IService* ServiceLayer::FindServiceInLowerLayer(IService* service) {
+IService* ServiceLayer::findServiceInLowerLayer(IService* service) {
 	return NULL;
 }
 

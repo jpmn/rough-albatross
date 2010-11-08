@@ -3,18 +3,18 @@
 #include "IServiceLayer.h"
 #include "MacroInterface.h"
 
-using namespace Baluchon::Core::Services;
+using namespace baluchon::core::services;
 
-namespace Baluchon { namespace Core { namespace Engine {
+namespace baluchon { namespace core { namespace engine {
 
 DeclareInterface(IEngine)
-	virtual void Init(void) = 0;
-	virtual void Run(void) = 0;
-	virtual void Reset(void) = 0;
-	virtual void Dispose(void) = 0;
+	virtual void init(void) = 0;
+	virtual void run(void) = 0;
+	virtual void reset(void) = 0;
+	virtual void dispose(void) = 0;
 
-	virtual void SetExitKey(char exitKey) = 0;
-	virtual void AddServiceLayer(IServiceLayer* serviceLayer) = 0;
+	virtual void setExitKey(char exitKey) = 0;
+	virtual void addServiceLayer(IServiceLayer* serviceLayer) = 0;
 EndInterface
 
 }}};
