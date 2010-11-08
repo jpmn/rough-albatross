@@ -44,7 +44,7 @@ IService* ServiceLayer::findService(IService* service) {
 	}
 
 	delete service;
-	return NULL;
+	return 0;
 }
 
 vector<IService*> ServiceLayer::getServices() {
