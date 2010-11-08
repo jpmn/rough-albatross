@@ -1,8 +1,8 @@
 #pragma once
 
-#include "IServiceLayer.h"
-
 namespace baluchon { namespace core { namespace services {
+
+class IServiceLayer;
 
 class IService 
 {

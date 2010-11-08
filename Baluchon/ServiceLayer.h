@@ -14,7 +14,7 @@ public:
 	~ServiceLayer(void);
 
 	virtual void setLowerLayer(IServiceLayer* serviceLayer);
-	virtual IServiceLayer* getLowerLayer(void) = 0;
+	virtual IServiceLayer* getLowerLayer(void);
 	virtual void addService(IService* service);
 	virtual IService* findService(IService* service);
 	virtual vector<IService*> getServices(void);

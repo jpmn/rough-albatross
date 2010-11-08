@@ -3,6 +3,7 @@
 #include <highgui.h>
 
 #include "DisplayImageService.h"
+#include "IServiceLayer.h"
 
 namespace baluchon { namespace core { namespace services { namespace implementations {
 
