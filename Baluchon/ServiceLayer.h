@@ -9,19 +9,20 @@ using namespace std;
 
 namespace baluchon { namespace core { namespace services {
 
-class ServiceLayer : implements IServiceLayer
+class ServiceLayer : public IServiceLayer
 {
 public:
 	ServiceLayer(void);
 	~ServiceLayer(void);
 
-	virtual void setLowerLayer(ServiceLayer* serviceLayer);
+	virtual void setLowerLayer(IServiceLayer* serviceLayer);
 	virtual void addService(IService* service);
-	virtual IService* findServiceInLowerLayer(IService* service);
+	virtual IService* findService(IService* service);
+	virtual vector<IService*> getServices();
 
 private:
-	ServiceLayer* mLowerServiceLayer;
-	vector<IService*> mListservices;
+	IServiceLayer* mLowerServiceLayer;
+	vector<IService*> mListServices;
 };
 
 }}};

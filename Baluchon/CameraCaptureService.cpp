@@ -27,7 +27,7 @@ void CameraCaptureService::reset(void) {
 }
 
 void CameraCaptureService::dispose(void) {
-
+	cvReleaseCapture(&mCameraCapture);
 }
 
 void CameraCaptureService::setCapture(CvCapture* capture) {
