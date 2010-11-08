@@ -2,15 +2,16 @@
 
 #include <vector>
 
-#include "Engine.h"
+#include "IEngine.h"
 #include "IServiceLayer.h"
 
 using namespace std;
+using namespace baluchon::core::engine;
 using namespace baluchon::core::services;
 
 namespace baluchon { namespace core { namespace engine { namespace implementations {
 
-class Engine
+class Engine : public IEngine
 {
 public:
 	Engine(void);
