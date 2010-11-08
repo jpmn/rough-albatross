@@ -69,9 +69,6 @@
     <ClInclude Include="IPositionable.h">
       <Filter>Fichiers d%27en-tête\core\structures</Filter>
     </ClInclude>
-    <ClInclude Include="MacroInterface.h">
-      <Filter>Fichiers d%27en-tête\utilities</Filter>
-    </ClInclude>
     <ClInclude Include="IServiceLayer.h">
       <Filter>Fichiers d%27en-tête\core\services</Filter>
     </ClInclude>
@@ -90,9 +87,6 @@
     <ClInclude Include="IColoredBlob.h">
       <Filter>Fichiers d%27en-tête\core\structures</Filter>
     </ClInclude>
-    <ClInclude Include="MacroImage.h">
-      <Filter>Fichiers d%27en-tête\utilities</Filter>
-    </ClInclude>
     <ClInclude Include="ColorDetectionService.h">
       <Filter>Fichiers d%27en-tête\core\services\implementations</Filter>
     </ClInclude>
@@ -104,6 +98,9 @@
     </ClInclude>
     <ClInclude Include="ServiceLayer.h">
       <Filter>Fichiers d%27en-tête\core\services</Filter>
+    </ClInclude>
+    <ClInclude Include="DisplayImageService.h">
+      <Filter>Fichiers d%27en-tête\core\services\implementations</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -121,6 +118,12 @@
     </ClCompile>
     <ClCompile Include="Application.cpp">
       <Filter>Fichiers sources</Filter>
+    </ClCompile>
+    <ClCompile Include="DisplayImageService.cpp">
+      <Filter>Fichiers sources\core\services\implementations</Filter>
+    </ClCompile>
+    <ClCompile Include="IDisplayService.h">
+      <Filter>Fichiers d%27en-tête\core\services</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

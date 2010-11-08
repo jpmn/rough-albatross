@@ -15,7 +15,24 @@ Engine::~Engine(void) {
 }
 
 void Engine::init(void) {
-	// TODO : initialiser les services
+
+	// Initialization
+	for (int i = 0; i < mListServiceLayers.size(); i++) {
+		vector<IService*> wServices = mListServiceLayers[i]->getServices();
+
+		for (int j = 0; j < wServices.size(); j++) {
+			wServices[j]->init();
+		}
+	}
+
+	// Initialization Done
+	for (int i = 0; i < mListServiceLayers.size(); i++) {
+		vector<IService*> wServices = mListServiceLayers[i]->getServices();
+
+		for (int j = 0; j < wServices.size(); j++) {
+			wServices[j]->initDone();
+		}
+	}
 }
 
 void Engine::run(void) {
@@ -24,7 +41,13 @@ void Engine::run(void) {
 	while (exitKey != mExitKey) {
 		clock_t start = clock();
 
-		// TODO : executer les services
+		for (int i = 0; i < mListServiceLayers.size(); i++) {
+			vector<IService*> wServices = mListServiceLayers[i]->getServices();
+
+			for (int j = 0; j < wServices.size(); j++) {
+				wServices[j]->execute();
+			}
+		}
 
 		exitKey = cvWaitKey(10);
 
@@ -35,11 +58,25 @@ void Engine::run(void) {
 }
 
 void Engine::reset(void) {
+	
+	for (int i = 0; i < mListServiceLayers.size(); i++) {
+		vector<IService*> wServices = mListServiceLayers[i]->getServices();
 
+		for (int j = 0; j < wServices.size(); j++) {
+			wServices[j]->reset();
+		}
+	}
 }
 
 void Engine::dispose(void) {
 
+	for (int i = 0; i < mListServiceLayers.size(); i++) {
+		vector<IService*> wServices = mListServiceLayers[i]->getServices();
+
+		for (int j = 0; j < wServices.size(); j++) {
+			wServices[j]->dispose();
+		}
+	}
 }
 
 void Engine::setExitKey(char exitKey) {
@@ -47,8 +84,8 @@ void Engine::setExitKey(char exitKey) {
 }
 
 void Engine::addServiceLayer(IServiceLayer* serviceLayer) {
-	serviceLayer->setLowerLayer(mListServiceLayer.back());
-	mListServiceLayer.push_back(serviceLayer);
+	serviceLayer->setLowerLayer(mListServiceLayers.back());
+	mListServiceLayers.push_back(serviceLayer);
 }
 
 }}}};

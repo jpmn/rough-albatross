@@ -1,15 +1,16 @@
 #pragma once
 
-#include "ICaptureService.h"
+#include "IDisplayService.h"
 #include "AbstractService.h"
+#include "ICaptureService.h"
 
 namespace baluchon { namespace core { namespace services { namespace implementations {
 
-class CameraCaptureService : public ICaptureService
+class DisplayImageService : public IDisplayService
 {
 public:
-	CameraCaptureService(void);
-	~CameraCaptureService(void);
+	DisplayImageService(void);
+	~DisplayImageService(void);
 
 	virtual void init(void);
 	virtual void initDone(void);
@@ -17,12 +18,11 @@ public:
 	virtual void reset(void);
 	virtual void dispose(void);
 
-	virtual void setCapture(CvCapture* capture);
-	virtual IplImage* getImage(void);
+	virtual void setWindowName(char* name);
 
 private:
-	CvCapture* mCameraCapture;
-	IplImage* mImage;
+	ICaptureService* mCaptureService;
+	char* mWindowName;
 };
 
 }}}};

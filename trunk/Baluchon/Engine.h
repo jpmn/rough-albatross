@@ -26,7 +26,7 @@ public:
 
 private:
 	char mExitKey;
-	vector<IServiceLayer*> mListServiceLayer;
+	vector<IServiceLayer*> mListServiceLayers;
 };
 
 }}}};
