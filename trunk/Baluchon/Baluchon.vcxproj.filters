@@ -1,0 +1,123 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Fichiers sources">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="Fichiers d%27en-tête">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hpp;hxx;hm;inl;inc;xsd</Extensions>
+    </Filter>
+    <Filter Include="Fichiers de ressources">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+    <Filter Include="Fichiers d%27en-tête\Core">
+      <UniqueIdentifier>{3f7f0647-fc96-4350-aa95-cf7e3eecb717}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Fichiers d%27en-tête\Core\Services">
+      <UniqueIdentifier>{b0209ed0-06d5-4624-9b0b-f11dc81b5156}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Fichiers d%27en-tête\Core\Structures">
+      <UniqueIdentifier>{5e1bd86a-db36-41f9-b87d-770572b81566}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Fichiers d%27en-tête\Core\Engine">
+      <UniqueIdentifier>{b6539c05-e881-4958-8337-c3bef04f08a3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Fichiers sources\Utilities">
+      <UniqueIdentifier>{ae2ed759-8bf2-42a2-b886-b3383a557cf3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Fichiers d%27en-tête\Utilities">
+      <UniqueIdentifier>{4db24dc9-2bb1-4b12-b3cc-c61a975a5ea1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Fichiers sources\Core">
+      <UniqueIdentifier>{6651d008-7127-4246-b05c-3c3d8048fd09}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Fichiers sources\Core\Engine">
+      <UniqueIdentifier>{3367ff57-d850-48f9-b483-9bd450a480a3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Fichiers sources\Core\Structures">
+      <UniqueIdentifier>{260fd77f-ad05-4a75-8260-0453a5c58ba0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Fichiers sources\Core\Services">
+      <UniqueIdentifier>{b6f52a03-887b-410c-af50-ad74199156c1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Fichiers d%27en-tête\Core\Services\Implementations">
+      <UniqueIdentifier>{ca3ce5bd-bca8-4947-a701-366721dbd962}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Fichiers sources\Core\Services\Implementations">
+      <UniqueIdentifier>{77228ac7-449e-4d2a-9164-881a15465920}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Fichiers d%27en-tête\Core\Engine\Implementations">
+      <UniqueIdentifier>{7858f5b7-035c-4263-9c79-d8cdc9378adc}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Fichiers sources\Core\Engine\Implementations">
+      <UniqueIdentifier>{875e88fc-d6bb-41f6-afcb-3e2fb5627d03}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="IService.h">
+      <Filter>Fichiers d%27en-tête\Core\Services</Filter>
+    </ClInclude>
+    <ClInclude Include="IEngine.h">
+      <Filter>Fichiers d%27en-tête\Core\Engine</Filter>
+    </ClInclude>
+    <ClInclude Include="IMoveable.h">
+      <Filter>Fichiers d%27en-tête\Core\Structures</Filter>
+    </ClInclude>
+    <ClInclude Include="IPositionable.h">
+      <Filter>Fichiers d%27en-tête\Core\Structures</Filter>
+    </ClInclude>
+    <ClInclude Include="MacroInterface.h">
+      <Filter>Fichiers d%27en-tête\Utilities</Filter>
+    </ClInclude>
+    <ClInclude Include="IServiceLayer.h">
+      <Filter>Fichiers d%27en-tête\Core\Services</Filter>
+    </ClInclude>
+    <ClInclude Include="IColorDetectionService.h">
+      <Filter>Fichiers d%27en-tête\Core\Services</Filter>
+    </ClInclude>
+    <ClInclude Include="IPatternDetectionService.h">
+      <Filter>Fichiers d%27en-tête\Core\Services</Filter>
+    </ClInclude>
+    <ClInclude Include="ICaptureService.h">
+      <Filter>Fichiers d%27en-tête\Core\Services</Filter>
+    </ClInclude>
+    <ClInclude Include="IWriterService.h">
+      <Filter>Fichiers d%27en-tête\Core\Services</Filter>
+    </ClInclude>
+    <ClInclude Include="IColoredBlob.h">
+      <Filter>Fichiers d%27en-tête\Core\Structures</Filter>
+    </ClInclude>
+    <ClInclude Include="MacroImage.h">
+      <Filter>Fichiers d%27en-tête\Utilities</Filter>
+    </ClInclude>
+    <ClInclude Include="ColorDetectionService.h">
+      <Filter>Fichiers d%27en-tête\Core\Services\Implementations</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine.h">
+      <Filter>Fichiers d%27en-tête\Core\Engine\Implementations</Filter>
+    </ClInclude>
+    <ClInclude Include="CameraCaptureService.h">
+      <Filter>Fichiers d%27en-tête\Core\Services\Implementations</Filter>
+    </ClInclude>
+    <ClInclude Include="ServiceLayer.h">
+      <Filter>Fichiers d%27en-tête\Core\Services</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="ColorDetectionService.cpp">
+      <Filter>Fichiers sources\Core\Services\Implementations</Filter>
+    </ClCompile>
+    <ClCompile Include="Engine.cpp">
+      <Filter>Fichiers sources\Core\Engine\Implementations</Filter>
+    </ClCompile>
+    <ClCompile Include="CameraCaptureService.cpp">
+      <Filter>Fichiers sources\Core\Services\Implementations</Filter>
+    </ClCompile>
+    <ClCompile Include="ServiceLayer.cpp">
+      <Filter>Fichiers sources\Core\Services</Filter>
+    </ClCompile>
+  </ItemGroup>
+</Project>
