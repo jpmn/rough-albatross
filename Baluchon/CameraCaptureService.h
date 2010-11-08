@@ -4,7 +4,7 @@
 
 namespace baluchon { namespace core { namespace services { namespace implementations {
 
-class CameraCaptureService : implements ICaptureService
+class CameraCaptureService : ICaptureService
 {
 public:
 	CameraCaptureService(void);

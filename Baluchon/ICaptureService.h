@@ -6,9 +6,13 @@
 
 namespace baluchon { namespace core { namespace services { 
 
-DeclareBasedInterface(ICaptureService, IService)
-	virtual void setCapture(CvCapture* capture) = 0;
+class ICaptureService : IService
+{
+public:
+    virtual ~ICaptureService() {}
+
+    virtual void setCapture(CvCapture* capture) = 0;
 	virtual IplImage* getImage(void) = 0;
-EndInterface
+};
 
 }}};
