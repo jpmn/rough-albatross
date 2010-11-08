@@ -1,9 +1,10 @@
 #pragma once
 
-#include <typeinfo>
 #include <vector>
 
 #include "IService.h"
+
+using namespace std;
 
 namespace baluchon { namespace core { namespace services {
 
