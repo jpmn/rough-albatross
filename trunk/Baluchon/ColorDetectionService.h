@@ -1,6 +1,5 @@
 #pragma once
 
-#include "AbstractService.h"
 #include "IColorDetectionService.h"
 
 namespace baluchon { namespace core { namespace services { namespace implementations {
