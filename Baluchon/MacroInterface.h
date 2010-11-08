@@ -1,6 +1,6 @@
 #pragma once
 
-namespace baluchon { namespace Utilities {
+namespace baluchon { namespace utilities {
 
 #define Interface class
 
