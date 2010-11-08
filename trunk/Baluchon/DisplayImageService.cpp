@@ -5,6 +5,8 @@
 #include "DisplayImageService.h"
 #include "IServiceLayer.h"
 
+#include "CameraCaptureService.h"
+
 namespace baluchon { namespace core { namespace services { namespace implementations {
 
 DisplayImageService::DisplayImageService(void) {
@@ -16,7 +18,8 @@ DisplayImageService::~DisplayImageService(void) {
 }
 
 void DisplayImageService::init(void) {
-	mCaptureService = (ICaptureService*) mServiceLayer->findService(NULL);
+    mCaptureService= new CameraCaptureService();
+    mCaptureService = (ICaptureService*) mServiceLayer->findService(mCaptureService);
 }
 
 void DisplayImageService::initDone(void) {
