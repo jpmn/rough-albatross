@@ -1,7 +1,5 @@
 #pragma once
 
-#include "MacroInterface.h"
-
 namespace baluchon { namespace core { namespace services {
 
 class IService

@@ -10,7 +10,7 @@ ServiceLayer::~ServiceLayer(void) {
 
 }
 
-void ServiceLayer::setLowerLayer(ServiceLayer* serviceLayer) {
+void ServiceLayer::setLowerLayer(IServiceLayer* serviceLayer) {
 	mLowerServiceLayer = serviceLayer;
 }
 
