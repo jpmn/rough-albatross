@@ -37,6 +37,8 @@ int main() {
 
 	Engine* wEngine = new Engine();
 	{
+		wEngine->setExitKey('q');
+
 		wEngine->addServiceLayer(wInputLayer);
 		wEngine->addServiceLayer(wDisplayLayer);
 
