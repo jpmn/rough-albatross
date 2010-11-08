@@ -3,11 +3,15 @@
 
 #include "Engine.h"
 
-using namespace baluchon::core::engine;
+using namespace baluchon::core::engine::implementations;
 
 int main() {
 
-	
+	printf("Hello World!");
 
-	return 0;
+	Engine* wEngine = new Engine();
+
+	std::cin.get();
+
+	return EXIT_SUCCESS;
 }
