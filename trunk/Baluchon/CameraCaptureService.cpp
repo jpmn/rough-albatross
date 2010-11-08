@@ -1,6 +1,6 @@
 #include "CameraCaptureService.h"
 
-namespace Baluchon { namespace Core { namespace Services { namespace Implementations {
+namespace baluchon { namespace core { namespace services { namespace implementations {
 
 CameraCaptureService::CameraCaptureService(void) {
 
@@ -10,31 +10,31 @@ CameraCaptureService::~CameraCaptureService(void) {
 
 }
 
-void CameraCaptureService::Init(void) {
+void CameraCaptureService::init(void) {
 
 }
 
-void CameraCaptureService::InitDone(void) {
+void CameraCaptureService::initDone(void) {
 
 }
 
-void CameraCaptureService::Execute(void) {
+void CameraCaptureService::execute(void) {
 	mImage = cvQueryFrame(mCameraCapture);
 }
 
-void CameraCaptureService::Reset(void) {
+void CameraCaptureService::reset(void) {
 
 }
 
-void CameraCaptureService::Dispose(void) {
+void CameraCaptureService::dispose(void) {
 
 }
 
-void CameraCaptureService::SetCapture(CvCapture* capture) {
+void CameraCaptureService::setCapture(CvCapture* capture) {
 	mCameraCapture = capture;
 }
 
-IplImage* CameraCaptureService::GetImage(void) {
+IplImage* CameraCaptureService::getImage(void) {
 	return mImage;
 }
 

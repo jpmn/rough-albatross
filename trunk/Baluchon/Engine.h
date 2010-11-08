@@ -6,9 +6,9 @@
 #include "IServiceLayer.h"
 
 using namespace std;
-using namespace Baluchon::Core::Services;
+using namespace baluchon::core::services;
 
-namespace Baluchon { namespace Core { namespace Engine { namespace Implementations {
+namespace baluchon { namespace core { namespace engine { namespace implementations {
 
 class Engine
 {
@@ -16,13 +16,13 @@ public:
 	Engine(void);
 	~Engine(void);
 
-	virtual void Init(void);
-	virtual void Run(void);
-	virtual void Reset(void);
-	virtual void Dispose(void);
+	virtual void init(void);
+	virtual void run(void);
+	virtual void reset(void);
+	virtual void dispose(void);
 
-	virtual void SetExitKey(char exitKey);
-	virtual void AddServiceLayer(IServiceLayer* serviceLayer);
+	virtual void setExitKey(char exitKey);
+	virtual void addServiceLayer(IServiceLayer* serviceLayer);
 
 private:
 	char mExitKey;

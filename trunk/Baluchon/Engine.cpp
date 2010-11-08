@@ -4,7 +4,7 @@
 
 #include "Engine.h"
 
-namespace Baluchon { namespace Core { namespace Engine { namespace Implementations {
+namespace baluchon { namespace core { namespace engine { namespace implementations {
 
 Engine::Engine(void) {
 
@@ -14,17 +14,17 @@ Engine::~Engine(void) {
 
 }
 
-void Engine::Init(void) {
-	// TODO : Initialiser les services
+void Engine::init(void) {
+	// TODO : initialiser les services
 }
 
-void Engine::Run(void) {
+void Engine::run(void) {
 	char exitKey = 0;
 
 	while (exitKey != mExitKey) {
 		clock_t start = clock();
 
-		// TODO : Executer les services
+		// TODO : executer les services
 
 		exitKey = cvWaitKey(10);
 
@@ -34,20 +34,20 @@ void Engine::Run(void) {
 	}
 }
 
-void Engine::Reset(void) {
+void Engine::reset(void) {
 
 }
 
-void Engine::Dispose(void) {
+void Engine::dispose(void) {
 
 }
 
-void Engine::SetExitKey(char exitKey) {
+void Engine::setExitKey(char exitKey) {
 	mExitKey = exitKey;
 }
 
-void Engine::AddServiceLayer(IServiceLayer* serviceLayer) {
-	serviceLayer->SetLowerLayer(mListServiceLayer.back());
+void Engine::addServiceLayer(IServiceLayer* serviceLayer) {
+	serviceLayer->setLowerLayer(mListServiceLayer.back());
 	mListServiceLayer.push_back(serviceLayer);
 }
 

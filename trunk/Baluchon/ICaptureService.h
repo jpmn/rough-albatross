@@ -4,11 +4,11 @@
 
 #include "IService.h"
 
-namespace Baluchon { namespace Core { namespace Services { 
+namespace baluchon { namespace core { namespace services { 
 
 DeclareBasedInterface(ICaptureService, IService)
-	virtual void SetCapture(CvCapture* capture) = 0;
-	virtual IplImage* GetImage(void) = 0;
+	virtual void setCapture(CvCapture* capture) = 0;
+	virtual IplImage* getImage(void) = 0;
 EndInterface
 
 }}};
