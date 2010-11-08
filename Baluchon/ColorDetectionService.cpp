@@ -1,6 +1,6 @@
 #include "ColorDetectionService.h"
 
-namespace baluchon { namespace core { namespace services { namespace implementation {
+namespace baluchon { namespace core { namespace services { namespace implementations {
 
 ColorDetectionService::ColorDetectionService(void)
 {
