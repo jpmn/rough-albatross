@@ -3,6 +3,7 @@
 
 #include "CameraCaptureService.h"
 #include "DisplayImageService.h"
+#include "PatternDetectionService.h"
 #include "Engine.h"
 #include "ServiceLayer.h"
 
@@ -10,6 +11,7 @@ using namespace baluchon::core::engine;
 using namespace baluchon::core::services;
 using namespace baluchon::core::services::capture;
 using namespace baluchon::core::services::display;
+using namespace baluchon::core::services::patterndetection;
 
 int main() {
 
@@ -28,7 +30,18 @@ int main() {
 		wDisplayImageService->setWindowName("Baluchon");
 	}
 
-	ServiceLayer* wDisplayLayer = new ServiceLayer();
+    IPatternDetectionService* wPatternDetectionService = new PatternDetectionService();
+	{
+		wPatternDetectionService->addPattern("arrow_pattern.jpg");
+        wPatternDetectionService->addPattern("a_pattern.jpg");
+	}
+
+	ServiceLayer* wFilterLayer = new ServiceLayer();
+	{
+		wFilterLayer->addService(wPatternDetectionService);
+	}
+
+    ServiceLayer* wDisplayLayer = new ServiceLayer();
 	{
 		wDisplayLayer->addService(wDisplayImageService);
 	}
@@ -38,7 +51,8 @@ int main() {
 		wEngine->setExitKey('q');
 
 		wEngine->addServiceLayer(wInputLayer);
-		wEngine->addServiceLayer(wDisplayLayer);
+		wEngine->addServiceLayer(wFilterLayer);
+        wEngine->addServiceLayer(wDisplayLayer);
 
 		wEngine->init();
 		wEngine->run();

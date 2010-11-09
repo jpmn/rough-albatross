@@ -2,8 +2,10 @@
 
 #include "IDisplayService.h"
 #include "ICaptureService.h"
+#include "IPatternDetectionService.h"
 
 using namespace baluchon::core::services::capture;
+using namespace baluchon::core::services::patterndetection;
 
 namespace baluchon { namespace core { namespace services { namespace display {
 
@@ -23,6 +25,7 @@ public:
 
 private:
 	ICaptureService* mCaptureService;
+    IPatternDetectionService* mPatternService;
 	char* mWindowName;
 };
 

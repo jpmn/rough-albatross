@@ -6,6 +6,9 @@
 #include "IServiceLayer.h"
 
 #include "CameraCaptureService.h"
+#include "PatternDetectionService.h"
+
+#include "IPattern.h"
 
 namespace baluchon { namespace core { namespace services { namespace display {
 
@@ -20,6 +23,9 @@ DisplayImageService::~DisplayImageService(void) {
 void DisplayImageService::init(void) {
     mCaptureService= new CameraCaptureService();
     mCaptureService = (ICaptureService*) mServiceLayer->findService(mCaptureService);
+
+    mPatternService= new PatternDetectionService();
+    mPatternService = (IPatternDetectionService*) mServiceLayer->findService(mPatternService);
 }
 
 void DisplayImageService::initDone(void) {
@@ -27,7 +33,23 @@ void DisplayImageService::initDone(void) {
 }
 
 void DisplayImageService::execute(void) {
-	cvShowImage(mWindowName, mCaptureService->getImage());
+
+    IplImage *initial = mCaptureService->getImage();
+
+    //temporaire...juste pour faire le showoff
+    vector<IPattern*> patterns = mPatternService->getPatterns();
+    for(int i = 0; i < patterns.size(); i++)
+    {
+        for(int j = 0; j < (*patterns[i]->getImagePoints()).size(); j++)
+        {
+            for(int k = 0; k < (*patterns[i]->getImagePoints())[j].size(); k++)
+            {
+                cvCircle(initial, cvPoint((*patterns[i]->getImagePoints())[j][k].x, (*patterns[i]->getImagePoints())[j][k].y), 5, CV_RGB(255,0,0,0), CV_FILLED);   
+            }
+        }
+    }
+
+	cvShowImage(mWindowName, initial);
 }
 
 void DisplayImageService::reset(void) {
