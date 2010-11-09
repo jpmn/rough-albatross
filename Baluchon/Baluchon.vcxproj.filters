@@ -105,6 +105,24 @@
     <ClInclude Include="IWriterService.h">
       <Filter>Fichiers d%27en-tête\core\services\writer</Filter>
     </ClInclude>
+    <ClInclude Include="IColoredBlob.h">
+      <Filter>Fichiers d%27en-tête</Filter>
+    </ClInclude>
+    <ClInclude Include="IMoveable.h">
+      <Filter>Fichiers d%27en-tête</Filter>
+    </ClInclude>
+    <ClInclude Include="IPositionable.h">
+      <Filter>Fichiers d%27en-tête</Filter>
+    </ClInclude>
+    <ClInclude Include="PatternDetectionService.h">
+      <Filter>Fichiers d%27en-tête\core\services\patterndetection</Filter>
+    </ClInclude>
+    <ClInclude Include="IPattern.h">
+      <Filter>Fichiers d%27en-tête\core\services\patterndetection</Filter>
+    </ClInclude>
+    <ClInclude Include="Pattern.h">
+      <Filter>Fichiers d%27en-tête\core\services\patterndetection</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="ServiceLayer.cpp">
@@ -128,5 +146,19 @@
     <ClCompile Include="DisplayImageService.cpp">
       <Filter>Fichiers sources\core\services\display</Filter>
     </ClCompile>
+    <ClCompile Include="PatternDetectionService.cpp">
+      <Filter>Fichiers sources\core\services\patterndetection</Filter>
+    </ClCompile>
+    <ClCompile Include="Pattern.cpp">
+      <Filter>Fichiers sources\core\services\patterndetection</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="arrow_pattern.jpg">
+      <Filter>Fichiers de ressources</Filter>
+    </None>
+    <None Include="a_pattern.jpg">
+      <Filter>Fichiers de ressources</Filter>
+    </None>
   </ItemGroup>
 </Project>

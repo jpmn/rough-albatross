@@ -3,7 +3,7 @@
 namespace baluchon { namespace core { namespace services {
 
 ServiceLayer::ServiceLayer(void) {
-	
+	mLowerServiceLayer = 0;
 }
 
 ServiceLayer::~ServiceLayer(void) {
@@ -30,11 +30,11 @@ IService* ServiceLayer::findService(IService* service) {
 	vector<IService*> wListLowerServices;
 	IServiceLayer* wServiceLayer = mLowerServiceLayer;
 
-	while (wServiceLayer != NULL) {
-		wListLowerServices = mLowerServiceLayer->getServices();
+	while (wServiceLayer != 0) {
+		wListLowerServices = wServiceLayer->getServices();
 
 		for (unsigned int i = 0; i < wListLowerServices.size(); i++) {
-			if (typeid(wListLowerServices[i]) == typeid(service)) {
+			if (typeid(*wListLowerServices[i]) == typeid(*service)) {
 				delete service;
 				return wListLowerServices[i];
 			}
