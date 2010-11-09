@@ -7,14 +7,12 @@
 #include "ServiceLayer.h"
 
 using namespace baluchon::core::engine;
-using namespace baluchon::core::engine::implementations;
 using namespace baluchon::core::services;
-using namespace baluchon::core::services::implementations;
+using namespace baluchon::core::services::capture;
+using namespace baluchon::core::services::display;
 
 int main() {
 
-	printf("Hello World!");
-	
 	CameraCaptureService* wCameraCaptureService = new CameraCaptureService();
 	{
 		wCameraCaptureService->setCapture(cvCreateCameraCapture(0));

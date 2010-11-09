@@ -9,7 +9,7 @@ using namespace std;
 using namespace baluchon::core::engine;
 using namespace baluchon::core::services;
 
-namespace baluchon { namespace core { namespace engine { namespace implementations {
+namespace baluchon { namespace core { namespace engine {
 
 class Engine : public IEngine
 {
@@ -30,4 +30,4 @@ private:
 	vector<IServiceLayer*> mListServiceLayers;
 };
 
-}}}};
+}}};

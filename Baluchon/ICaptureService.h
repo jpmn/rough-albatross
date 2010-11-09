@@ -4,7 +4,7 @@
 
 #include "IService.h"
 
-namespace baluchon { namespace core { namespace services { 
+namespace baluchon { namespace core { namespace services { namespace capture { 
 
 class ICaptureService : public IService
 {
@@ -15,4 +15,4 @@ public:
 	virtual IplImage* getImage(void) = 0;
 };
 
-}}};
+}}}};

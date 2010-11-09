@@ -7,7 +7,7 @@
 
 #include "CameraCaptureService.h"
 
-namespace baluchon { namespace core { namespace services { namespace implementations {
+namespace baluchon { namespace core { namespace services { namespace display {
 
 DisplayImageService::DisplayImageService(void) {
 
