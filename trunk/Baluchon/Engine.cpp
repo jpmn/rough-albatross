@@ -4,7 +4,7 @@
 
 #include "Engine.h"
 
-namespace baluchon { namespace core { namespace engine { namespace implementations {
+namespace baluchon { namespace core { namespace engine {
 
 Engine::Engine(void) {
 
@@ -91,4 +91,4 @@ void Engine::addServiceLayer(IServiceLayer* serviceLayer) {
 	mListServiceLayers.push_back(serviceLayer);
 }
 
-}}}};
+}}};

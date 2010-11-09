@@ -3,7 +3,9 @@
 #include "IDisplayService.h"
 #include "ICaptureService.h"
 
-namespace baluchon { namespace core { namespace services { namespace implementations {
+using namespace baluchon::core::services::capture;
+
+namespace baluchon { namespace core { namespace services { namespace display {
 
 class DisplayImageService : public IDisplayService
 {

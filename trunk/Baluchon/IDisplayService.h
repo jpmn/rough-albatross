@@ -4,7 +4,7 @@
 
 #include "IService.h"
 
-namespace baluchon { namespace core { namespace services { 
+namespace baluchon { namespace core { namespace services { namespace display { 
 
 class IDisplayService : public IService
 {
@@ -12,4 +12,4 @@ public:
 
 };
 
-}}};
+}}}};

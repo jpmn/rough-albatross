@@ -1,6 +1,6 @@
 #include "CameraCaptureService.h"
 
-namespace baluchon { namespace core { namespace services { namespace implementations {
+namespace baluchon { namespace core { namespace services { namespace capture {
 
 CameraCaptureService::CameraCaptureService(void) {
 
@@ -20,6 +20,8 @@ void CameraCaptureService::initDone(void) {
 
 void CameraCaptureService::execute(void) {
 	mImage = cvQueryFrame(mCameraCapture);
+
+	cvFlip(mImage, mImage, 1);
 }
 
 void CameraCaptureService::reset(void) {

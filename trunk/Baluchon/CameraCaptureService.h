@@ -2,7 +2,7 @@
 
 #include "ICaptureService.h"
 
-namespace baluchon { namespace core { namespace services { namespace implementations {
+namespace baluchon { namespace core { namespace services { namespace capture {
 
 class CameraCaptureService : public ICaptureService
 {

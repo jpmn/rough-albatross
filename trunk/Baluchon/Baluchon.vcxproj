@@ -86,13 +86,10 @@
     <ClInclude Include="DisplayImageService.h" />
     <ClInclude Include="Engine.h" />
     <ClInclude Include="ICaptureService.h" />
-    <ClInclude Include="IColoredBlob.h" />
     <ClInclude Include="IWriterService.h" />
     <ClInclude Include="IColorDetectionService.h" />
     <ClInclude Include="IEngine.h" />
-    <ClInclude Include="IMoveable.h" />
     <ClInclude Include="IPatternDetectionService.h" />
-    <ClInclude Include="IPositionable.h" />
     <ClInclude Include="IService.h" />
     <ClInclude Include="IServiceLayer.h" />
     <ClInclude Include="ServiceLayer.h" />
