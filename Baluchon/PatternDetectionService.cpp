@@ -4,6 +4,7 @@
 
 #include "IServiceLayer.h"
 #include "CameraCaptureService.h"
+#include "math.h"
 
 namespace baluchon { namespace core { namespace services { namespace patterndetection { 
 
@@ -114,12 +115,17 @@ void PatternDetectionService::execute(void) {
                     mSrcPts->data.fl[i*2+1] = (float) (*((CvPoint*) cvGetSeqElem(mResult, i))).y;
                 }
 
+                mModelPoints[1].x = 0;
+                mModelPoints[2].x = 0;
+                mModelPoints[2].y = 0;
+                mModelPoints[3].y = 0;
+
                 for(int i = 0; i < mPatterns.size(); i++)
                 {
                     if(mResult->total == mPatterns[i]->getPointCount())
                     {
                         //optimization: if the size of the new pattern is more than 2% of the last one, we recalculate the transform
-                        if(i == 0 || fabs(((float) (mPatterns[i]->getWidth() - mPatterns[i-1]->getWidth()))/((float) mPatterns[i]->getWidth())) + fabs(((float) (mPatterns[i]->getHeight() - mPatterns[i-1]->getHeight()))/((float) mPatterns[i]->getHeight())) > 0.02)
+                        if(mModelPoints[1].x == 0 || fabs(((float) (mPatterns[i]->getWidth() - mPatterns[i-1]->getWidth()))/((float) mPatterns[i]->getWidth())) + fabs(((float) (mPatterns[i]->getHeight() - mPatterns[i-1]->getHeight()))/((float) mPatterns[i]->getHeight())) > 0.02)
                         {
                             mModelPoints[1].x = (float) mPatterns[i]->getWidth();
                             mModelPoints[2].x = (float) mPatterns[i]->getWidth();
@@ -127,22 +133,50 @@ void PatternDetectionService::execute(void) {
                             mModelPoints[3].y = (float) mPatterns[i]->getHeight();
 
                             cvGetPerspectiveTransform(mImagePoints, mModelPoints, mMat);
+                            cvPerspectiveTransform(mSrcPts, mDstPts, mMat);
                         }
-                    
-                    
-                        cvPerspectiveTransform(mSrcPts, mDstPts, mMat);
 
-                        //TODO: SI CA APPARTIENT AU PATRON COURANT
-                        vector<CvPoint2D32f> tempPoints;
+                        // pattern validity check
+                        bool valid = false;
+                        int j = 0;
+                        int k;
+                        int l;
 
-                        for(int j = 0; j < mResult->total; j++)
+                        while(j < 4 && !valid)
                         {
-                            tempPoints.push_back(cvPoint2D32f((*((CvPoint*) cvGetSeqElem(mResult, j))).x, (*((CvPoint*) cvGetSeqElem(mResult, j))).y));   
-                            //printf("%fd %f\n", mDstPts->data.fl[i*2], mDstPts->data.fl[i*2+1]);
-                            //cvCircle(warp, cvPoint(dstPts->data.fl[i*2], dstPts->data.fl[i*2+1]), 5, CV_RGB(0,i*50,0), CV_FILLED);
+                            k = 0;
+                            while(k < mResult->total && !valid)
+                            {
+                                l = 0;
+                                valid = true;
+                                while(l < mResult->total && valid)
+                                {
+                                    // 30 pixels threshold value. TODO: SETTABLE
+                                    if(sqrtf(pow(mDstPts->data.fl[((k-l+mResult->total) % mResult->total)*2] - mPatterns[i]->getSourcePointAt(l, j).x, 2) + pow(mDstPts->data.fl[((k-l+mResult->total) % mResult->total)*2+1] - mPatterns[i]->getSourcePointAt(l, j).y, 2)) > 30)
+                                    {
+                                        valid = false;
+                                    }
+
+                                    l++;
+                                }
+
+                                k++;
+                            }
+
+                            j++;
                         }
-                        mPatterns[i]->getImagePoints()->push_back(tempPoints);
-                        //printf("\n");
+
+
+                        if(valid)
+                        {
+                            vector<CvPoint2D32f> tempPoints;
+
+                            for(int j = 0; j < mResult->total; j++)
+                            {
+                                tempPoints.push_back(cvPoint2D32f((*((CvPoint*) cvGetSeqElem(mResult, j))).x, (*((CvPoint*) cvGetSeqElem(mResult, j))).y));
+                            }
+                            mPatterns[i]->getImagePoints()->push_back(tempPoints);
+                        }
                     }
                 }
 

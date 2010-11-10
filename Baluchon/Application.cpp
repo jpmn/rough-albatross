@@ -32,8 +32,8 @@ int main() {
 
     IPatternDetectionService* wPatternDetectionService = new PatternDetectionService();
 	{
-		wPatternDetectionService->addPattern("arrow_pattern.jpg");
         wPatternDetectionService->addPattern("a_pattern.jpg");
+        wPatternDetectionService->addPattern("arrow_pattern.jpg");
 	}
 
 	ServiceLayer* wFilterLayer = new ServiceLayer();
