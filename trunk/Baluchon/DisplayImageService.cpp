@@ -44,7 +44,7 @@ void DisplayImageService::execute(void) {
         {
             for(int k = 0; k < (*patterns[i]->getImagePoints())[j].size(); k++)
             {
-                cvCircle(initial, cvPoint((*patterns[i]->getImagePoints())[j][k].x, (*patterns[i]->getImagePoints())[j][k].y), 5, CV_RGB(255,0,0,0), CV_FILLED);   
+                cvLine(initial, cvPoint((*patterns[i]->getImagePoints())[j][k].x, (*patterns[i]->getImagePoints())[j][k].y), cvPoint((*patterns[i]->getImagePoints())[j][(k+1) % (*patterns[i]->getImagePoints())[j].size()].x, (*patterns[i]->getImagePoints())[j][(k+1) % (*patterns[i]->getImagePoints())[j].size()].y), CV_RGB(255,0,0,0), 5);
             }
         }
     }
