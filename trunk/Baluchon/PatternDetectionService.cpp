@@ -160,6 +160,11 @@ void PatternDetectionService::execute(void) {
                                     l++;
                                 }
 
+                                if(valid)
+                                {
+                                    mPatterns[i]->getImageOrientations()->push_back(j);
+                                }
+
                                 k++;
                             }
 
@@ -170,12 +175,18 @@ void PatternDetectionService::execute(void) {
                         if(valid)
                         {
                             vector<CvPoint2D32f> tempPoints;
+                            vector<CvPoint2D32f> tempFramePoints;
 
                             for(int j = 0; j < mResult->total; j++)
                             {
                                 tempPoints.push_back(cvPoint2D32f((*((CvPoint*) cvGetSeqElem(mResult, j))).x, (*((CvPoint*) cvGetSeqElem(mResult, j))).y));
                             }
                             mPatterns[i]->getImagePoints()->push_back(tempPoints);
+                            for(int j = 0; j < 4; j++)
+                            {
+                                tempFramePoints.push_back(mImagePoints[j]);
+                            }
+                            mPatterns[i]->getImageFramePoints()->push_back(tempFramePoints);
                         }
                     }
                 }

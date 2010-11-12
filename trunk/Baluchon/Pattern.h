@@ -15,6 +15,8 @@ public:
     int getPointCount();
     CvPoint2D32f getSourcePointAt(int pos, int orientation = 0);
     vector<vector<CvPoint2D32f>>* getImagePoints();
+    vector<vector<CvPoint2D32f>>* getImageFramePoints();
+    vector<int>* getImageOrientations();
 
 private:
     void init();
@@ -25,6 +27,8 @@ private:
     char* mPath;
     CvPoint2D32f (*mSrcPoints)[4];
     vector<vector<CvPoint2D32f>>* mImgPoints;
+    vector<vector<CvPoint2D32f>>* mFramePoints;
+    vector<int>* mOrientations;
 };
 
 }}}};

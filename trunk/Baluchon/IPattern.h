@@ -18,6 +18,8 @@ public:
     virtual int getPointCount() = 0;
     virtual CvPoint2D32f getSourcePointAt(int pos, int orientation = 0) = 0;
     virtual vector<vector<CvPoint2D32f>>* getImagePoints() = 0;
+    virtual vector<vector<CvPoint2D32f>>* getImageFramePoints() = 0;
+    virtual vector<int>* getImageOrientations() = 0;
 
 };
 
