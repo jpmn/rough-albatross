@@ -73,6 +73,9 @@
     <Filter Include="Fichiers sources\core\services\poseestimation">
       <UniqueIdentifier>{38a925b2-6d10-482c-b6c4-2eef6d8f0c83}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Fichiers d%27en-tête\core\datas">
+      <UniqueIdentifier>{534fa499-9939-450d-8d85-6ad2efec2aac}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="IService.h">
@@ -111,29 +114,50 @@
     <ClInclude Include="IWriterService.h">
       <Filter>Fichiers d%27en-tête\core\services\writer</Filter>
     </ClInclude>
-    <ClInclude Include="IColoredBlob.h">
-      <Filter>Fichiers d%27en-tête</Filter>
-    </ClInclude>
-    <ClInclude Include="IMoveable.h">
-      <Filter>Fichiers d%27en-tête</Filter>
-    </ClInclude>
-    <ClInclude Include="IPositionable.h">
-      <Filter>Fichiers d%27en-tête</Filter>
-    </ClInclude>
-    <ClInclude Include="PatternDetectionService.h">
-      <Filter>Fichiers d%27en-tête\core\services\patterndetection</Filter>
-    </ClInclude>
-    <ClInclude Include="IPattern.h">
+    <ClInclude Include="ipattern.h">
       <Filter>Fichiers d%27en-tête\core\services\patterndetection</Filter>
     </ClInclude>
     <ClInclude Include="Pattern.h">
       <Filter>Fichiers d%27en-tête\core\services\patterndetection</Filter>
+    </ClInclude>
+    <ClInclude Include="VideoWriterService.h">
+      <Filter>Fichiers d%27en-tête\core\services\writer</Filter>
+    </ClInclude>
+    <ClInclude Include="ISizeable.h">
+      <Filter>Fichiers d%27en-tête\core\datas</Filter>
+    </ClInclude>
+    <ClInclude Include="IPositionable.h">
+      <Filter>Fichiers d%27en-tête\core\datas</Filter>
+    </ClInclude>
+    <ClInclude Include="PatternDetectionService.h">
+      <Filter>Fichiers d%27en-tête\core\services\patterndetection</Filter>
+    </ClInclude>
+    <ClInclude Include="IBlob.h">
+      <Filter>Fichiers d%27en-tête\core\services\colordetection</Filter>
+    </ClInclude>
+    <ClInclude Include="IColorable.h">
+      <Filter>Fichiers d%27en-tête\core\datas</Filter>
     </ClInclude>
     <ClInclude Include="IPoseEstimationService.h">
       <Filter>Fichiers d%27en-tête\core\services\poseestimation</Filter>
     </ClInclude>
     <ClInclude Include="PoseEstimationService.h">
       <Filter>Fichiers d%27en-tête\core\services\poseestimation</Filter>
+    </ClInclude>
+    <ClInclude Include="Blob.h">
+      <Filter>Fichiers d%27en-tête\core\services\colordetection</Filter>
+    </ClInclude>
+    <ClInclude Include="IMarker.h">
+      <Filter>Fichiers d%27en-tête\core\services\colordetection</Filter>
+    </ClInclude>
+    <ClInclude Include="Marker.h">
+      <Filter>Fichiers d%27en-tête\core\services\colordetection</Filter>
+    </ClInclude>
+    <ClInclude Include="ColorUtility.h">
+      <Filter>Fichiers d%27en-tête\utilities</Filter>
+    </ClInclude>
+    <ClInclude Include="MathUtility.h">
+      <Filter>Fichiers d%27en-tête\utilities</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -158,22 +182,29 @@
     <ClCompile Include="DisplayImageService.cpp">
       <Filter>Fichiers sources\core\services\display</Filter>
     </ClCompile>
-    <ClCompile Include="PatternDetectionService.cpp">
+    <ClCompile Include="Pattern.cpp">
       <Filter>Fichiers sources\core\services\patterndetection</Filter>
     </ClCompile>
-    <ClCompile Include="Pattern.cpp">
+    <ClCompile Include="PatternDetectionService.cpp">
       <Filter>Fichiers sources\core\services\patterndetection</Filter>
     </ClCompile>
     <ClCompile Include="PoseEstimationService.cpp">
       <Filter>Fichiers sources\core\services\poseestimation</Filter>
     </ClCompile>
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="arrow_pattern.jpg">
-      <Filter>Fichiers de ressources</Filter>
-    </None>
-    <None Include="a_pattern.jpg">
-      <Filter>Fichiers de ressources</Filter>
-    </None>
+    <ClCompile Include="VideoWriterService.cpp">
+      <Filter>Fichiers sources\core\services\writer</Filter>
+    </ClCompile>
+    <ClCompile Include="Blob.cpp">
+      <Filter>Fichiers sources\core\services\colordetection</Filter>
+    </ClCompile>
+    <ClCompile Include="Marker.cpp">
+      <Filter>Fichiers sources\core\services\colordetection</Filter>
+    </ClCompile>
+    <ClCompile Include="ColorUtility.cpp">
+      <Filter>Fichiers sources\utilities</Filter>
+    </ClCompile>
+    <ClCompile Include="MathUtility.cpp">
+      <Filter>Fichiers sources\utilities</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>

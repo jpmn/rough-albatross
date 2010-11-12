@@ -18,10 +18,12 @@ public:
 
 	virtual void setCapture(CvCapture* capture);
 	virtual IplImage* getImage(void);
+	virtual CvSize getSize(void);
 
 private:
 	CvCapture* mCameraCapture;
 	IplImage* mImage;
+	CvSize mSize;
 };
 
 }}}};

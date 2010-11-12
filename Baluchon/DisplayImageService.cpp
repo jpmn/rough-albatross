@@ -1,14 +1,15 @@
-#include <typeinfo>
-
-#include <highgui.h>
+#include <cv.h>
 
 #include "DisplayImageService.h"
 #include "IServiceLayer.h"
 
 #include "CameraCaptureService.h"
+#include "ColorDetectionService.h"
 #include "PatternDetectionService.h"
 
 #include "IPattern.h"
+#include "Marker.h"
+#include "Blob.h"
 
 namespace baluchon { namespace core { namespace services { namespace display {
 
@@ -21,8 +22,11 @@ DisplayImageService::~DisplayImageService(void) {
 }
 
 void DisplayImageService::init(void) {
-    mCaptureService= new CameraCaptureService();
+    mCaptureService = new CameraCaptureService();
     mCaptureService = (ICaptureService*) mServiceLayer->findService(mCaptureService);
+
+	mMarkerService = new ColorDetectionService();
+	mMarkerService = (IColorDetectionService*) mServiceLayer->findService(mMarkerService);
 
     mPatternService= new PatternDetectionService();
     mPatternService = (IPatternDetectionService*) mServiceLayer->findService(mPatternService);
@@ -30,6 +34,8 @@ void DisplayImageService::init(void) {
 
 void DisplayImageService::initDone(void) {
 	cvNamedWindow(mWindowName, 1);
+
+	cvSetMouseCallback(mWindowName, (CvMouseCallback)DisplayImageService::onMouseClick, (void*)this);
 }
 
 void DisplayImageService::execute(void) {
@@ -48,8 +54,22 @@ void DisplayImageService::execute(void) {
             }
         }
     }
+	/*
+	// temporaire... juste pour afficher les blobs
+	vector<IMarker*> markers = mMarkerService->getMarkers();
+	for (unsigned int i = 0; i < markers.size(); i++) {
 
+		vector<IBlob*> blobs = markers[i]->getBlobs();
+		for (unsigned int j = 0; j < blobs.size(); j++) {
+			cvDrawContours(initial, blobs[i]->getContour(), markers[i]->getColor(), markers[i]->getColor(), -1, CV_FILLED, 8);
+
+			cvDrawCircle(initial, blobs[i]->getPosition(), 5, CV_RGB(255, 0, 0), -1, 8);
+		}
+	}
+	*/
 	cvShowImage(mWindowName, initial);
+
+	mImage = initial;
 }
 
 void DisplayImageService::reset(void) {
@@ -58,10 +78,55 @@ void DisplayImageService::reset(void) {
 
 void DisplayImageService::dispose(void) {
 	cvDestroyWindow(mWindowName);
+
+	delete mCaptureService;
+	delete mMarkerService;
+	delete mPatternService;
 }
 
 void DisplayImageService::setWindowName(char* name) {
 	mWindowName = name;
+}
+
+IplImage* DisplayImageService::getImage(void) {
+	return mImage;
+}
+
+void DisplayImageService::onMouseClick(int event, int x, int y, int flags, void* param = NULL) {
+
+	// temporairement pour setter des couleurs avec la souris
+	if (event == CV_EVENT_LBUTTONUP) {
+		DisplayImageService* wDisplayService = (DisplayImageService*)param;
+
+		IplImage* img = wDisplayService->mCaptureService->getImage();
+
+		CvScalar color = cvGet2D(img, y, x);
+		printf("%f, %f, %f\n", color.val[2], color.val[1], color.val[0]);
+		/*
+		IColorDetectionService* service = wDisplayService->mMarkerService;
+		vector<IMarker*> markers = service->getMarkers();
+		int tolerance = service->getColorTolerance();
+		bool found = false;
+
+		for (unsigned int i = 0; i < markers.size(); i++) {
+			if (abs<int>(markers[i]->getColor().val[0] - color.val[0]) <= tolerance &&
+				abs<int>(markers[i]->getColor().val[1] - color.val[1]) <= tolerance) {
+					found = true;
+					break;
+			}
+		}
+
+		if (!found) {
+			IMarker* wMarker = new Marker();
+			{
+				// BGR2RGB
+				wMarker->setColor(color.val[2], color.val[1], color.val[0]);
+			}
+
+			service->addMarker(wMarker);
+		}
+		*/
+	}
 }
 
 }}}};
