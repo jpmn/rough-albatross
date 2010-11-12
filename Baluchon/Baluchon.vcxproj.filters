@@ -67,6 +67,12 @@
     <Filter Include="Fichiers sources\core\services\capture">
       <UniqueIdentifier>{08f94da2-9e98-49fa-8065-d9a54fc39987}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Fichiers d%27en-tête\core\services\poseestimation">
+      <UniqueIdentifier>{bfd1ab50-b2a8-4eb6-9ae9-a13902b2117b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Fichiers sources\core\services\poseestimation">
+      <UniqueIdentifier>{38a925b2-6d10-482c-b6c4-2eef6d8f0c83}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="IService.h">
@@ -123,6 +129,12 @@
     <ClInclude Include="Pattern.h">
       <Filter>Fichiers d%27en-tête\core\services\patterndetection</Filter>
     </ClInclude>
+    <ClInclude Include="IPoseEstimationService.h">
+      <Filter>Fichiers d%27en-tête\core\services\poseestimation</Filter>
+    </ClInclude>
+    <ClInclude Include="PoseEstimationService.h">
+      <Filter>Fichiers d%27en-tête\core\services\poseestimation</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="ServiceLayer.cpp">
@@ -151,6 +163,9 @@
     </ClCompile>
     <ClCompile Include="Pattern.cpp">
       <Filter>Fichiers sources\core\services\patterndetection</Filter>
+    </ClCompile>
+    <ClCompile Include="PoseEstimationService.cpp">
+      <Filter>Fichiers sources\core\services\poseestimation</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
