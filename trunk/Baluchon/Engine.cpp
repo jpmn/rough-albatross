@@ -45,7 +45,9 @@ void Engine::run(void) {
 			vector<IService*> wServices = mListServiceLayers[i]->getServices();
 
 			for (unsigned int j = 0; j < wServices.size(); j++) {
-				wServices[j]->execute();
+
+				if (wServices[j]->isEnabled())
+					wServices[j]->execute();
 			}
 		}
 

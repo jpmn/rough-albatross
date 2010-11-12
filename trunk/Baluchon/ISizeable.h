@@ -9,9 +9,20 @@ class ISizeable
 public:
 	virtual ~ISizeable(void) {}
 
-	virtual void setSize(int w, int h) = 0;
-	virtual void setSize(CvSize s) = 0;
-	virtual CvSize getSize() = 0;
+	virtual void setSize(int width, int height) {
+		mSize = cvSize(width, height);
+	}
+
+	virtual void setSize(CvSize size) {
+		mSize = size;
+	}
+
+	virtual CvSize getSize() {
+		return mSize;	
+	}
+
+protected:
+	CvSize mSize;
 };
 
 }}};

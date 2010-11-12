@@ -13,6 +13,7 @@ public:
 
 	virtual void setCapture(CvCapture* capture) = 0;
 	virtual IplImage* getImage(void) = 0;
+	virtual CvSize getSize(void) = 0;
 };
 
 }}}};

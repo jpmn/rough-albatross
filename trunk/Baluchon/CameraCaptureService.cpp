@@ -16,6 +16,10 @@ void CameraCaptureService::init(void) {
 
 void CameraCaptureService::initDone(void) {
 
+	mSize = cvSize(
+		(int)cvGetCaptureProperty(mCameraCapture, CV_CAP_PROP_FRAME_WIDTH),
+		(int)cvGetCaptureProperty(mCameraCapture, CV_CAP_PROP_FRAME_HEIGHT)
+	);
 }
 
 void CameraCaptureService::execute(void) {
@@ -38,6 +42,10 @@ void CameraCaptureService::setCapture(CvCapture* capture) {
 
 IplImage* CameraCaptureService::getImage(void) {
 	return mImage;
+}
+
+CvSize CameraCaptureService::getSize(void) {
+	return mSize;
 }
 
 }}}};

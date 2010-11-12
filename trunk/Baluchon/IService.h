@@ -19,8 +19,21 @@ public:
 		mServiceLayer = serviceLayer;
 	}
 
+	virtual void enable(void) {
+		mIsEnabled = true;
+	}
+
+	virtual void disable(void) {
+		mIsEnabled = false;
+	}
+
+	virtual bool isEnabled(void) {
+		return mIsEnabled;
+	}
+
 protected:
 	IServiceLayer* mServiceLayer;
+	bool mIsEnabled;
 };
 
 }}};
