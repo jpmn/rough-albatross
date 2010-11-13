@@ -7,7 +7,7 @@ Blob::Blob(void) {
 }
 
 Blob::~Blob(void) {
-	delete mContour;
+
 }
 
 }}}};

@@ -10,6 +10,7 @@
 #include "IPattern.h"
 #include "Marker.h"
 #include "Blob.h"
+#include "ColorUtility.h"
 
 namespace baluchon { namespace core { namespace services { namespace display {
 
@@ -54,7 +55,7 @@ void DisplayImageService::execute(void) {
             }
         }
     }
-	/*
+
 	// temporaire... juste pour afficher les blobs
 	vector<IMarker*> markers = mMarkerService->getMarkers();
 	for (unsigned int i = 0; i < markers.size(); i++) {
@@ -66,7 +67,7 @@ void DisplayImageService::execute(void) {
 			cvDrawCircle(initial, blobs[i]->getPosition(), 5, CV_RGB(255, 0, 0), -1, 8);
 		}
 	}
-	*/
+
 	cvShowImage(mWindowName, initial);
 
 	mImage = initial;
@@ -99,18 +100,25 @@ void DisplayImageService::onMouseClick(int event, int x, int y, int flags, void*
 		DisplayImageService* wDisplayService = (DisplayImageService*)param;
 
 		IplImage* img = wDisplayService->mCaptureService->getImage();
+		IplImage* hsv = cvCloneImage(img);
+		//cvCvtColor(img, hsv, CV_BGR2HSV);
+		baluchon::utilities::ColorUtility::convertImageRGBtoHSV(img, hsv);
 
-		CvScalar color = cvGet2D(img, y, x);
-		printf("%f, %f, %f\n", color.val[2], color.val[1], color.val[0]);
-		/*
+		CvScalar tmp = cvGet2D(img, y, x);
+		CvScalar color = cvScalar(tmp.val[2], tmp.val[1], tmp.val[0]);
+		tmp = cvGet2D(hsv, y, x);
+		CvScalar colorMarkerHSV = baluchon::utilities::ColorUtility::convertRGB2HSV(color);
+
+		cvReleaseImage(&hsv);
+
 		IColorDetectionService* service = wDisplayService->mMarkerService;
 		vector<IMarker*> markers = service->getMarkers();
 		int tolerance = service->getColorTolerance();
 		bool found = false;
 
 		for (unsigned int i = 0; i < markers.size(); i++) {
-			if (abs<int>(markers[i]->getColor().val[0] - color.val[0]) <= tolerance &&
-				abs<int>(markers[i]->getColor().val[1] - color.val[1]) <= tolerance) {
+			if (fabs(markers[i]->getColor().val[0] - color.val[0]) <= tolerance &&
+				fabs(markers[i]->getColor().val[1] - color.val[1]) <= tolerance) {
 					found = true;
 					break;
 			}
@@ -119,13 +127,12 @@ void DisplayImageService::onMouseClick(int event, int x, int y, int flags, void*
 		if (!found) {
 			IMarker* wMarker = new Marker();
 			{
-				// BGR2RGB
-				wMarker->setColor(color.val[2], color.val[1], color.val[0]);
+				wMarker->setColor(color);
 			}
 
 			service->addMarker(wMarker);
 		}
-		*/
+
 	}
 }
 
