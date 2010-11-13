@@ -31,11 +31,11 @@ int main() {
 	}
 
 	// Layer 2
-	/*IColorDetectionService* wColorDetectionService = new ColorDetectionService();
+	IColorDetectionService* wColorDetectionService = new ColorDetectionService();
 	{
 		wColorDetectionService->setColorTolerance(25);
 		wColorDetectionService->setMaxMarkerCount(2);
-	}*/
+	}
 
 	IPatternDetectionService* wPatternDetectionService = new PatternDetectionService();
 	{
@@ -45,7 +45,7 @@ int main() {
 
 	IServiceLayer* wFilterLayer = new ServiceLayer();
 	{
-		//wFilterLayer->addService(wColorDetectionService);
+		wFilterLayer->addService(wColorDetectionService);
 		wFilterLayer->addService(wPatternDetectionService);
 	}
 
@@ -61,15 +61,15 @@ int main() {
 	}
 
 	// Layer 4
-	IWriterService* wWriterService = new VideoWriterService();
-	{
-		wWriterService->disable();
-	}
+	//IWriterService* wWriterService = new VideoWriterService();
+	//{
+	//	wWriterService->disable();
+	//}
 
-    IServiceLayer* wWriterLayer = new ServiceLayer();
-	{
-		wWriterLayer->addService(wWriterService);
-	}
+    //IServiceLayer* wWriterLayer = new ServiceLayer();
+	//{
+	//	wWriterLayer->addService(wWriterService);
+	//}
 
 	// Engine
 	IEngine* wEngine = new Engine();
@@ -79,14 +79,14 @@ int main() {
 		wEngine->addServiceLayer(wInputLayer);
 		wEngine->addServiceLayer(wFilterLayer);
         wEngine->addServiceLayer(wDisplayLayer);
-		wEngine->addServiceLayer(wWriterLayer);
+		//wEngine->addServiceLayer(wWriterLayer);
 
 		wEngine->init();
 		wEngine->run();
 		wEngine->dispose();
 	}
 	
-	std::cin.get();
+	//std::cin.get();
 
 	return EXIT_SUCCESS;
 }

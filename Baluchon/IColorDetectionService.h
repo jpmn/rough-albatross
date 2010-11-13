@@ -15,6 +15,7 @@ public:
 
 	virtual void addMarker(IMarker* marker) = 0;
 	virtual vector<IMarker*> getMarkers(void) = 0;
+	virtual void clearMarkers(void) = 0;
 
 	virtual void setColorTolerance(int tolerance) = 0;
 	virtual int getColorTolerance(void) = 0;

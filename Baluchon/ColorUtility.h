@@ -9,12 +9,12 @@ namespace baluchon { namespace utilities {
 class ColorUtility
 {
 public:
-	static CvScalar convertRGB2HSV(CvScalar rgb);
-	static CvScalar convertRGB2HSV(int r, int g, int b);
-	static CvScalar convertHSV2RGB(CvScalar rgb);
-	static CvScalar convertHSV2RGB(int h, int s, int v);
-	static void convertImageRGBtoHSV(IplImage* imageRGB, IplImage* imageHSV);
-	static void convertImageHSVtoRGB(IplImage* imageHSV, IplImage* imageRGB);
+	static CvScalar convertColorBGRtoHSV(CvScalar bgr);
+	static CvScalar convertColorBGRtoHSV(int b, int g, int r);
+	static CvScalar convertColorHSVtoBGR(CvScalar hsv);
+	static CvScalar convertColorHSVtoBGR(int h, int s, int v);
+	static void convertImageBGRtoHSV(IplImage* imageBGR, IplImage* imageHSV);
+	static void convertImageHSVtoBGR(IplImage* imageHSV, IplImage* imageBGR);
 
 private:
 	ColorUtility(void) {};

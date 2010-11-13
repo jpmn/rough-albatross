@@ -21,6 +21,7 @@ public:
 
 	virtual void addMarker(IMarker* marker);
 	virtual vector<IMarker*> getMarkers(void);
+	virtual void clearMarkers(void);
 
 	virtual void setColorTolerance(int tolerance);
 	virtual int getColorTolerance(void);
@@ -34,6 +35,8 @@ private:
 	IplConvKernel* mMorphKernel;
 	IplImage* mImageHSV;
 	IplImage* mImageThreshold;
+	CvSeq* mContours;
+	CvSeq* mContoursApprox;
 
 	vector<IMarker*> mMarkers;
 	int mColorTolerance;

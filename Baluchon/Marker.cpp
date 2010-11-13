@@ -7,11 +7,7 @@ Marker::Marker(void) {
 }
 
 Marker::~Marker(void) {
-	for (unsigned int i = 0; i < mBlobs.size(); i++) {
-		delete mBlobs[i];
-	}
-
-	mBlobs.clear();
+	clearBlobs();
 }
 
 void Marker::addBlob(IBlob* blob) {
@@ -26,7 +22,6 @@ void Marker::clearBlobs(void) {
 	for (unsigned int i = 0; i < mBlobs.size(); i++) {
 		delete mBlobs[i];
 	}
-
 	mBlobs.clear();
 }
 
