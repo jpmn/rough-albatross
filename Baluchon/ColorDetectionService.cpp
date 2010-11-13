@@ -47,81 +47,99 @@ void ColorDetectionService::execute(void) {
 	cvClearMemStorage(mStorage);
 
 	IplImage* imgIn = mCaptureService->getImage();
-	cvCvtColor(imgIn, mImageHSV, CV_BGR2HSV);
-	
-	cvShowImage("HSV", mImageHSV);
+	//cvCvtColor(imgIn, mImageHSV, CV_BGR2HSV);
+	baluchon::utilities::ColorUtility::convertImageRGBtoHSV(imgIn, mImageHSV);
 
 	IplImage* imgMerge = cvCloneImage(mImageThreshold);
 
 	for (unsigned int i = 0; i < mMarkers.size(); i++) {
 		mMarkers[i]->clearBlobs();
+		//mMarkers[i]->getBlobs().clear();
 
 		CvScalar colorMarkerHSV = ColorUtility::convertRGB2HSV(mMarkers[i]->getColor());
 
 		// Applique un threshold sur la couleur en tenant compte de la tolérance
 		cvInRangeS(
 			mImageHSV, 
-			cvScalar(colorMarkerHSV.val[0] - mColorTolerance, colorMarkerHSV.val[1] - mColorTolerance, 0), 
-			cvScalar(colorMarkerHSV.val[0] + mColorTolerance, colorMarkerHSV.val[1] + mColorTolerance, 255), 
+			cvScalar(colorMarkerHSV.val[0] - mColorTolerance, 100, 100),//colorMarkerHSV.val[1] - mColorTolerance, 0), 
+			cvScalar(colorMarkerHSV.val[0] + mColorTolerance, 255, 255),//colorMarkerHSV.val[1] + mColorTolerance, 255), 
 			mImageThreshold
 		);
-
-		// Applique un dilate et erode pour éliminer le bruit
-		cvMorphologyEx(mImageThreshold, mImageThreshold, NULL, mMorphKernel, CV_MOP_OPEN, 1);
 
 		cvAdd(imgMerge, mImageThreshold, imgMerge);
 		cvZero(mImageThreshold);
 	}
 
-	//SHAPE_CANNY_EDGE_LINK, SHAPE_CANNY_EDGE_FIND, SHAPE_CANNY_APERTURE
-	cvCanny(imgMerge, imgMerge, 50, 200, 3);
+	// Applique un dilate et erode pour éliminer le bruit
+	cvMorphologyEx(imgMerge, imgMerge, NULL, mMorphKernel, CV_MOP_OPEN, 1);
 
 	cvShowImage("Canny", imgMerge);
 
-	CvSeq* contour = 0;
+	//SHAPE_CANNY_EDGE_LINK, SHAPE_CANNY_EDGE_FIND, SHAPE_CANNY_APERTURE
+	//cvCanny(imgMerge, imgMerge, 50, 100);
+
+	CvSeq* contours = 0;
+	CvSeq* approx = 0;
 
 	// Trouve les contours dans l'image en niveaux de gris retournée par le threshold
 
 	//mode : CV_RETR_EXTERNAL, CV_RETR_LIST, CV_RETR_CCOMP. method : CV_LINK_RUNS, CV_CHAIN_APPROX_SIMPLE
-	int nb = cvFindContours(imgMerge, mStorage, &contour, sizeof(CvContour), CV_RETR_EXTERNAL, CV_CHAIN_APPROX_SIMPLE);
+	int nb = cvFindContours(imgMerge, mStorage, &contours, sizeof(CvContour), CV_RETR_EXTERNAL, CV_CHAIN_APPROX_SIMPLE);
 
-	while (contour != NULL) {
+	while (contours != NULL) {
+		approx = cvApproxPoly(contours, sizeof(CvContour), mStorage, CV_POLY_APPROX_DP, cvContourPerimeter(contours)*0.02, 0);
 
-		if (contour->flags & CV_SEQ_FLAG_CLOSED) {
-			//double wContourAreaSize = cv::abs<float>(cvContourArea(contour, CV_WHOLE_SEQ));
+		//if (contours->flags & CV_SEQ_FLAG_CLOSED) {
+		if (true) {
+			double wContourAreaSize = fabs(cvContourArea(approx, CV_WHOLE_SEQ));
 
-			//if (wContourAreaSize > 50.0) {
-			if (contour->total > 50.0) {
+			//if (wContourAreaSize > 100.0) {
+			//if (contours->total >= 10) {
+			if (true) {
+				// CV_FILLED
+				cvDrawContours(imgIn, approx, cvScalar(255, 0, 0), cvScalar(255), -1, 5, 8);
+
+				CvPoint wPosition = cvPoint(0, 0);
+				CvMoments moments;
+
+				cvContourMoments(approx, &moments); 
+
+				wPosition.x = moments.m10 / moments.m00;
+				wPosition.y = moments.m01 / moments.m00;
+
+				cvDrawCircle(imgIn, wPosition, 5, CV_RGB(0, 255, 0), -1, 8);
+				/*
 				for (unsigned int i = 0; i < mMarkers.size(); i++) {
 					CvPoint wPosition = cvPoint(0, 0);
 					CvMoments moments;
 
-					cvContourMoments(contour, &moments); 
+					cvContourMoments(contours, &moments); 
 
 					wPosition.x = moments.m10 / moments.m00;
 					wPosition.y = moments.m01 / moments.m00;
 
 					CvScalar colorImageHSV = cvGet2D(mImageHSV, wPosition.y, wPosition.x);
 					CvScalar colorMarkerHSV = ColorUtility::convertRGB2HSV(mMarkers[i]->getColor());
-			
-					if (cv::abs<int>(colorMarkerHSV.val[0] - colorImageHSV.val[0]) <= mColorTolerance &&
-						cv::abs<int>(colorMarkerHSV.val[1] - colorImageHSV.val[1]) <= mColorTolerance) {
+
+					if (fabs(colorMarkerHSV.val[0] - colorImageHSV.val[0]) <= mColorTolerance &&
+						fabs(colorMarkerHSV.val[1] - colorImageHSV.val[1]) <= mColorTolerance) {
 
 						IBlob* blob = new Blob();
 						{
 							blob->setPosition(wPosition);
-							blob->setContour(cvCloneSeq(contour));
+							blob->setContour(cvCloneSeq(contours));
 						}
 					
 						mMarkers[i]->addBlob(blob);
 					}
-				}
+				}*/
 			}
 		}
 
-		contour = contour->h_next;
+		contours = contours->h_next;
 	}
 
+	cvShowImage("HSV", imgMerge);
 	cvReleaseImage(&imgMerge);
 }
 
