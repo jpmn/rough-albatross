@@ -152,7 +152,7 @@ void PatternDetectionService::execute(void) {
                                 while(l < mResult->total && valid)
                                 {
                                     // 30 pixels threshold value. TODO: SETTABLE
-                                    if(sqrtf(pow(mDstPts->data.fl[((k-l+mResult->total) % mResult->total)*2] - mPatterns[i]->getSourcePointAt(l, j).x, 2) + pow(mDstPts->data.fl[((k-l+mResult->total) % mResult->total)*2+1] - mPatterns[i]->getSourcePointAt(l, j).y, 2)) > 30)
+                                    if(sqrtf(pow(mDstPts->data.fl[((k-l+mResult->total) % mResult->total)*2] - mPatterns[i]->getSourcePointAt(l, j).x, 2) + pow(mDstPts->data.fl[((k-l+mResult->total) % mResult->total)*2+1] - mPatterns[i]->getSourcePointAt(l, j).y, 2)) > 100)
                                     {
                                         valid = false;
                                     }

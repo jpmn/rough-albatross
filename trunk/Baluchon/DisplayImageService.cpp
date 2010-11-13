@@ -12,6 +12,8 @@
 #include "Blob.h"
 #include "ColorUtility.h"
 
+using namespace baluchon::utilities;
+
 namespace baluchon { namespace core { namespace services { namespace display {
 
 DisplayImageService::DisplayImageService(void) {
@@ -60,11 +62,15 @@ void DisplayImageService::execute(void) {
 	vector<IMarker*> markers = mMarkerService->getMarkers();
 	for (unsigned int i = 0; i < markers.size(); i++) {
 
+		CvScalar color = markers[i]->getColor();
 		vector<IBlob*> blobs = markers[i]->getBlobs();
 		for (unsigned int j = 0; j < blobs.size(); j++) {
-			cvDrawContours(initial, blobs[i]->getContour(), markers[i]->getColor(), markers[i]->getColor(), -1, CV_FILLED, 8);
+			cvDrawContours(initial, blobs[j]->getContours(), CV_RGB(255, 0, 0), color, -1, 5, 8);
 
-			cvDrawCircle(initial, blobs[i]->getPosition(), 5, CV_RGB(255, 0, 0), -1, 8);
+			cvDrawCircle(initial, blobs[j]->getPosition(), 5, CV_RGB(0, 255, 0), -1, 8);
+
+			if (j < blobs.size() - 1)
+				cvDrawLine(initial, blobs[j]->getPosition(), blobs[j+1]->getPosition(), CV_RGB(0, 0, 255), 2, 8);
 		}
 	}
 
@@ -100,39 +106,18 @@ void DisplayImageService::onMouseClick(int event, int x, int y, int flags, void*
 		DisplayImageService* wDisplayService = (DisplayImageService*)param;
 
 		IplImage* img = wDisplayService->mCaptureService->getImage();
-		IplImage* hsv = cvCloneImage(img);
-		//cvCvtColor(img, hsv, CV_BGR2HSV);
-		baluchon::utilities::ColorUtility::convertImageRGBtoHSV(img, hsv);
+		IplImage* hsv = cvCreateImage(cvGetSize(img), img->depth, img->nChannels);
+		cvCvtColor(img, hsv, CV_BGR2HSV);
 
-		CvScalar tmp = cvGet2D(img, y, x);
-		CvScalar color = cvScalar(tmp.val[2], tmp.val[1], tmp.val[0]);
-		tmp = cvGet2D(hsv, y, x);
-		CvScalar colorMarkerHSV = baluchon::utilities::ColorUtility::convertRGB2HSV(color);
-
-		cvReleaseImage(&hsv);
-
-		IColorDetectionService* service = wDisplayService->mMarkerService;
-		vector<IMarker*> markers = service->getMarkers();
-		int tolerance = service->getColorTolerance();
-		bool found = false;
-
-		for (unsigned int i = 0; i < markers.size(); i++) {
-			if (fabs(markers[i]->getColor().val[0] - color.val[0]) <= tolerance &&
-				fabs(markers[i]->getColor().val[1] - color.val[1]) <= tolerance) {
-					found = true;
-					break;
-			}
+		CvScalar colorImageBGR = cvGet2D(img, y, x);
+		CvScalar colorImageHSV = cvGet2D(hsv, y, x);
+		
+		IMarker* wMarker = new Marker();
+		{
+			wMarker->setColor(colorImageHSV);
 		}
 
-		if (!found) {
-			IMarker* wMarker = new Marker();
-			{
-				wMarker->setColor(color);
-			}
-
-			service->addMarker(wMarker);
-		}
-
+		wDisplayService->mMarkerService->addMarker(wMarker);
 	}
 }
 

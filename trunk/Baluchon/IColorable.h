@@ -9,8 +9,8 @@ class IColorable
 public:
 	virtual ~IColorable(void) {}
 	
-	virtual void setColor(int r, int g, int b, int a = 0.0) {
-		mColor = cvScalar(r, g, b, a);
+	virtual void setColor(int b, int g, int r) {
+		mColor = cvScalar(b, g, r);
 	}
 
 	virtual void setColor(CvScalar color) {

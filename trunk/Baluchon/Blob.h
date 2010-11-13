@@ -10,6 +10,12 @@ public:
 	Blob(void);
 	~Blob(void);
 
+	virtual void setContours(CvSeq* contours);
+	virtual CvSeq* getContours(void);
+
+private:
+	CvSeq* mContours;
+	CvMemStorage* mStorage;
 };
 
 }}}};

@@ -14,16 +14,8 @@ class IBlob : public IPositionable, ISizeable
 public:
 	virtual ~IBlob(void) {}
 
-	virtual void setContour(CvSeq* contour) {
-		mContour = contour;
-	}
-
-	virtual CvSeq* getContour(void) {
-		return mContour;	
-	}
-
-protected:
-	CvSeq* mContour;
+	virtual void setContours(CvSeq* contours) = 0;
+	virtual CvSeq* getContours(void) = 0;
 };
 
 }}}};
