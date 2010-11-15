@@ -47,13 +47,13 @@ void ColorDetectionService::execute(void) {
 
 		mMarkers[i]->clearBlobs();
 
-		CvScalar colorMarkerHSV = mMarkers[i]->getColor();//ColorUtility::convertColorBGRtoHSV(mMarkers[i]->getColor());
+		CvScalar colorMarkerHSV = ColorUtility::convertColorBGRtoHSV(mMarkers[i]->getColor());
 
 		// Applique un threshold sur la couleur en tenant compte de la tolérance
 		cvInRangeS(
 			mImageHSV, 
-			cvScalar(colorMarkerHSV.val[0] - mColorTolerance, colorMarkerHSV.val[1] - mColorTolerance, 0),
-			cvScalar(colorMarkerHSV.val[0] + mColorTolerance, colorMarkerHSV.val[1] + mColorTolerance, 255),
+			cvScalar(colorMarkerHSV.val[0] - mColorTolerance, 100, 100),
+			cvScalar(colorMarkerHSV.val[0] + mColorTolerance, 255, 255),
 			mImageThreshold
 		);
 
@@ -65,8 +65,8 @@ void ColorDetectionService::execute(void) {
 		cvShowImage("Canny", mImageThreshold);
 		cvShowImage("HSV", mImageHSV);
 
-		mContours = 0;
-		mContoursApprox = 0;
+		mContours = NULL;
+		mContoursApprox = NULL;
 		cvClearMemStorage(mStorage);
 
 		// Trouve les contours dans l'image en niveaux de gris retournée par le threshold
@@ -74,12 +74,19 @@ void ColorDetectionService::execute(void) {
 
 		cvZero(mImageThreshold);
 
+		//vector<CvSeq*> seqs;
+		double maxContourAreaSize = 0.0f;
+		IBlob* biggestBlob = NULL;
+		
 		while (mContours != NULL) {
 			mContoursApprox = cvApproxPoly(mContours, sizeof(CvContour), mStorage, CV_POLY_APPROX_DP, cvContourPerimeter(mContours)*0.02, 0);
 
 			double wContourAreaSize = fabs(cvContourArea(mContoursApprox, CV_WHOLE_SEQ));
+			
+			if (wContourAreaSize > maxContourAreaSize && wContourAreaSize > 500.0f) {
 
-			if (wContourAreaSize > 250.0f) {
+				maxContourAreaSize = wContourAreaSize;
+
 				CvPoint wPosition = cvPoint(0, 0);
 				CvMoments moments;
 
@@ -88,49 +95,21 @@ void ColorDetectionService::execute(void) {
 				wPosition.x = moments.m10 / moments.m00;
 				wPosition.y = moments.m01 / moments.m00;
 
-				/*
-				CvSeq* mContoursMerge = mContours->h_prev;
-
-				while (mContoursMerge != NULL) {
-					CvPoint pos = cvPoint(0, 0);
-
-					cvContourMoments(mContoursMerge, &moments); 
-
-					pos.x = moments.m10 / moments.m00;
-					pos.y = moments.m01 / moments.m00;
-
-					cvDrawCircle(imgIn, pos, 5, CV_RGB(0, 0, 255), 3, 8); 
-
-					mContoursMerge = mContoursMerge->h_next;
-				}
-				*/
-				bool merged = false;
-				/*
-				vector<IBlob*> blobs = mMarkers[i]->getBlobs();
-				for (unsigned int j = 0; j < blobs.size(); j++) {
-					CvPoint blobPosition = blobs[j]->getPosition();
-
-					double distance = sqrt(pow((double)blobPosition.x - wPosition.x, 2) + pow((double)blobPosition.y - wPosition.y, 2));
-
-					printf("DISTANCE: %f\n", distance);
-
-					if (distance < 60) {
-						while (mContoursApprox != NULL) {
-							cvSeqPush(blobs[j]->getContours(), mContoursApprox);
-							mContoursApprox = mContoursApprox->h_next;
-						}
-						merged = true;
-					}
-				}
-				*/
-				if (!merged) {
-					IBlob* blob = new Blob();
+				if (mMarkers[i]->getBlobs().size() == 0) {
+					biggestBlob = new Blob();
 					{
-						blob->setPosition(wPosition);
-						blob->setContours(mContoursApprox);
+						biggestBlob->setPosition(wPosition);
+						biggestBlob->setContours(mContoursApprox);
 					}
-
-					mMarkers[i]->addBlob(blob);
+					
+					mMarkers[i]->addBlob(biggestBlob);
+				}
+				else {
+					biggestBlob = mMarkers[i]->getBlobs()[0];
+					{
+						biggestBlob->setPosition(wPosition);
+						biggestBlob->setContours(mContoursApprox);
+					}
 				}
 			}
 
