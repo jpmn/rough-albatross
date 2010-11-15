@@ -24,8 +24,6 @@ void CameraCaptureService::initDone(void) {
 
 void CameraCaptureService::execute(void) {
 	mImage = cvQueryFrame(mCameraCapture);
-
-	cvFlip(mImage, mImage, 1);
 }
 
 void CameraCaptureService::reset(void) {
