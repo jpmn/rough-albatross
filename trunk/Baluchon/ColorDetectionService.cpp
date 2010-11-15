@@ -23,7 +23,7 @@ void ColorDetectionService::init(void) {
 void ColorDetectionService::initDone(void) {
 	mStorage = cvCreateMemStorage(0);
 
-	mMorphKernel = cvCreateStructuringElementEx(5, 5, 1, 1, CV_SHAPE_RECT);
+	mMorphKernel = cvCreateStructuringElementEx(3, 3, 1, 1, CV_SHAPE_CROSS, NULL);
 
 	mImageHSV = cvCreateImage(mCaptureService->getSize(), IPL_DEPTH_8U, 3);
 	mImageThreshold = cvCreateImage(mCaptureService->getSize(), IPL_DEPTH_8U, 1);
@@ -41,8 +41,6 @@ void ColorDetectionService::execute(void) {
 	IplImage* imgIn = mCaptureService->getImage();
 	cvCvtColor(imgIn, mImageHSV, CV_BGR2HSV);
 
-	//ColorUtility::convertImageBGRtoHSV(imgIn, mImageHSV);
-
 	for (unsigned int i = 0; i < mMarkers.size(); i++) {
 
 		mMarkers[i]->clearBlobs();
@@ -52,18 +50,19 @@ void ColorDetectionService::execute(void) {
 		// Applique un threshold sur la couleur en tenant compte de la tolérance
 		cvInRangeS(
 			mImageHSV, 
-			cvScalar(colorMarkerHSV.val[0] - mColorTolerance, 100, 100),
-			cvScalar(colorMarkerHSV.val[0] + mColorTolerance, 255, 255),
+			cvScalar(colorMarkerHSV.val[0] - mColorTolerance, colorMarkerHSV.val[1] - mColorTolerance, 100),
+			cvScalar(colorMarkerHSV.val[0] + mColorTolerance, colorMarkerHSV.val[1] + mColorTolerance, 255),
 			mImageThreshold
 		);
 
+		cvShowImage("Canny", mImageThreshold);
+
 		// Applique un dilate et erode pour éliminer le bruit
-		cvMorphologyEx(mImageThreshold, mImageThreshold, NULL, mMorphKernel, CV_MOP_OPEN, 1);
+		cvMorphologyEx(mImageThreshold, mImageThreshold, NULL, mMorphKernel, CV_MOP_OPEN, 2);
 
 		//cvCanny(mImageThreshold, mImageThreshold, 0, 10, 5);
-
-		cvShowImage("Canny", mImageThreshold);
-		cvShowImage("HSV", mImageHSV);
+		
+		cvShowImage("HSV", mImageThreshold);
 
 		mContours = NULL;
 		mContoursApprox = NULL;
@@ -83,7 +82,7 @@ void ColorDetectionService::execute(void) {
 
 			double wContourAreaSize = fabs(cvContourArea(mContoursApprox, CV_WHOLE_SEQ));
 			
-			if (wContourAreaSize > maxContourAreaSize && wContourAreaSize > 500.0f) {
+			if (wContourAreaSize > maxContourAreaSize/* && wContourAreaSize > 500.0f*/) {
 
 				maxContourAreaSize = wContourAreaSize;
 
