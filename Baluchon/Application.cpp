@@ -33,8 +33,8 @@ int main() {
 	// Layer 2
 	IColorDetectionService* wColorDetectionService = new ColorDetectionService();
 	{
-		wColorDetectionService->setColorTolerance(10);
-		wColorDetectionService->setMaxMarkerCount(2);
+		wColorDetectionService->setColorTolerance(30);
+		wColorDetectionService->setMaxMarkerCount(4);
 	}
 
 	IPatternDetectionService* wPatternDetectionService = new PatternDetectionService();

@@ -2,8 +2,6 @@
 
 #include <cv.h>
 
-using namespace cv;
-
 namespace baluchon { namespace utilities {
 
 class ColorUtility
