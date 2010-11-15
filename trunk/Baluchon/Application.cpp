@@ -33,7 +33,7 @@ int main() {
 	// Layer 2
 	IColorDetectionService* wColorDetectionService = new ColorDetectionService();
 	{
-		wColorDetectionService->setColorTolerance(25);
+		wColorDetectionService->setColorTolerance(10);
 		wColorDetectionService->setMaxMarkerCount(2);
 	}
 
