@@ -55,7 +55,8 @@ void PatternDetectionService::initDone(void) {
 }
 
 void PatternDetectionService::execute(void) {
-
+    CvMat *rotation = cvCreateMat (1, 3, CV_32FC1);
+	CvMat *translation = cvCreateMat (1 , 3, CV_32FC1);
     for(int i = 0; i < mPatterns.size(); i++)
     {
         mPatterns[i]->getImagePoints()->clear();
@@ -69,6 +70,7 @@ void PatternDetectionService::execute(void) {
 
     mFrame = cvCreateImage(cvGetSize(mInitial), mInitial->depth, 1);
     cvCvtColor(mInitial, mFrame, CV_BGR2GRAY);
+    //cvAdaptiveThreshold(mFrame, mFrame, 255, CV_THRESH_BINARY, CV_ADAPTIVE_THRESH_MEAN_C, 71, 15);
     cvThreshold(mFrame, mFrame, 100, 255, CV_THRESH_BINARY);
 
     if(mStorage == 0) {
@@ -98,8 +100,8 @@ void PatternDetectionService::execute(void) {
 
                 for(int j = 0; j < 4; j++)
                 {
-                    mImagePoints[j].x = (float) ((CvPoint*) cvGetSeqElem(mResult, j))->x;
-                    mImagePoints[j].y = (float) ((CvPoint*) cvGetSeqElem(mResult, j))->y;
+                    mImagePoints[3-j].x = (float) ((CvPoint*) cvGetSeqElem(mResult, j))->x;
+                    mImagePoints[3-j].y = (float) ((CvPoint*) cvGetSeqElem(mResult, j))->y;
                 }
 
                 //Child connected component
@@ -152,7 +154,7 @@ void PatternDetectionService::execute(void) {
                                 while(l < mResult->total && valid)
                                 {
                                     // 30 pixels threshold value. TODO: SETTABLE
-                                    if(sqrtf(pow(mDstPts->data.fl[((k-l+mResult->total) % mResult->total)*2] - mPatterns[i]->getSourcePointAt(l, j).x, 2) + pow(mDstPts->data.fl[((k-l+mResult->total) % mResult->total)*2+1] - mPatterns[i]->getSourcePointAt(l, j).y, 2)) > 100)
+                                    if(sqrtf(pow(mDstPts->data.fl[((k+l+mResult->total) % mResult->total)*2] - mPatterns[i]->getSourcePointAt(l, j).x, 2) + pow(mDstPts->data.fl[((k+l+mResult->total) % mResult->total)*2+1] - mPatterns[i]->getSourcePointAt(l, j).y, 2)) > 30)
                                     {
                                         valid = false;
                                     }
@@ -163,30 +165,26 @@ void PatternDetectionService::execute(void) {
                                 if(valid)
                                 {
                                     mPatterns[i]->getImageOrientations()->push_back(j);
+
+                                    vector<CvPoint2D32f> tempPoints;
+                                    vector<CvPoint2D32f> tempFramePoints;
+
+                                    for(int m = 0; m < mResult->total; m++)
+                                    {
+                                        tempPoints.push_back(cvPoint2D32f((*((CvPoint*) cvGetSeqElem(mResult, ((k+m+mResult->total) % mResult->total)))).x, (*((CvPoint*) cvGetSeqElem(mResult, ((k+m+mResult->total) % mResult->total)))).y));
+                                    }
+                                    mPatterns[i]->getImagePoints()->push_back(tempPoints);
+                                    for(int m = 0; m < 4; m++)
+                                    {
+                                        tempFramePoints.push_back(mImagePoints[m]);
+                                    }
+                                    mPatterns[i]->getImageFramePoints()->push_back(tempFramePoints);
                                 }
 
                                 k++;
                             }
 
                             j++;
-                        }
-
-
-                        if(valid)
-                        {
-                            vector<CvPoint2D32f> tempPoints;
-                            vector<CvPoint2D32f> tempFramePoints;
-
-                            for(int j = 0; j < mResult->total; j++)
-                            {
-                                tempPoints.push_back(cvPoint2D32f((*((CvPoint*) cvGetSeqElem(mResult, j))).x, (*((CvPoint*) cvGetSeqElem(mResult, j))).y));
-                            }
-                            mPatterns[i]->getImagePoints()->push_back(tempPoints);
-                            for(int j = 0; j < 4; j++)
-                            {
-                                tempFramePoints.push_back(mImagePoints[j]);
-                            }
-                            mPatterns[i]->getImageFramePoints()->push_back(tempFramePoints);
                         }
                     }
                 }
