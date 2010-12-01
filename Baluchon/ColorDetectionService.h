@@ -23,23 +23,14 @@ public:
 	virtual vector<IMarker*> getMarkers(void);
 	virtual void clearMarkers(void);
 
-	virtual void setColorTolerance(int tolerance);
-	virtual int getColorTolerance(void);
-
 	virtual void setMaxMarkerCount(int count);
 	virtual int getMaxMarkerCount(void);
 
 private:
 	ICaptureService* mCaptureService;
-	CvMemStorage* mStorage;
-	IplConvKernel* mMorphKernel;
 	IplImage* mImageHSV;
-	IplImage* mImageThreshold;
-	CvSeq* mContours;
-	CvSeq* mContoursApprox;
 
 	vector<IMarker*> mMarkers;
-	int mColorTolerance;
 	int mMaxMarkerCount;
 };
 

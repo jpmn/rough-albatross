@@ -1,5 +1,6 @@
 #include "VideoWriterService.h"
 
+#include "IServiceLayer.h"
 #include "DisplayImageService.h"
 
 namespace baluchon { namespace core { namespace services { namespace writer { 
@@ -21,7 +22,7 @@ void VideoWriterService::init(void) {
 void VideoWriterService::initDone(void) {
 
 	if (isEnabled())
-		mVideoWriter = cvCreateVideoWriter("color-detection.avi", -1, 8, cvSize(640, 480));
+		mVideoWriter = cvCreateVideoWriter("baluchon.avi", -1, 8, cvSize(640, 480));
 }
 
 void VideoWriterService::execute(void) {
