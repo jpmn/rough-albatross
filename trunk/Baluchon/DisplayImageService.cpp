@@ -59,42 +59,8 @@ void DisplayImageService::execute(void) {
     }
 
 	// temporaire... juste pour afficher les blobs
-	//CvPoint pos = cvPoint(10, 10);
 	vector<IMarker*> markers = mMarkerService->getMarkers();
 	for (unsigned int i = 0; i < markers.size(); i++) {
-		/*
-		CvScalar color = markers[i]->getColor();
-		CvScalar colorHSV = ColorUtility::convertColorBGRtoHSV(color);
-		CvScalar colorBGR = ColorUtility::convertColorHSVtoBGR(colorHSV);
-
-		for (int m = 0-mMarkerService->getColorTolerance(); m <= mMarkerService->getColorTolerance(); m++) {
-			for (int v = 100; v <= 255; v++) {
-
-				int h = colorHSV.val[0] + m;
-				int s = colorHSV.val[0] + m;
-
-				if (h < 0) h += 180;
-				if (h > 179) h -= 180;
-
-				cvDrawRect(
-					initial, 
-					pos, 
-					cvPoint(pos.x, pos.y), 
-					ColorUtility::convertColorHSVtoBGR(cvScalar(h, s, v)),
-					CV_FILLED, 
-					8
-				);
-
-				pos.x++;
-			}
-
-			pos.x = 10;
-			pos.y++;
-		}
-
-		pos.y += 5;
-		*/
-
 		vector<IBlob*> blobs = markers[i]->getBlobs();
 		for (unsigned int j = 0; j < blobs.size(); j++) {
 			
@@ -104,16 +70,6 @@ void DisplayImageService::execute(void) {
 			cvDrawRect(initial, cvPoint(box.x, box.y), cvPoint(box.x + box.width, box.y + box.height), CV_RGB(255, 255, 0), 2, 8);
 			
 			cvDrawCircle(initial, blobs[j]->getPosition(), 5, CV_RGB(0, 255, 0), CV_FILLED, 8);
-
-			/*
-			// Si plusieurs blobs d'une même couleur
-			if (j < blobs.size() - 1) {
-				cvDrawLine(initial, blobs[j]->getPosition(), blobs[j+1]->getPosition(), CV_RGB(0, 0, 255), 2, 8);
-				cvDrawContours(initial, blobs[j]->getContours(), CV_RGB(255, 0, 0), color, -1, 2, 8);
-			}
-			else
-				cvDrawContours(initial, blobs[j++]->getContours(), CV_RGB(255, 0, 0), color, -1, 2, 8);
-			*/
 		}
 	}
 
@@ -156,6 +112,7 @@ void DisplayImageService::onMouseClick(int event, int x, int y, int flags, void*
 		IMarker* wMarker = new Marker();
 		{
 			wMarker->setColor(colorImageBGR);
+			wMarker->setColorTolerance(30);
 		}
 
 		wDisplayService->mMarkerService->addMarker(wMarker);

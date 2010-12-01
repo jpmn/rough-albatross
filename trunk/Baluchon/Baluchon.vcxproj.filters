@@ -76,6 +76,12 @@
     <Filter Include="Fichiers d%27en-tête\core\datas">
       <UniqueIdentifier>{534fa499-9939-450d-8d85-6ad2efec2aac}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Fichiers sources\core\services\objectdetection">
+      <UniqueIdentifier>{e42b2d84-c046-46b8-80ef-7e87298ea0ba}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Fichiers d%27en-tête\core\services\objectdetection">
+      <UniqueIdentifier>{eddb87d3-a8fd-49cc-8e8f-1c1e4d643f7d}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="IService.h">
@@ -138,12 +144,6 @@
     <ClInclude Include="IColorable.h">
       <Filter>Fichiers d%27en-tête\core\datas</Filter>
     </ClInclude>
-    <ClInclude Include="IPoseEstimationService.h">
-      <Filter>Fichiers d%27en-tête\core\services\poseestimation</Filter>
-    </ClInclude>
-    <ClInclude Include="PoseEstimationService.h">
-      <Filter>Fichiers d%27en-tête\core\services\poseestimation</Filter>
-    </ClInclude>
     <ClInclude Include="Blob.h">
       <Filter>Fichiers d%27en-tête\core\services\colordetection</Filter>
     </ClInclude>
@@ -158,6 +158,18 @@
     </ClInclude>
     <ClInclude Include="MathUtility.h">
       <Filter>Fichiers d%27en-tête\utilities</Filter>
+    </ClInclude>
+    <ClInclude Include="IObjectDetectionService.h">
+      <Filter>Fichiers d%27en-tête\core\services\objectdetection</Filter>
+    </ClInclude>
+    <ClInclude Include="ObjectDetectionService.h">
+      <Filter>Fichiers d%27en-tête\core\services\objectdetection</Filter>
+    </ClInclude>
+    <ClInclude Include="Cube.h">
+      <Filter>Fichiers d%27en-tête\core\services\objectdetection</Filter>
+    </ClInclude>
+    <ClInclude Include="Face.h">
+      <Filter>Fichiers d%27en-tête\core\services\objectdetection</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -188,9 +200,6 @@
     <ClCompile Include="PatternDetectionService.cpp">
       <Filter>Fichiers sources\core\services\patterndetection</Filter>
     </ClCompile>
-    <ClCompile Include="PoseEstimationService.cpp">
-      <Filter>Fichiers sources\core\services\poseestimation</Filter>
-    </ClCompile>
     <ClCompile Include="VideoWriterService.cpp">
       <Filter>Fichiers sources\core\services\writer</Filter>
     </ClCompile>
@@ -205,6 +214,15 @@
     </ClCompile>
     <ClCompile Include="MathUtility.cpp">
       <Filter>Fichiers sources\utilities</Filter>
+    </ClCompile>
+    <ClCompile Include="ObjectDetectionService.cpp">
+      <Filter>Fichiers sources\core\services\objectdetection</Filter>
+    </ClCompile>
+    <ClCompile Include="Cube.cpp">
+      <Filter>Fichiers sources\core\services\objectdetection</Filter>
+    </ClCompile>
+    <ClCompile Include="Face.cpp">
+      <Filter>Fichiers sources\core\services\objectdetection</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

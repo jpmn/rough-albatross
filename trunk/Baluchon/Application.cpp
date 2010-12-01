@@ -4,6 +4,7 @@
 #include "CameraCaptureService.h"
 #include "ColorDetectionService.h"
 #include "PatternDetectionService.h"
+#include "ObjectDetectionService.h"
 #include "VideoWriterService.h"
 #include "DisplayImageService.h"
 
@@ -16,6 +17,7 @@ using namespace baluchon::core::services::capture;
 using namespace baluchon::core::services::colordetection;
 using namespace baluchon::core::services::display;
 using namespace baluchon::core::services::patterndetection;
+using namespace baluchon::core::services::objectdetection;
 
 int main() {
 
@@ -33,8 +35,7 @@ int main() {
 	// Layer 2
 	IColorDetectionService* wColorDetectionService = new ColorDetectionService();
 	{
-		wColorDetectionService->setColorTolerance(30);
-		wColorDetectionService->setMaxMarkerCount(4);
+		wColorDetectionService->setMaxMarkerCount(2);
 	}
 
 	IPatternDetectionService* wPatternDetectionService = new PatternDetectionService();
@@ -43,10 +44,16 @@ int main() {
         wPatternDetectionService->addPattern("arrow_pattern.jpg");
 	}
 
+	IObjectDetectionService* wObjectDetectionService = new ObjectDetectionService();
+	{
+		wObjectDetectionService->setCornerTolerance(25);
+	}
+
 	IServiceLayer* wFilterLayer = new ServiceLayer();
 	{
 		wFilterLayer->addService(wColorDetectionService);
 		wFilterLayer->addService(wPatternDetectionService);
+		wFilterLayer->addService(wObjectDetectionService);
 	}
 
 	// Layer 3
