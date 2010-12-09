@@ -4,10 +4,12 @@
 #include "ICaptureService.h"
 #include "IColorDetectionService.h"
 #include "IPatternDetectionService.h"
+#include "IPoseEstimationService.h"
 
 using namespace baluchon::core::services::capture;
 using namespace baluchon::core::services::colordetection;
 using namespace baluchon::core::services::patterndetection;
+using namespace baluchon::core::services::poseestimation;
 
 namespace baluchon { namespace core { namespace services { namespace display {
 
@@ -33,7 +35,7 @@ private:
 	ICaptureService* mCaptureService;
 	IColorDetectionService* mMarkerService;
     IPatternDetectionService* mPatternService;
-
+    IPoseEstimationService* mPose;
 	char* mWindowName;
 	IplImage* mImage;
 };

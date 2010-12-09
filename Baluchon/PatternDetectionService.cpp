@@ -1,9 +1,9 @@
 #include "PatternDetectionService.h"
 
-#include "Pattern.h"
-
 #include "IServiceLayer.h"
 #include "CameraCaptureService.h"
+#include "Pattern.h"
+#include "DetectedPattern.h"
 #include "math.h"
 
 namespace baluchon { namespace core { namespace services { namespace patterndetection { 
@@ -19,12 +19,12 @@ PatternDetectionService::~PatternDetectionService(void)
 
 void PatternDetectionService::addPattern(IPattern* pattern)
 {
-    mPatterns.push_back(pattern);
+    mPatterns.push_back(new DetectedPattern(pattern));
 }
 
 bool PatternDetectionService::addPattern(char patternName[])
 {
-    IPattern *pattern = new Pattern(patternName);
+    IDetectedPattern *pattern = new DetectedPattern(new Pattern(patternName));
     if(pattern != 0)
     {
         mPatterns.push_back(pattern);
@@ -33,7 +33,7 @@ bool PatternDetectionService::addPattern(char patternName[])
     return false;
 }
 
-vector<IPattern*> PatternDetectionService::getPatterns()
+vector<IDetectedPattern*> PatternDetectionService::getPatterns()
 {
     return mPatterns;
 }
@@ -57,7 +57,7 @@ void PatternDetectionService::initDone(void) {
 void PatternDetectionService::execute(void) {
     CvMat *rotation = cvCreateMat (1, 3, CV_32FC1);
 	CvMat *translation = cvCreateMat (1 , 3, CV_32FC1);
-    for(int i = 0; i < mPatterns.size(); i++)
+    for(unsigned int i = 0; i < mPatterns.size(); i++)
     {
         mPatterns[i]->getImagePoints()->clear();
     }
@@ -122,7 +122,7 @@ void PatternDetectionService::execute(void) {
                 mModelPoints[2].y = 0;
                 mModelPoints[3].y = 0;
 
-                for(int i = 0; i < mPatterns.size(); i++)
+                for(unsigned int i = 0; i < mPatterns.size(); i++)
                 {
                     if(mResult->total == mPatterns[i]->getPointCount())
                     {
@@ -164,7 +164,6 @@ void PatternDetectionService::execute(void) {
 
                                 if(valid)
                                 {
-                                    mPatterns[i]->getImageOrientations()->push_back(j);
 
                                     vector<CvPoint2D32f> tempPoints;
                                     vector<CvPoint2D32f> tempFramePoints;

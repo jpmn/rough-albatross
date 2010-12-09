@@ -1,7 +1,7 @@
 #pragma once
 
 #include "IService.h"
-#include "IPattern.h"
+#include "IDetectedPattern.h"
 
 namespace baluchon { namespace core { namespace services { namespace patterndetection { 
 
@@ -12,7 +12,7 @@ public:
 
     virtual void addPattern(IPattern* pattern) = 0;
     virtual bool addPattern(char patternName[]) = 0;
-    virtual vector<IPattern*> getPatterns() = 0;
+    virtual vector<IDetectedPattern*> getPatterns() = 0;
 };
 
 }}}};
