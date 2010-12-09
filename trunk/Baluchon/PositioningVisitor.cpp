@@ -28,7 +28,7 @@ void PositioningVisitor::visit(Transform *t)
     }
 }
 
-void PositioningVisitor::visit(FrameCube *t)
+void PositioningVisitor::visit(FrameCube *cube)
 {
     CvMat *srcPoints3D = cvCreateMat (8, 1, CV_32FC3);
     srcPoints3D->data.fl[0] = 50;
@@ -36,9 +36,9 @@ void PositioningVisitor::visit(FrameCube *t)
     srcPoints3D->data.fl[2] = -150;
     for(int i = 0; i < 8; i++)
     {
-        srcPoints3D->data.fl[i*3] = t->getPoints()[i].x;
-        srcPoints3D->data.fl[i*3+1] = t->getPoints()[i].y;
-        srcPoints3D->data.fl[i*3+2] = t->getPoints()[i].z;
+        srcPoints3D->data.fl[i*3] = cube->getPoints()[i].x;
+        srcPoints3D->data.fl[i*3+1] = cube->getPoints()[i].y;
+        srcPoints3D->data.fl[i*3+2] = cube->getPoints()[i].z;
     }
 
     CvMat *dstPoints2D = cvCreateMat (8, 1, CV_32FC3);
@@ -50,15 +50,15 @@ void PositioningVisitor::visit(FrameCube *t)
         {
             if(k != 4)
             {
-                cvLine(mSrcImg,cvPoint((int) dstPoints2D->data.fl[3*(k-1)], (int) dstPoints2D->data.fl[3*(k-1)+1]), cvPoint((int) dstPoints2D->data.fl[3*k], (int) dstPoints2D->data.fl[3*k+1]), CV_RGB(0,((k == 1) ? 255 : 0),((k != 1) ? 255 : 0)), 5);
+                cvLine(mSrcImg,cvPoint((int) dstPoints2D->data.fl[3*(k-1)], (int) dstPoints2D->data.fl[3*(k-1)+1]), cvPoint((int) dstPoints2D->data.fl[3*k], (int) dstPoints2D->data.fl[3*k+1]), cube->getColor(), 5);
             }
         }
-        cvLine(mSrcImg,cvPoint((int) dstPoints2D->data.fl[3*(0)], (int) dstPoints2D->data.fl[3*(0)+1]), cvPoint((int) dstPoints2D->data.fl[3*3], (int) dstPoints2D->data.fl[3*3+1]), CV_RGB(0,0,255), 5);
-        cvLine(mSrcImg,cvPoint((int) dstPoints2D->data.fl[3*(7)], (int) dstPoints2D->data.fl[3*(7)+1]), cvPoint((int) dstPoints2D->data.fl[3*4], (int) dstPoints2D->data.fl[3*4+1]), CV_RGB(0,0,255), 5);
+        cvLine(mSrcImg,cvPoint((int) dstPoints2D->data.fl[3*(0)], (int) dstPoints2D->data.fl[3*(0)+1]), cvPoint((int) dstPoints2D->data.fl[3*3], (int) dstPoints2D->data.fl[3*3+1]), cube->getColor(), 5);
+        cvLine(mSrcImg,cvPoint((int) dstPoints2D->data.fl[3*(7)], (int) dstPoints2D->data.fl[3*(7)+1]), cvPoint((int) dstPoints2D->data.fl[3*4], (int) dstPoints2D->data.fl[3*4+1]), cube->getColor(), 5);
 
         for(int k = 0; k < 4; k++)
         {
-            cvLine(mSrcImg,cvPoint((int) dstPoints2D->data.fl[3*(k)], (int) dstPoints2D->data.fl[3*(k)+1]), cvPoint((int) dstPoints2D->data.fl[3*(k+4)], (int) dstPoints2D->data.fl[3*(k+4)+1]), CV_RGB(0,0,255), 5);
+            cvLine(mSrcImg,cvPoint((int) dstPoints2D->data.fl[3*(k)], (int) dstPoints2D->data.fl[3*(k)+1]), cvPoint((int) dstPoints2D->data.fl[3*(k+4)], (int) dstPoints2D->data.fl[3*(k+4)+1]), cube->getColor(), 5);
         }
 
         cvReleaseMat(&srcPoints3D);
