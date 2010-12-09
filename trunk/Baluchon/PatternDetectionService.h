@@ -1,6 +1,5 @@
 #pragma once
 #include "ipatterndetectionservice.h"
-#include "ipattern.h"
 #include "ICaptureService.h"
 #include <vector>
 
@@ -18,7 +17,7 @@ public:
 
     void addPattern(IPattern* pattern);
     bool addPattern(char patternName[]);
-    vector<IPattern*> getPatterns();
+    vector<IDetectedPattern*> getPatterns();
 
     virtual void init(void);
 	virtual void initDone(void);
@@ -28,7 +27,7 @@ public:
 
 private:
     ICaptureService* mCaptureService;
-    vector<IPattern*> mPatterns;
+    vector<IDetectedPattern*> mPatterns;
 
 
     IplImage *mInitial;

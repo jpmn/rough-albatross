@@ -14,7 +14,7 @@ public:
 	virtual void execute(void) = 0;
 	virtual void reset(void) = 0;
 	virtual void dispose(void) = 0;
-
+    
 	void setServiceLayer(IServiceLayer* serviceLayer) {
 		mServiceLayer = serviceLayer;
 	}

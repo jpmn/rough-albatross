@@ -6,6 +6,7 @@
 #include "CameraCaptureService.h"
 #include "ColorDetectionService.h"
 #include "PatternDetectionService.h"
+#include "PoseEstimationService.h"
 
 #include "IPattern.h"
 #include "Marker.h"
@@ -33,6 +34,9 @@ void DisplayImageService::init(void) {
 
     mPatternService= new PatternDetectionService();
     mPatternService = (IPatternDetectionService*) mServiceLayer->findService(mPatternService);
+
+    mPose= new PoseEstimationService(0,0);
+    mPose = (IPoseEstimationService*) mServiceLayer->findService(mPose);
 }
 
 void DisplayImageService::initDone(void) {
@@ -44,19 +48,6 @@ void DisplayImageService::initDone(void) {
 void DisplayImageService::execute(void) {
 
     IplImage *initial = mCaptureService->getImage();
-
-    //temporaire...juste pour faire le showoff
-    vector<IPattern*> patterns = mPatternService->getPatterns();
-    for(int i = 0; i < patterns.size(); i++)
-    {
-        for(int j = 0; j < (*patterns[i]->getImagePoints()).size(); j++)
-        {
-            for(int k = 0; k < (*patterns[i]->getImagePoints())[j].size(); k++)
-            {
-                cvLine(initial, cvPoint((*patterns[i]->getImagePoints())[j][k].x, (*patterns[i]->getImagePoints())[j][k].y), cvPoint((*patterns[i]->getImagePoints())[j][(k+1) % (*patterns[i]->getImagePoints())[j].size()].x, (*patterns[i]->getImagePoints())[j][(k+1) % (*patterns[i]->getImagePoints())[j].size()].y), CV_RGB(255,0,0,0), 5);
-            }
-        }
-    }
 
 	// temporaire... juste pour afficher les blobs
 	vector<IMarker*> markers = mMarkerService->getMarkers();

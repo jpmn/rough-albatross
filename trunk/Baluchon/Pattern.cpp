@@ -11,10 +11,6 @@ Pattern::Pattern(char path[])
     mHeight = 0;
     mPointCount = 0;
 
-    mImgPoints = new vector<vector<CvPoint2D32f>>();
-    mFramePoints = new vector<vector<CvPoint2D32f>>();
-    mOrientations = new vector<int>();
-
     init();
 }
 
@@ -107,21 +103,6 @@ int Pattern::getHeight()
 CvPoint2D32f Pattern::getSourcePointAt(int pos, int orientation)
 {
     return mSrcPoints[pos][orientation];
-}
-
-vector<vector<CvPoint2D32f>>* Pattern::getImagePoints()
-{
-    return mImgPoints;
-}
-
-vector<vector<CvPoint2D32f>>* Pattern::getImageFramePoints()
-{
-    return mFramePoints;
-}
-
-vector<int>* Pattern::getImageOrientations()
-{
-    return mOrientations;
 }
 
 }}}};
