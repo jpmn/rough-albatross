@@ -13,7 +13,7 @@ public:
     ~Transform(void);
 
     virtual void add(IGraphic* child);
-    virtual void remove(int pos);
+    virtual void remove(IGraphic* child);
     virtual vector<IGraphic*> getChildren();
     virtual void apply(CvMat* mul);
     virtual CvMat* getMatrix();

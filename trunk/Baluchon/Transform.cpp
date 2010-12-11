@@ -45,9 +45,25 @@ void Transform::add(IGraphic* child)
     mChildren.push_back(child);
 }
 
-void Transform::remove(int pos)
+void Transform::remove(IGraphic* child)
 {
-    mChildren.erase(mChildren.begin()+pos);
+    bool found = false;
+    unsigned int cpt = 0;
+    while(!found && cpt < mChildren.size())
+    {
+        if(mChildren[cpt] == child)
+        {
+            found = true;
+        }
+        else
+        {
+            cpt++;
+        }
+    }
+    if(found)
+    {
+        mChildren.erase(mChildren.begin()+cpt);
+    }
 }
 
 vector<IGraphic*> Transform::getChildren()
