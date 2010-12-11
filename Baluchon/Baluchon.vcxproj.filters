@@ -88,6 +88,15 @@
     <Filter Include="Fichiers d%27en-tête\core\services\objectdetection">
       <UniqueIdentifier>{eddb87d3-a8fd-49cc-8e8f-1c1e4d643f7d}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Fichiers d%27en-tête\core\events">
+      <UniqueIdentifier>{dda68a76-47fd-46bb-b71f-3aa0f5598d5d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Fichiers d%27en-tête\core\services\augmentedinterface">
+      <UniqueIdentifier>{fccaa752-5662-4d35-84bc-a93d93177dc4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Fichiers sources\core\services\augmentedinterface">
+      <UniqueIdentifier>{02fcba74-3a97-4e72-8fc9-1049a9ecb54d}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="IService.h">
@@ -216,6 +225,36 @@
     <ClInclude Include="VideoWriterService.h">
       <Filter>Fichiers d%27en-tête\core\services\writer</Filter>
     </ClInclude>
+    <ClInclude Include="IEventHandler.h">
+      <Filter>Fichiers d%27en-tête\core\events</Filter>
+    </ClInclude>
+    <ClInclude Include="IEvent.h">
+      <Filter>Fichiers d%27en-tête\core\events</Filter>
+    </ClInclude>
+    <ClInclude Include="IEventNotifier.h">
+      <Filter>Fichiers d%27en-tête\core\events</Filter>
+    </ClInclude>
+    <ClInclude Include="IAugmentedComponent.h">
+      <Filter>Fichiers d%27en-tête\core\services\augmentedinterface</Filter>
+    </ClInclude>
+    <ClInclude Include="AugmentedColorButton.h">
+      <Filter>Fichiers d%27en-tête\core\services\augmentedinterface</Filter>
+    </ClInclude>
+    <ClInclude Include="ColorButtonEvent.h">
+      <Filter>Fichiers d%27en-tête\core\services\augmentedinterface</Filter>
+    </ClInclude>
+    <ClInclude Include="IAugmentedInterfaceService.h">
+      <Filter>Fichiers d%27en-tête\core\services\augmentedinterface</Filter>
+    </ClInclude>
+    <ClInclude Include="AugmentedInterfaceService.h">
+      <Filter>Fichiers d%27en-tête\core\services\augmentedinterface</Filter>
+    </ClInclude>
+    <ClInclude Include="TestEventHandler.h">
+      <Filter>Fichiers d%27en-tête</Filter>
+    </ClInclude>
+    <ClInclude Include="Scaling.h">
+      <Filter>Fichiers d%27en-tête\core\services\positioning</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="ServiceLayer.cpp">
@@ -295,6 +334,21 @@
     </ClCompile>
     <ClCompile Include="VideoWriterService.cpp">
       <Filter>Fichiers sources\core\services\writer</Filter>
+    </ClCompile>
+    <ClCompile Include="AugmentedColorButton.cpp">
+      <Filter>Fichiers sources\core\services\augmentedinterface</Filter>
+    </ClCompile>
+    <ClCompile Include="ColorButtonEvent.cpp">
+      <Filter>Fichiers sources\core\services\augmentedinterface</Filter>
+    </ClCompile>
+    <ClCompile Include="AugmentedInterfaceService.cpp">
+      <Filter>Fichiers sources\core\services\augmentedinterface</Filter>
+    </ClCompile>
+    <ClCompile Include="TestEventHandler.cpp">
+      <Filter>Fichiers sources</Filter>
+    </ClCompile>
+    <ClCompile Include="Scaling.cpp">
+      <Filter>Fichiers sources\core\services\positioning</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
