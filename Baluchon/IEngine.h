@@ -23,7 +23,7 @@
  */
 
 /**
- * \file IEngine.c
+ * \file IEngine.h
  * \brief Interface de l'engin de r&eacute;alit&eacute; augment&eacute;e.
  * \author Mathieu Plourde
  * \author Jean-Philippe Morin
@@ -43,6 +43,11 @@ namespace baluchon { namespace core { namespace engine {
 class IEngine
 {
 public:
+
+    /**
+     * \fn virtual ~IEngine()
+     * \brief Destructeur virtuel de la classe.
+     */
 	virtual ~IEngine() {}
 
     /**
