@@ -76,11 +76,65 @@ Inheritance diagram for baluchon::core::events::IEventNotifier:<!-- endSectionHe
 <table class="memberdecls">
 <tr><td colspan="2"><h2><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ad7d29f91ca96df8ba5ff2fb59a0c4074"></a><!-- doxytag: member="baluchon::core::events::IEventNotifier::addEventHandler" ref="ad7d29f91ca96df8ba5ff2fb59a0c4074" args="(IEventHandler *eventHandler)" -->
-virtual void&#160;</td><td class="memItemRight" valign="bottom"><b>addEventHandler</b> (<a class="el" href="classbaluchon_1_1core_1_1events_1_1_i_event_handler.html">IEventHandler</a> *eventHandler)</td></tr>
-<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a7470c612b9a9735128a9e2934b249591"></a><!-- doxytag: member="baluchon::core::events::IEventNotifier::notifyEventHandlers" ref="a7470c612b9a9735128a9e2934b249591" args="(IEvent *e)" -->
-virtual void&#160;</td><td class="memItemRight" valign="bottom"><b>notifyEventHandlers</b> (<a class="el" href="classbaluchon_1_1core_1_1events_1_1_i_event.html">IEvent</a> *e)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a0ab0cc557d5d008811cde2c5df8d2bcb"></a><!-- doxytag: member="baluchon::core::events::IEventNotifier::~IEventNotifier" ref="a0ab0cc557d5d008811cde2c5df8d2bcb" args="(void)" -->
+&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classbaluchon_1_1core_1_1events_1_1_i_event_notifier.html#a0ab0cc557d5d008811cde2c5df8d2bcb">~IEventNotifier</a> (void)</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Destructeur virtuel de la classe. <br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classbaluchon_1_1core_1_1events_1_1_i_event_notifier.html#ab6660fa4aec14d389a136257473d303d">addEventHandler</a> (<a class="el" href="classbaluchon_1_1core_1_1events_1_1_i_event_handler.html">IEventHandler</a> *eventHandler)</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Fonction d'ajout d'un gestionnaire d'&eacute;v&egrave;nements.  <a href="#ab6660fa4aec14d389a136257473d303d"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classbaluchon_1_1core_1_1events_1_1_i_event_notifier.html#ae6dc45165bb642f3ac683009a14650eb">notifyEventHandlers</a> (<a class="el" href="classbaluchon_1_1core_1_1events_1_1_i_event.html">IEvent</a> *e)</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Fonction de notification des gestionnaires d'&eacute;v&egrave;nements.  <a href="#ae6dc45165bb642f3ac683009a14650eb"></a><br/></td></tr>
 </table>
+<hr/><h2>Member Function Documentation</h2>
+<a class="anchor" id="ab6660fa4aec14d389a136257473d303d"></a><!-- doxytag: member="baluchon::core::events::IEventNotifier::addEventHandler" ref="ab6660fa4aec14d389a136257473d303d" args="(IEventHandler *eventHandler)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void baluchon::core::events::IEventNotifier::addEventHandler </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="classbaluchon_1_1core_1_1events_1_1_i_event_handler.html">IEventHandler</a> *&#160;</td>
+          <td class="paramname"> <em>eventHandler</em>&#160;)</td>
+          <td><code> [inline, virtual]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Fonction d'ajout d'un gestionnaire d'&eacute;v&egrave;nements. </p>
+<dl><dt><b>Parameters:</b></dt><dd>
+  <table class="params">
+    <tr><td class="paramname">eventHandler</td><td>Le notifieur d'&eacute;v&egrave;nements. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a class="anchor" id="ae6dc45165bb642f3ac683009a14650eb"></a><!-- doxytag: member="baluchon::core::events::IEventNotifier::notifyEventHandlers" ref="ae6dc45165bb642f3ac683009a14650eb" args="(IEvent *e)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void baluchon::core::events::IEventNotifier::notifyEventHandlers </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="classbaluchon_1_1core_1_1events_1_1_i_event.html">IEvent</a> *&#160;</td>
+          <td class="paramname"> <em>e</em>&#160;)</td>
+          <td><code> [inline, virtual]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Fonction de notification des gestionnaires d'&eacute;v&egrave;nements. </p>
+<dl><dt><b>Parameters:</b></dt><dd>
+  <table class="params">
+    <tr><td class="paramname">e</td><td>L'&eacute;v&egrave;nement &agrave; notifier. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
 <hr/>The documentation for this class was generated from the following file:<ul>
 <li>C:/Users/Mathieu/Documents/Visual Studio 2010/Projects/Baluchon/Baluchon/<a class="el" href="_i_event_notifier_8h_source.html">IEventNotifier.h</a></li>
 </ul>
@@ -90,7 +144,7 @@ virtual void&#160;</td><td class="memItemRight" valign="bottom"><b>notifyEventHa
      onmouseover="return searchBox.OnSearchSelectShow()"
      onmouseout="return searchBox.OnSearchSelectHide()"
      onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Functions</a></div>
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Functions</a></div>
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">
@@ -99,7 +153,7 @@ virtual void&#160;</td><td class="memItemRight" valign="bottom"><b>notifyEventHa
 </iframe>
 </div>
 
-<hr class="footer"/><address class="footer"><small>Generated on Sat Dec 11 2010 16:12:58 for Baluchon by&#160;
+<hr class="footer"/><address class="footer"><small>Generated on Sun Dec 12 2010 02:06:37 for Baluchon by&#160;
 <a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.7.2 </small></address>
 </body>

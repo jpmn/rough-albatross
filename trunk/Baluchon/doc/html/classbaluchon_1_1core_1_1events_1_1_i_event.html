@@ -76,12 +76,15 @@ Inheritance diagram for baluchon::core::events::IEvent:<!-- endSectionHeader -->
 <table class="memberdecls">
 <tr><td colspan="2"><h2><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a3b8178cc6ada92f9f554362f1081f8c5"></a><!-- doxytag: member="baluchon::core::events::IEvent::getState" ref="a3b8178cc6ada92f9f554362f1081f8c5" args="()" -->
-virtual int&#160;</td><td class="memItemRight" valign="bottom"><b>getState</b> ()</td></tr>
-<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a98f4ebbd7d6c0c0c71848d99bf547ee9"></a><!-- doxytag: member="baluchon::core::events::IEvent::setEventNotifier" ref="a98f4ebbd7d6c0c0c71848d99bf547ee9" args="(IEventNotifier *eventNotifier)" -->
-virtual void&#160;</td><td class="memItemRight" valign="bottom"><b>setEventNotifier</b> (<a class="el" href="classbaluchon_1_1core_1_1events_1_1_i_event_notifier.html">IEventNotifier</a> *eventNotifier)</td></tr>
-<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a4f5ea5472dbb5339e6a4800809936b32"></a><!-- doxytag: member="baluchon::core::events::IEvent::getEventNotifier" ref="a4f5ea5472dbb5339e6a4800809936b32" args="()" -->
-virtual <a class="el" href="classbaluchon_1_1core_1_1events_1_1_i_event_notifier.html">IEventNotifier</a> *&#160;</td><td class="memItemRight" valign="bottom"><b>getEventNotifier</b> ()</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a8fc8e5dd73ae8e60d4d67c6a47d4c623"></a><!-- doxytag: member="baluchon::core::events::IEvent::~IEvent" ref="a8fc8e5dd73ae8e60d4d67c6a47d4c623" args="()" -->
+virtual&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classbaluchon_1_1core_1_1events_1_1_i_event.html#a8fc8e5dd73ae8e60d4d67c6a47d4c623">~IEvent</a> ()</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Destructeur virtuel de la classe. <br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">virtual int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classbaluchon_1_1core_1_1events_1_1_i_event.html#a95eedff21cd0c5ccb9bb8b1f7e465db7">getState</a> ()</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Fonction qui retourne l'&eacute;tat de l'&eacute;v&egrave;nement.  <a href="#a95eedff21cd0c5ccb9bb8b1f7e465db7"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classbaluchon_1_1core_1_1events_1_1_i_event.html#a9bbeea0aa08229714e0a471fde611f68">setEventNotifier</a> (<a class="el" href="classbaluchon_1_1core_1_1events_1_1_i_event_notifier.html">IEventNotifier</a> *eventNotifier)</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Fonction qui retourne l'&eacute;tat de l'&eacute;v&egrave;nement.  <a href="#a9bbeea0aa08229714e0a471fde611f68"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">virtual <a class="el" href="classbaluchon_1_1core_1_1events_1_1_i_event_notifier.html">IEventNotifier</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classbaluchon_1_1core_1_1events_1_1_i_event.html#a797087ea9666d034940bce5dd943b961">getEventNotifier</a> ()</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Fonction qui retourne le notifieur de l'&eacute;v&egrave;nement.  <a href="#a797087ea9666d034940bce5dd943b961"></a><br/></td></tr>
 <tr><td colspan="2"><h2><a name="pro-attribs"></a>
 Protected Attributes</h2></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ac5459c1a0859e019a35c6ef0604d7ccc"></a><!-- doxytag: member="baluchon::core::events::IEvent::mState" ref="ac5459c1a0859e019a35c6ef0604d7ccc" args="" -->
@@ -89,6 +92,71 @@ int&#160;</td><td class="memItemRight" valign="bottom"><b>mState</b></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="aafed5715d4314ac2695ae9bf716d15ba"></a><!-- doxytag: member="baluchon::core::events::IEvent::mEventNotifier" ref="aafed5715d4314ac2695ae9bf716d15ba" args="" -->
 <a class="el" href="classbaluchon_1_1core_1_1events_1_1_i_event_notifier.html">IEventNotifier</a> *&#160;</td><td class="memItemRight" valign="bottom"><b>mEventNotifier</b></td></tr>
 </table>
+<hr/><h2>Member Function Documentation</h2>
+<a class="anchor" id="a797087ea9666d034940bce5dd943b961"></a><!-- doxytag: member="baluchon::core::events::IEvent::getEventNotifier" ref="a797087ea9666d034940bce5dd943b961" args="()" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classbaluchon_1_1core_1_1events_1_1_i_event_notifier.html">IEventNotifier</a> * baluchon::core::events::IEvent::getEventNotifier </td>
+          <td>(</td>
+          <td class="paramname">&#160;)</td>
+          <td><code> [inline, virtual]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Fonction qui retourne le notifieur de l'&eacute;v&egrave;nement. </p>
+<dl class="return"><dt><b>Returns:</b></dt><dd>mEventNotifier Le notifieur de l'&eacute;v&egrave;nement. </dd></dl>
+
+</div>
+</div>
+<a class="anchor" id="a95eedff21cd0c5ccb9bb8b1f7e465db7"></a><!-- doxytag: member="baluchon::core::events::IEvent::getState" ref="a95eedff21cd0c5ccb9bb8b1f7e465db7" args="()" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int baluchon::core::events::IEvent::getState </td>
+          <td>(</td>
+          <td class="paramname">&#160;)</td>
+          <td><code> [inline, virtual]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Fonction qui retourne l'&eacute;tat de l'&eacute;v&egrave;nement. </p>
+<dl class="return"><dt><b>Returns:</b></dt><dd>mState L'&eacute;tat de l'&eacute;v&egrave;nement. </dd></dl>
+
+</div>
+</div>
+<a class="anchor" id="a9bbeea0aa08229714e0a471fde611f68"></a><!-- doxytag: member="baluchon::core::events::IEvent::setEventNotifier" ref="a9bbeea0aa08229714e0a471fde611f68" args="(IEventNotifier *eventNotifier)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void baluchon::core::events::IEvent::setEventNotifier </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="classbaluchon_1_1core_1_1events_1_1_i_event_notifier.html">IEventNotifier</a> *&#160;</td>
+          <td class="paramname"> <em>eventNotifier</em>&#160;)</td>
+          <td><code> [inline, virtual]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Fonction qui retourne l'&eacute;tat de l'&eacute;v&egrave;nement. </p>
+<dl><dt><b>Parameters:</b></dt><dd>
+  <table class="params">
+    <tr><td class="paramname">eventNotifier</td><td>Le notifieur &agrave; associer &agrave; l'&eacute;v&egrave;nement. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="return"><dt><b>Returns:</b></dt><dd>mState L'&eacute;tat de l'&eacute;v&egrave;nement. </dd></dl>
+
+</div>
+</div>
 <hr/>The documentation for this class was generated from the following file:<ul>
 <li>C:/Users/Mathieu/Documents/Visual Studio 2010/Projects/Baluchon/Baluchon/<a class="el" href="_i_event_8h_source.html">IEvent.h</a></li>
 </ul>
@@ -98,7 +166,7 @@ int&#160;</td><td class="memItemRight" valign="bottom"><b>mState</b></td></tr>
      onmouseover="return searchBox.OnSearchSelectShow()"
      onmouseout="return searchBox.OnSearchSelectHide()"
      onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Functions</a></div>
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Functions</a></div>
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">
@@ -107,7 +175,7 @@ int&#160;</td><td class="memItemRight" valign="bottom"><b>mState</b></td></tr>
 </iframe>
 </div>
 
-<hr class="footer"/><address class="footer"><small>Generated on Sat Dec 11 2010 16:12:58 for Baluchon by&#160;
+<hr class="footer"/><address class="footer"><small>Generated on Sun Dec 12 2010 02:06:37 for Baluchon by&#160;
 <a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.7.2 </small></address>
 </body>

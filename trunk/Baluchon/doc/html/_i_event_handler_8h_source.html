@@ -47,21 +47,23 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <h1>C:/Users/Mathieu/Documents/Visual Studio 2010/Projects/Baluchon/Baluchon/IEventHandler.h</h1>  </div>
 </div>
 <div class="contents">
-<div class="fragment"><pre class="fragment"><a name="l00001"></a>00001 <span class="preprocessor">#pragma once</span>
-<a name="l00002"></a>00002 <span class="preprocessor"></span>
-<a name="l00003"></a>00003 <span class="preprocessor">#include &quot;IEvent.h&quot;</span>
-<a name="l00004"></a>00004 
-<a name="l00005"></a>00005 <span class="keyword">namespace </span>baluchon { <span class="keyword">namespace </span>core { <span class="keyword">namespace </span>events {
-<a name="l00006"></a>00006 
-<a name="l00007"></a><a class="code" href="classbaluchon_1_1core_1_1events_1_1_i_event_handler.html">00007</a> <span class="keyword">class </span><a class="code" href="classbaluchon_1_1core_1_1events_1_1_i_event_handler.html">IEventHandler</a>
-<a name="l00008"></a>00008 {
-<a name="l00009"></a>00009 <span class="keyword">public</span>:
-<a name="l00010"></a>00010     <span class="keyword">virtual</span> ~<a class="code" href="classbaluchon_1_1core_1_1events_1_1_i_event_handler.html">IEventHandler</a>(<span class="keywordtype">void</span>) {};
-<a name="l00011"></a>00011 
-<a name="l00012"></a>00012     <span class="keyword">virtual</span> <span class="keywordtype">void</span> handle(<a class="code" href="classbaluchon_1_1core_1_1events_1_1_i_event.html">IEvent</a>* e) = 0;
-<a name="l00013"></a>00013 };
-<a name="l00014"></a>00014 
-<a name="l00015"></a>00015 }}};
+<a href="_i_event_handler_8h.html">Go to the documentation of this file.</a><div class="fragment"><pre class="fragment"><a name="l00001"></a>00001 
+<a name="l00012"></a>00012 <span class="preprocessor">#pragma once</span>
+<a name="l00013"></a>00013 <span class="preprocessor"></span>
+<a name="l00014"></a>00014 <span class="preprocessor">#include &quot;<a class="code" href="_i_event_8h.html" title="Interface offrant les signatures de fonction d&amp;#39;un &amp;eacute;v&amp;egrave;nement.">IEvent.h</a>&quot;</span>
+<a name="l00015"></a>00015 
+<a name="l00016"></a>00016 <span class="keyword">namespace </span>baluchon { <span class="keyword">namespace </span>core { <span class="keyword">namespace </span>events {
+<a name="l00017"></a>00017 
+<a name="l00018"></a><a class="code" href="classbaluchon_1_1core_1_1events_1_1_i_event_handler.html">00018</a> <span class="keyword">class </span><a class="code" href="classbaluchon_1_1core_1_1events_1_1_i_event_handler.html">IEventHandler</a>
+<a name="l00019"></a>00019 {
+<a name="l00020"></a>00020 <span class="keyword">public</span>:
+<a name="l00021"></a>00021 
+<a name="l00026"></a><a class="code" href="classbaluchon_1_1core_1_1events_1_1_i_event_handler.html#af4c47d0d10e5528244bf32b3e53517df">00026</a>     <span class="keyword">virtual</span> <a class="code" href="classbaluchon_1_1core_1_1events_1_1_i_event_handler.html#af4c47d0d10e5528244bf32b3e53517df" title="Destructeur virtuel de la classe.">~IEventHandler</a>(<span class="keywordtype">void</span>) {};
+<a name="l00027"></a>00027 
+<a name="l00033"></a>00033     <span class="keyword">virtual</span> <span class="keywordtype">void</span> <a class="code" href="classbaluchon_1_1core_1_1events_1_1_i_event_handler.html#ae1248e88aa811c97ea5dcda37c1c2e98" title="Fonction de gestion d&amp;#39;un &amp;eacute;v&amp;egrave;nement.">handle</a>(<a class="code" href="classbaluchon_1_1core_1_1events_1_1_i_event.html">IEvent</a>* e) = 0;
+<a name="l00034"></a>00034 };
+<a name="l00035"></a>00035 
+<a name="l00036"></a>00036 }}};
 </pre></div></div>
 </div>
 <!--- window showing the filter options -->
@@ -69,7 +71,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
      onmouseover="return searchBox.OnSearchSelectShow()"
      onmouseout="return searchBox.OnSearchSelectHide()"
      onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Functions</a></div>
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Functions</a></div>
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">
@@ -78,7 +80,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 </iframe>
 </div>
 
-<hr class="footer"/><address class="footer"><small>Generated on Sat Dec 11 2010 16:12:57 for Baluchon by&#160;
+<hr class="footer"/><address class="footer"><small>Generated on Sun Dec 12 2010 02:06:36 for Baluchon by&#160;
 <a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.7.2 </small></address>
 </body>
