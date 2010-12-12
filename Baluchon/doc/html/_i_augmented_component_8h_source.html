@@ -47,59 +47,59 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <h1>C:/Users/Mathieu/Documents/Visual Studio 2010/Projects/Baluchon/Baluchon/IAugmentedComponent.h</h1>  </div>
 </div>
 <div class="contents">
-<div class="fragment"><pre class="fragment"><a name="l00001"></a>00001 <span class="preprocessor">#pragma once</span>
-<a name="l00002"></a>00002 <span class="preprocessor"></span><span class="preprocessor">#include &quot;ieventnotifier.h&quot;</span>
-<a name="l00003"></a>00003 <span class="preprocessor">#include &quot;cv.h&quot;</span>
-<a name="l00004"></a>00004 
-<a name="l00005"></a>00005 <span class="keyword">using namespace </span>baluchon::core::events;
-<a name="l00006"></a>00006 
-<a name="l00007"></a>00007 <span class="keyword">namespace </span>baluchon { <span class="keyword">namespace </span>core { <span class="keyword">namespace </span>services { <span class="keyword">namespace </span>augmentedinterface {
-<a name="l00008"></a>00008 
-<a name="l00009"></a><a class="code" href="classbaluchon_1_1core_1_1services_1_1augmentedinterface_1_1_i_augmented_component.html">00009</a> <span class="keyword">class </span><a class="code" href="classbaluchon_1_1core_1_1services_1_1augmentedinterface_1_1_i_augmented_component.html">IAugmentedComponent</a> :
-<a name="l00010"></a>00010     <span class="keyword">public</span> <a class="code" href="classbaluchon_1_1core_1_1events_1_1_i_event_notifier.html">IEventNotifier</a>
-<a name="l00011"></a>00011 {
-<a name="l00012"></a>00012 <span class="keyword">public</span>:
-<a name="l00013"></a>00013     ~<a class="code" href="classbaluchon_1_1core_1_1services_1_1augmentedinterface_1_1_i_augmented_component.html">IAugmentedComponent</a>(<span class="keywordtype">void</span>) {};
-<a name="l00014"></a>00014 
-<a name="l00015"></a>00015     <span class="comment">// called at every frame. Checks for events and notifies handlers. Empty = default.</span>
-<a name="l00016"></a>00016     <span class="keyword">virtual</span> <span class="keywordtype">void</span> execute() {};
+<a href="_i_augmented_component_8h.html">Go to the documentation of this file.</a><div class="fragment"><pre class="fragment"><a name="l00001"></a>00001 
+<a name="l00012"></a>00012 <span class="preprocessor">#pragma once</span>
+<a name="l00013"></a>00013 <span class="preprocessor"></span><span class="preprocessor">#include &quot;<a class="code" href="_i_event_notifier_8h.html" title="Interface offrant les signatures de fonction d&amp;#39;un notifieur d&amp;#39;&amp;eacute;v&amp;egrave;nements.">ieventnotifier.h</a>&quot;</span>
+<a name="l00014"></a>00014 <span class="preprocessor">#include &quot;cv.h&quot;</span>
+<a name="l00015"></a>00015 
+<a name="l00016"></a>00016 <span class="keyword">using namespace </span>baluchon::core::events;
 <a name="l00017"></a>00017 
-<a name="l00018"></a>00018     <span class="comment">// called at every frame, after execute</span>
-<a name="l00019"></a>00019     <span class="keyword">virtual</span> <span class="keywordtype">void</span> draw(IplImage* img) = 0;
-<a name="l00020"></a>00020 
-<a name="l00021"></a>00021     <span class="keywordtype">void</span> setPosition(CvPoint pos)
-<a name="l00022"></a>00022     {
-<a name="l00023"></a>00023         mPos = pos;
-<a name="l00024"></a>00024     }
-<a name="l00025"></a>00025 
-<a name="l00026"></a>00026     CvPoint getPosition()
-<a name="l00027"></a>00027     {
-<a name="l00028"></a>00028         <span class="keywordflow">return</span> mPos;
-<a name="l00029"></a>00029     }
+<a name="l00018"></a>00018 <span class="keyword">namespace </span>baluchon { <span class="keyword">namespace </span>core { <span class="keyword">namespace </span>services { <span class="keyword">namespace </span>augmentedinterface {
+<a name="l00019"></a>00019 
+<a name="l00020"></a><a class="code" href="classbaluchon_1_1core_1_1services_1_1augmentedinterface_1_1_i_augmented_component.html">00020</a> <span class="keyword">class </span><a class="code" href="classbaluchon_1_1core_1_1services_1_1augmentedinterface_1_1_i_augmented_component.html">IAugmentedComponent</a> :
+<a name="l00021"></a>00021     <span class="keyword">public</span> <a class="code" href="classbaluchon_1_1core_1_1events_1_1_i_event_notifier.html">IEventNotifier</a>
+<a name="l00022"></a>00022 {
+<a name="l00023"></a>00023 <span class="keyword">public</span>:
+<a name="l00024"></a>00024 
+<a name="l00029"></a><a class="code" href="classbaluchon_1_1core_1_1services_1_1augmentedinterface_1_1_i_augmented_component.html#a881f041ab4d374a06808e59c7b78e1ea">00029</a>     <a class="code" href="classbaluchon_1_1core_1_1services_1_1augmentedinterface_1_1_i_augmented_component.html#a881f041ab4d374a06808e59c7b78e1ea" title="Destructeur de la classe.">~IAugmentedComponent</a>(<span class="keywordtype">void</span>) {};
 <a name="l00030"></a>00030 
-<a name="l00031"></a>00031     <span class="keywordtype">void</span> setSize(<span class="keywordtype">int</span> width, <span class="keywordtype">int</span> height)
-<a name="l00032"></a>00032     {
-<a name="l00033"></a>00033         mWidth = width;
-<a name="l00034"></a>00034         mHeight = height;
-<a name="l00035"></a>00035     }
+<a name="l00035"></a><a class="code" href="classbaluchon_1_1core_1_1services_1_1augmentedinterface_1_1_i_augmented_component.html#a661b544aaf2a40e26b483294c5666be9">00035</a>     <span class="keyword">virtual</span> <span class="keywordtype">void</span> <a class="code" href="classbaluchon_1_1core_1_1services_1_1augmentedinterface_1_1_i_augmented_component.html#a661b544aaf2a40e26b483294c5666be9" title="Fonction d&amp;#39;ex&amp;eacute;cution.">execute</a>() {};
 <a name="l00036"></a>00036 
-<a name="l00037"></a>00037     <span class="keywordtype">int</span> getWidth()
-<a name="l00038"></a>00038     {
-<a name="l00039"></a>00039         <span class="keywordflow">return</span> mWidth;
-<a name="l00040"></a>00040     }
-<a name="l00041"></a>00041 
-<a name="l00042"></a>00042     <span class="keywordtype">int</span> getHeight()
-<a name="l00043"></a>00043     {
-<a name="l00044"></a>00044         <span class="keywordflow">return</span> mHeight;
-<a name="l00045"></a>00045     }
-<a name="l00046"></a>00046 
-<a name="l00047"></a>00047 <span class="keyword">protected</span>:
-<a name="l00048"></a>00048     CvPoint mPos;
-<a name="l00049"></a>00049     <span class="keywordtype">int</span> mWidth;
-<a name="l00050"></a>00050     <span class="keywordtype">int</span> mHeight;
-<a name="l00051"></a>00051 };
-<a name="l00052"></a>00052 
-<a name="l00053"></a>00053 }}}};
+<a name="l00042"></a>00042     <span class="keyword">virtual</span> <span class="keywordtype">void</span> draw(IplImage* img) = 0;
+<a name="l00043"></a>00043 
+<a name="l00049"></a><a class="code" href="classbaluchon_1_1core_1_1services_1_1augmentedinterface_1_1_i_augmented_component.html#a0666e43f9606801f82fdc7a277610b92">00049</a>     <span class="keywordtype">void</span> setPosition(CvPoint pos)
+<a name="l00050"></a>00050     {
+<a name="l00051"></a>00051         mPos = pos;
+<a name="l00052"></a>00052     }
+<a name="l00053"></a>00053 
+<a name="l00059"></a><a class="code" href="classbaluchon_1_1core_1_1services_1_1augmentedinterface_1_1_i_augmented_component.html#a28fd956b0ac609235810d158c1762615">00059</a>     CvPoint getPosition()
+<a name="l00060"></a>00060     {
+<a name="l00061"></a>00061         <span class="keywordflow">return</span> mPos;
+<a name="l00062"></a>00062     }
+<a name="l00063"></a>00063 
+<a name="l00070"></a><a class="code" href="classbaluchon_1_1core_1_1services_1_1augmentedinterface_1_1_i_augmented_component.html#a29170fca51322f4760780c299c2bdfb4">00070</a>     <span class="keywordtype">void</span> setSize(<span class="keywordtype">int</span> width, <span class="keywordtype">int</span> height)
+<a name="l00071"></a>00071     {
+<a name="l00072"></a>00072         mWidth = width;
+<a name="l00073"></a>00073         mHeight = height;
+<a name="l00074"></a>00074     }
+<a name="l00075"></a>00075 
+<a name="l00081"></a><a class="code" href="classbaluchon_1_1core_1_1services_1_1augmentedinterface_1_1_i_augmented_component.html#a525128ad922e5dc1507dd72d976ac30a">00081</a>     <span class="keywordtype">int</span> getWidth()
+<a name="l00082"></a>00082     {
+<a name="l00083"></a>00083         <span class="keywordflow">return</span> mWidth;
+<a name="l00084"></a>00084     }
+<a name="l00085"></a>00085 
+<a name="l00091"></a><a class="code" href="classbaluchon_1_1core_1_1services_1_1augmentedinterface_1_1_i_augmented_component.html#a963591103f6d095e0b46b4a6846512bd">00091</a>     <span class="keywordtype">int</span> getHeight()
+<a name="l00092"></a>00092     {
+<a name="l00093"></a>00093         <span class="keywordflow">return</span> mHeight;
+<a name="l00094"></a>00094     }
+<a name="l00095"></a>00095 
+<a name="l00096"></a>00096 <span class="keyword">protected</span>:
+<a name="l00097"></a>00097     CvPoint mPos;
+<a name="l00098"></a>00098     <span class="keywordtype">int</span> mWidth;
+<a name="l00099"></a>00099     <span class="keywordtype">int</span> mHeight;
+<a name="l00100"></a>00100 };
+<a name="l00101"></a>00101 
+<a name="l00102"></a>00102 }}}};
 </pre></div></div>
 </div>
 <!--- window showing the filter options -->
@@ -107,7 +107,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
      onmouseover="return searchBox.OnSearchSelectShow()"
      onmouseout="return searchBox.OnSearchSelectHide()"
      onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Functions</a></div>
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Functions</a></div>
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">
@@ -116,7 +116,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 </iframe>
 </div>
 
-<hr class="footer"/><address class="footer"><small>Generated on Sat Dec 11 2010 16:12:57 for Baluchon by&#160;
+<hr class="footer"/><address class="footer"><small>Generated on Sun Dec 12 2010 02:06:36 for Baluchon by&#160;
 <a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.7.2 </small></address>
 </body>

@@ -47,23 +47,26 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <h1>C:/Users/Mathieu/Documents/Visual Studio 2010/Projects/Baluchon/Baluchon/IAugmentedInterfaceService.h</h1>  </div>
 </div>
 <div class="contents">
-<div class="fragment"><pre class="fragment"><a name="l00001"></a>00001 <span class="preprocessor">#pragma once</span>
-<a name="l00002"></a>00002 <span class="preprocessor"></span><span class="preprocessor">#include &quot;iservice.h&quot;</span>
-<a name="l00003"></a>00003 <span class="preprocessor">#include &quot;iaugmentedcomponent.h&quot;</span>
-<a name="l00004"></a>00004 
-<a name="l00005"></a>00005 <span class="keyword">namespace </span>baluchon { <span class="keyword">namespace </span>core { <span class="keyword">namespace </span>services { <span class="keyword">namespace </span>augmentedinterface {
-<a name="l00006"></a>00006 
-<a name="l00007"></a><a class="code" href="classbaluchon_1_1core_1_1services_1_1augmentedinterface_1_1_i_augmented_interface_service.html">00007</a> <span class="keyword">class </span><a class="code" href="classbaluchon_1_1core_1_1services_1_1augmentedinterface_1_1_i_augmented_interface_service.html">IAugmentedInterfaceService</a> :
-<a name="l00008"></a>00008     <span class="keyword">public</span> <a class="code" href="classbaluchon_1_1core_1_1services_1_1_i_service.html">IService</a>
-<a name="l00009"></a>00009 {
-<a name="l00010"></a>00010 <span class="keyword">public</span>:
-<a name="l00011"></a>00011     <span class="keyword">virtual</span> ~<a class="code" href="classbaluchon_1_1core_1_1services_1_1augmentedinterface_1_1_i_augmented_interface_service.html">IAugmentedInterfaceService</a>(<span class="keywordtype">void</span>) {};
-<a name="l00012"></a>00012 
-<a name="l00013"></a>00013     <span class="keyword">virtual</span> <span class="keywordtype">void</span> addAugmentedComponent(<a class="code" href="classbaluchon_1_1core_1_1services_1_1augmentedinterface_1_1_i_augmented_component.html">IAugmentedComponent</a> *component) = 0;
-<a name="l00014"></a>00014     <span class="keyword">virtual</span> <span class="keywordtype">void</span> removeAugmentedComponent(<a class="code" href="classbaluchon_1_1core_1_1services_1_1augmentedinterface_1_1_i_augmented_component.html">IAugmentedComponent</a> *component) = 0;
-<a name="l00015"></a>00015 };
-<a name="l00016"></a>00016 
-<a name="l00017"></a>00017 }}}};
+<a href="_i_augmented_interface_service_8h.html">Go to the documentation of this file.</a><div class="fragment"><pre class="fragment"><a name="l00001"></a>00001 
+<a name="l00012"></a>00012 <span class="preprocessor">#pragma once</span>
+<a name="l00013"></a>00013 <span class="preprocessor"></span><span class="preprocessor">#include &quot;iservice.h&quot;</span>
+<a name="l00014"></a>00014 <span class="preprocessor">#include &quot;<a class="code" href="_i_augmented_component_8h.html" title="Interface qui offre les signatures pour un composant de l&amp;#39;interface augment&amp;eacute;e..">iaugmentedcomponent.h</a>&quot;</span>
+<a name="l00015"></a>00015 
+<a name="l00016"></a>00016 <span class="keyword">namespace </span>baluchon { <span class="keyword">namespace </span>core { <span class="keyword">namespace </span>services { <span class="keyword">namespace </span>augmentedinterface {
+<a name="l00017"></a>00017 
+<a name="l00018"></a><a class="code" href="classbaluchon_1_1core_1_1services_1_1augmentedinterface_1_1_i_augmented_interface_service.html">00018</a> <span class="keyword">class </span><a class="code" href="classbaluchon_1_1core_1_1services_1_1augmentedinterface_1_1_i_augmented_interface_service.html">IAugmentedInterfaceService</a> :
+<a name="l00019"></a>00019     <span class="keyword">public</span> <a class="code" href="classbaluchon_1_1core_1_1services_1_1_i_service.html">IService</a>
+<a name="l00020"></a>00020 {
+<a name="l00021"></a>00021 <span class="keyword">public</span>:
+<a name="l00022"></a>00022 
+<a name="l00027"></a><a class="code" href="classbaluchon_1_1core_1_1services_1_1augmentedinterface_1_1_i_augmented_interface_service.html#ab0e477a9abe61a3b9ecbcd934f0337c0">00027</a>     <span class="keyword">virtual</span> <a class="code" href="classbaluchon_1_1core_1_1services_1_1augmentedinterface_1_1_i_augmented_interface_service.html#ab0e477a9abe61a3b9ecbcd934f0337c0" title="Destructeur virtuel de la classe.">~IAugmentedInterfaceService</a>(<span class="keywordtype">void</span>) {};
+<a name="l00028"></a>00028 
+<a name="l00034"></a>00034     <span class="keyword">virtual</span> <span class="keywordtype">void</span> <a class="code" href="classbaluchon_1_1core_1_1services_1_1augmentedinterface_1_1_i_augmented_interface_service.html#aa6160abc678911cc1b4cc13727b28c6a" title="Fonction qui ajoute un composant &amp;agrave; l&amp;#39;interface.">addAugmentedComponent</a>(<a class="code" href="classbaluchon_1_1core_1_1services_1_1augmentedinterface_1_1_i_augmented_component.html">IAugmentedComponent</a> *component) = 0;
+<a name="l00035"></a>00035 
+<a name="l00041"></a>00041     <span class="keyword">virtual</span> <span class="keywordtype">void</span> <a class="code" href="classbaluchon_1_1core_1_1services_1_1augmentedinterface_1_1_i_augmented_interface_service.html#ad8fb445812ea6aa88d80a7b5bbfd13b2" title="Fonction qui retire un composant &amp;agrave; l&amp;#39;interface.">removeAugmentedComponent</a>(<a class="code" href="classbaluchon_1_1core_1_1services_1_1augmentedinterface_1_1_i_augmented_component.html">IAugmentedComponent</a> *component) = 0;
+<a name="l00042"></a>00042 };
+<a name="l00043"></a>00043 
+<a name="l00044"></a>00044 }}}};
 </pre></div></div>
 </div>
 <!--- window showing the filter options -->
@@ -71,7 +74,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
      onmouseover="return searchBox.OnSearchSelectShow()"
      onmouseout="return searchBox.OnSearchSelectHide()"
      onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Functions</a></div>
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Functions</a></div>
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">
@@ -80,7 +83,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 </iframe>
 </div>
 
-<hr class="footer"/><address class="footer"><small>Generated on Sat Dec 11 2010 16:12:57 for Baluchon by&#160;
+<hr class="footer"/><address class="footer"><small>Generated on Sun Dec 12 2010 02:06:36 for Baluchon by&#160;
 <a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.7.2 </small></address>
 </body>

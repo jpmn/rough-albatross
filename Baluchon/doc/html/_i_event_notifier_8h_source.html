@@ -47,38 +47,40 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <h1>C:/Users/Mathieu/Documents/Visual Studio 2010/Projects/Baluchon/Baluchon/IEventNotifier.h</h1>  </div>
 </div>
 <div class="contents">
-<div class="fragment"><pre class="fragment"><a name="l00001"></a>00001 <span class="preprocessor">#pragma once</span>
-<a name="l00002"></a>00002 <span class="preprocessor"></span>
-<a name="l00003"></a>00003 <span class="preprocessor">#include &quot;IEventHandler.h&quot;</span>
-<a name="l00004"></a>00004 <span class="preprocessor">#include &lt;vector&gt;</span>
-<a name="l00005"></a>00005 
-<a name="l00006"></a>00006 <span class="keyword">using namespace </span>std;
-<a name="l00007"></a>00007 
-<a name="l00008"></a>00008 <span class="keyword">namespace </span>baluchon { <span class="keyword">namespace </span>core { <span class="keyword">namespace </span>events {
-<a name="l00009"></a>00009 
-<a name="l00010"></a><a class="code" href="classbaluchon_1_1core_1_1events_1_1_i_event_notifier.html">00010</a> <span class="keyword">class </span><a class="code" href="classbaluchon_1_1core_1_1events_1_1_i_event_notifier.html">IEventNotifier</a>
-<a name="l00011"></a>00011 {
-<a name="l00012"></a>00012 <span class="keyword">public</span>:
-<a name="l00013"></a>00013     ~<a class="code" href="classbaluchon_1_1core_1_1events_1_1_i_event_notifier.html">IEventNotifier</a>(<span class="keywordtype">void</span>) {};
-<a name="l00014"></a>00014 
-<a name="l00015"></a>00015     <span class="keyword">virtual</span> <span class="keywordtype">void</span> addEventHandler(<a class="code" href="classbaluchon_1_1core_1_1events_1_1_i_event_handler.html">IEventHandler</a>* eventHandler)
-<a name="l00016"></a>00016     {
-<a name="l00017"></a>00017         mEventHandlers.push_back(eventHandler);
-<a name="l00018"></a>00018     }
-<a name="l00019"></a>00019 
-<a name="l00020"></a>00020     <span class="keyword">virtual</span> <span class="keywordtype">void</span> notifyEventHandlers(<a class="code" href="classbaluchon_1_1core_1_1events_1_1_i_event.html">IEvent</a>* e)
-<a name="l00021"></a>00021     {
-<a name="l00022"></a>00022         <span class="keywordflow">for</span>(<span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> i = 0; i &lt; mEventHandlers.size(); i++)
-<a name="l00023"></a>00023         {
-<a name="l00024"></a>00024             mEventHandlers[i]-&gt;handle(e);
-<a name="l00025"></a>00025         }
-<a name="l00026"></a>00026     }
-<a name="l00027"></a>00027 
-<a name="l00028"></a>00028 <span class="keyword">private</span>:
-<a name="l00029"></a>00029     vector&lt;IEventHandler*&gt; mEventHandlers;
-<a name="l00030"></a>00030 };
-<a name="l00031"></a>00031 
-<a name="l00032"></a>00032 }}};
+<a href="_i_event_notifier_8h.html">Go to the documentation of this file.</a><div class="fragment"><pre class="fragment"><a name="l00001"></a>00001 
+<a name="l00012"></a>00012 <span class="preprocessor">#pragma once</span>
+<a name="l00013"></a>00013 <span class="preprocessor"></span>
+<a name="l00014"></a>00014 <span class="preprocessor">#include &quot;<a class="code" href="_i_event_handler_8h.html" title="Interface offrant les signatures de fonction d&amp;#39;un gestionnaire d&amp;#39;&amp;eacute;v&amp;egrave;nements.">IEventHandler.h</a>&quot;</span>
+<a name="l00015"></a>00015 <span class="preprocessor">#include &lt;vector&gt;</span>
+<a name="l00016"></a>00016 
+<a name="l00017"></a>00017 <span class="keyword">using namespace </span>std;
+<a name="l00018"></a>00018 
+<a name="l00019"></a>00019 <span class="keyword">namespace </span>baluchon { <span class="keyword">namespace </span>core { <span class="keyword">namespace </span>events {
+<a name="l00020"></a>00020 
+<a name="l00021"></a><a class="code" href="classbaluchon_1_1core_1_1events_1_1_i_event_notifier.html">00021</a> <span class="keyword">class </span><a class="code" href="classbaluchon_1_1core_1_1events_1_1_i_event_notifier.html">IEventNotifier</a>
+<a name="l00022"></a>00022 {
+<a name="l00023"></a>00023 <span class="keyword">public</span>:
+<a name="l00024"></a>00024 
+<a name="l00029"></a><a class="code" href="classbaluchon_1_1core_1_1events_1_1_i_event_notifier.html#a0ab0cc557d5d008811cde2c5df8d2bcb">00029</a>     <a class="code" href="classbaluchon_1_1core_1_1events_1_1_i_event_notifier.html#a0ab0cc557d5d008811cde2c5df8d2bcb" title="Destructeur virtuel de la classe.">~IEventNotifier</a>(<span class="keywordtype">void</span>) {};
+<a name="l00030"></a>00030 
+<a name="l00036"></a><a class="code" href="classbaluchon_1_1core_1_1events_1_1_i_event_notifier.html#ab6660fa4aec14d389a136257473d303d">00036</a>     <span class="keyword">virtual</span> <span class="keywordtype">void</span> addEventHandler(<a class="code" href="classbaluchon_1_1core_1_1events_1_1_i_event_handler.html">IEventHandler</a>* eventHandler)
+<a name="l00037"></a>00037     {
+<a name="l00038"></a>00038         mEventHandlers.push_back(eventHandler);
+<a name="l00039"></a>00039     }
+<a name="l00040"></a>00040 
+<a name="l00046"></a><a class="code" href="classbaluchon_1_1core_1_1events_1_1_i_event_notifier.html#ae6dc45165bb642f3ac683009a14650eb">00046</a>     <span class="keyword">virtual</span> <span class="keywordtype">void</span> notifyEventHandlers(<a class="code" href="classbaluchon_1_1core_1_1events_1_1_i_event.html">IEvent</a>* e)
+<a name="l00047"></a>00047     {
+<a name="l00048"></a>00048         <span class="keywordflow">for</span>(<span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> i = 0; i &lt; mEventHandlers.size(); i++)
+<a name="l00049"></a>00049         {
+<a name="l00050"></a>00050             mEventHandlers[i]-&gt;handle(e);
+<a name="l00051"></a>00051         }
+<a name="l00052"></a>00052     }
+<a name="l00053"></a>00053 
+<a name="l00054"></a>00054 <span class="keyword">private</span>:
+<a name="l00055"></a>00055     vector&lt;IEventHandler*&gt; mEventHandlers;
+<a name="l00056"></a>00056 };
+<a name="l00057"></a>00057 
+<a name="l00058"></a>00058 }}};
 </pre></div></div>
 </div>
 <!--- window showing the filter options -->
@@ -86,7 +88,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
      onmouseover="return searchBox.OnSearchSelectShow()"
      onmouseout="return searchBox.OnSearchSelectHide()"
      onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Functions</a></div>
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Functions</a></div>
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">
@@ -95,7 +97,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 </iframe>
 </div>
 
-<hr class="footer"/><address class="footer"><small>Generated on Sat Dec 11 2010 16:12:57 for Baluchon by&#160;
+<hr class="footer"/><address class="footer"><small>Generated on Sun Dec 12 2010 02:06:36 for Baluchon by&#160;
 <a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.7.2 </small></address>
 </body>
