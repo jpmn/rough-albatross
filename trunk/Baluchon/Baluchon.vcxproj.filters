@@ -364,5 +364,8 @@
     <None Include="distortion.xml">
       <Filter>Fichiers de ressources</Filter>
     </None>
+    <None Include="arrow_pattern_mod.jpg">
+      <Filter>Fichiers de ressources</Filter>
+    </None>
   </ItemGroup>
 </Project>
