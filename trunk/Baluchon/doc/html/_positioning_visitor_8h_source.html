@@ -47,38 +47,44 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <h1>C:/Users/Mathieu/Documents/Visual Studio 2010/Projects/Baluchon/Baluchon/PositioningVisitor.h</h1>  </div>
 </div>
 <div class="contents">
-<div class="fragment"><pre class="fragment"><a name="l00001"></a>00001 <span class="preprocessor">#pragma once</span>
-<a name="l00002"></a>00002 <span class="preprocessor"></span><span class="preprocessor">#include &quot;ivisitor.h&quot;</span>
-<a name="l00003"></a>00003 <span class="preprocessor">#include &quot;cv.h&quot;</span>
-<a name="l00004"></a>00004 
-<a name="l00005"></a>00005 <span class="keyword">namespace </span>baluchon { <span class="keyword">namespace </span>core { <span class="keyword">namespace </span>services { <span class="keyword">namespace </span>positioning { 
-<a name="l00006"></a>00006 
-<a name="l00007"></a>00007 <span class="keyword">class </span>FrameCube;
-<a name="l00008"></a>00008 <span class="keyword">class </span>Transform;
-<a name="l00009"></a>00009 
-<a name="l00010"></a><a class="code" href="classbaluchon_1_1core_1_1services_1_1positioning_1_1_positioning_visitor.html">00010</a> <span class="keyword">class </span><a class="code" href="classbaluchon_1_1core_1_1services_1_1positioning_1_1_positioning_visitor.html">PositioningVisitor</a> :
-<a name="l00011"></a>00011     <span class="keyword">public</span> <a class="code" href="classbaluchon_1_1core_1_1services_1_1positioning_1_1_i_visitor.html">IVisitor</a>
-<a name="l00012"></a>00012 {
-<a name="l00013"></a>00013 <span class="keyword">public</span>:
-<a name="l00014"></a>00014     <a class="code" href="classbaluchon_1_1core_1_1services_1_1positioning_1_1_positioning_visitor.html">PositioningVisitor</a>(CvMat* intrinsicMat, CvMat* distortionMat);
-<a name="l00015"></a>00015     ~<a class="code" href="classbaluchon_1_1core_1_1services_1_1positioning_1_1_positioning_visitor.html">PositioningVisitor</a>(<span class="keywordtype">void</span>);
-<a name="l00016"></a>00016 
-<a name="l00017"></a>00017     <span class="keywordtype">void</span> visit(<a class="code" href="classbaluchon_1_1core_1_1services_1_1positioning_1_1_frame_cube.html">FrameCube</a> *fc);
-<a name="l00018"></a>00018     <span class="keywordtype">void</span> visit(<a class="code" href="classbaluchon_1_1core_1_1services_1_1positioning_1_1_transform.html">Transform</a> *t);
-<a name="l00019"></a>00019 
-<a name="l00020"></a>00020     <span class="keywordtype">void</span> setImage(IplImage* img);
-<a name="l00021"></a>00021     <span class="keywordtype">void</span> setRotationMat(CvMat* rotation);
-<a name="l00022"></a>00022     <span class="keywordtype">void</span> setTranslationMat(CvMat* translation);
-<a name="l00023"></a>00023 
-<a name="l00024"></a>00024 <span class="keyword">protected</span>:
-<a name="l00025"></a>00025     IplImage* mSrcImg;
-<a name="l00026"></a>00026     CvMat* mIntrinsicMat;
-<a name="l00027"></a>00027     CvMat* mDistortionMat;
-<a name="l00028"></a>00028     CvMat* mRotationMat;
-<a name="l00029"></a>00029     CvMat* mTranslationMat;
-<a name="l00030"></a>00030 };
-<a name="l00031"></a>00031 
-<a name="l00032"></a>00032 }}}};
+<a href="_positioning_visitor_8h.html">Go to the documentation of this file.</a><div class="fragment"><pre class="fragment"><a name="l00001"></a>00001 
+<a name="l00012"></a>00012 <span class="preprocessor">#pragma once</span>
+<a name="l00013"></a>00013 <span class="preprocessor"></span><span class="preprocessor">#include &quot;<a class="code" href="_i_visitor_8h.html" title="Interface qui offre les signatures de fonctions pour un visiteur.">ivisitor.h</a>&quot;</span>
+<a name="l00014"></a>00014 <span class="preprocessor">#include &quot;cv.h&quot;</span>
+<a name="l00015"></a>00015 
+<a name="l00016"></a>00016 <span class="keyword">namespace </span>baluchon { <span class="keyword">namespace </span>core { <span class="keyword">namespace </span>services { <span class="keyword">namespace </span>positioning { 
+<a name="l00017"></a>00017 
+<a name="l00018"></a>00018 <span class="keyword">class </span>FrameCube;
+<a name="l00019"></a>00019 <span class="keyword">class </span>Transform;
+<a name="l00020"></a>00020 
+<a name="l00021"></a><a class="code" href="classbaluchon_1_1core_1_1services_1_1positioning_1_1_positioning_visitor.html">00021</a> <span class="keyword">class </span><a class="code" href="classbaluchon_1_1core_1_1services_1_1positioning_1_1_positioning_visitor.html">PositioningVisitor</a> :
+<a name="l00022"></a>00022     <span class="keyword">public</span> <a class="code" href="classbaluchon_1_1core_1_1services_1_1positioning_1_1_i_visitor.html">IVisitor</a>
+<a name="l00023"></a>00023 {
+<a name="l00024"></a>00024 <span class="keyword">public</span>:
+<a name="l00025"></a>00025 
+<a name="l00032"></a>00032     <a class="code" href="classbaluchon_1_1core_1_1services_1_1positioning_1_1_positioning_visitor.html#a923cad498b298b74f66289281d61cd16" title="Constructeur de la classe.">PositioningVisitor</a>(CvMat* intrinsicMat, CvMat* distortionMat);
+<a name="l00033"></a>00033 
+<a name="l00038"></a>00038     <a class="code" href="classbaluchon_1_1core_1_1services_1_1positioning_1_1_positioning_visitor.html#acc08179ce6b8647ff89d9c3afdb74585" title="Destructeur de la classe.">~PositioningVisitor</a>(<span class="keywordtype">void</span>);
+<a name="l00039"></a>00039 
+<a name="l00045"></a>00045     <span class="keywordtype">void</span> <a class="code" href="classbaluchon_1_1core_1_1services_1_1positioning_1_1_positioning_visitor.html#a08f125269fb4f32b8a2b775d2f841863" title="Fonction de visite d&amp;#39;une transformation.">visit</a>(<a class="code" href="classbaluchon_1_1core_1_1services_1_1positioning_1_1_transform.html">Transform</a> *t);
+<a name="l00046"></a>00046 
+<a name="l00052"></a>00052     <span class="keywordtype">void</span> <a class="code" href="classbaluchon_1_1core_1_1services_1_1positioning_1_1_positioning_visitor.html#a08f125269fb4f32b8a2b775d2f841863" title="Fonction de visite d&amp;#39;une transformation.">visit</a>(<a class="code" href="classbaluchon_1_1core_1_1services_1_1positioning_1_1_frame_cube.html">FrameCube</a> *fc);
+<a name="l00053"></a>00053 
+<a name="l00059"></a>00059     <span class="keywordtype">void</span> <a class="code" href="classbaluchon_1_1core_1_1services_1_1positioning_1_1_positioning_visitor.html#adead74739c1f42dec68e030a0ee80a8b" title="Fonction qui initialise l&amp;#39;image actuelle.">setImage</a>(IplImage* img);
+<a name="l00060"></a>00060 
+<a name="l00066"></a>00066     <span class="keywordtype">void</span> <a class="code" href="classbaluchon_1_1core_1_1services_1_1positioning_1_1_positioning_visitor.html#aaa51c7dc154858d48da642477ffa11a0" title="Fonction qui initialise la matrice de rotation actuelle.">setRotationMat</a>(CvMat* rotation);
+<a name="l00067"></a>00067 
+<a name="l00073"></a>00073     <span class="keywordtype">void</span> <a class="code" href="classbaluchon_1_1core_1_1services_1_1positioning_1_1_positioning_visitor.html#ae750e92beb067092dd05ebe2a9880cdf" title="Fonction qui initialise la matrice de translation actuelle.">setTranslationMat</a>(CvMat* translation);
+<a name="l00074"></a>00074 
+<a name="l00075"></a>00075 <span class="keyword">protected</span>:
+<a name="l00076"></a>00076     IplImage* mSrcImg;
+<a name="l00077"></a>00077     CvMat* mIntrinsicMat;
+<a name="l00078"></a>00078     CvMat* mDistortionMat;
+<a name="l00079"></a>00079     CvMat* mRotationMat;
+<a name="l00080"></a>00080     CvMat* mTranslationMat;
+<a name="l00081"></a>00081 };
+<a name="l00082"></a>00082 
+<a name="l00083"></a>00083 }}}};
 </pre></div></div>
 </div>
 <!--- window showing the filter options -->
@@ -95,7 +101,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 </iframe>
 </div>
 
-<hr class="footer"/><address class="footer"><small>Generated on Sun Dec 12 2010 02:06:36 for Baluchon by&#160;
+<hr class="footer"/><address class="footer"><small>Generated on Mon Dec 13 2010 03:56:44 for Baluchon by&#160;
 <a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.7.2 </small></address>
 </body>
