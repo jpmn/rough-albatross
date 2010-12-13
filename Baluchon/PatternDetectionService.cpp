@@ -22,15 +22,14 @@ void PatternDetectionService::addPattern(IPattern* pattern)
     mPatterns.push_back(new DetectedPattern(pattern));
 }
 
-bool PatternDetectionService::addPattern(char patternName[])
+IPattern* PatternDetectionService::addPattern(char patternName[])
 {
     IDetectedPattern *pattern = new DetectedPattern(new Pattern(patternName));
     if(pattern != 0)
     {
         mPatterns.push_back(pattern);
-        return true;
     }
-    return false;
+    return pattern;
 }
 
 vector<IDetectedPattern*> PatternDetectionService::getPatterns()
@@ -70,7 +69,7 @@ void PatternDetectionService::execute(void) {
 
     mFrame = cvCreateImage(cvGetSize(mInitial), mInitial->depth, 1);
     cvCvtColor(mInitial, mFrame, CV_BGR2GRAY);
-    //cvAdaptiveThreshold(mFrame, mFrame, 255, CV_THRESH_BINARY, CV_ADAPTIVE_THRESH_MEAN_C, 71, 15);
+
     cvThreshold(mFrame, mFrame, 100, 255, CV_THRESH_BINARY);
 
     if(mStorage == 0) {
@@ -88,7 +87,7 @@ void PatternDetectionService::execute(void) {
 
     while(mContours != 0)
     {
-        //Approximates polygonal curves with desired precision
+        //approximates polygonal curves with desired precision
         mResult = cvApproxPoly(mContours, sizeof(CvContour), mStorage, CV_POLY_APPROX_DP, cvContourPerimeter(mContours)*0.02, 0);
 
         //if contour is convex, and area is big enough, and number of vertices is exactly 4, and has at least one child connected component, its GOOD
@@ -104,7 +103,7 @@ void PatternDetectionService::execute(void) {
                     mImagePoints[3-j].y = (float) ((CvPoint*) cvGetSeqElem(mResult, j))->y;
                 }
 
-                //Child connected component
+                //child connected component
                 mChildContours = mContours->v_next;
                 mResult = cvApproxPoly(mChildContours, sizeof(CvContour), mStorage, CV_POLY_APPROX_DP, cvContourPerimeter(mChildContours)*0.02, 0);
                          
@@ -153,7 +152,7 @@ void PatternDetectionService::execute(void) {
                                 valid = true;
                                 while(l < mResult->total && valid)
                                 {
-                                    // 30 pixels threshold value. TODO: SETTABLE
+                                    // 30 pixels threshold value.
                                     if(sqrtf(pow(mDstPts->data.fl[((k+l+mResult->total) % mResult->total)*2] - mPatterns[i]->getSourcePointAt(l, j).x, 2) + pow(mDstPts->data.fl[((k+l+mResult->total) % mResult->total)*2+1] - mPatterns[i]->getSourcePointAt(l, j).y, 2)) > 30)
                                     {
                                         valid = false;

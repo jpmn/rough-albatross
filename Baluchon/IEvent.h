@@ -39,7 +39,6 @@ public:
      * \fn virtual void setEventNotifier(IEventNotifier* eventNotifier)
      * \param eventNotifier Le notifieur &agrave; associer &agrave; l'&eacute;v&egrave;nement.
      * \brief Fonction qui retourne l'&eacute;tat de l'&eacute;v&egrave;nement.
-     * \return mState L'&eacute;tat de l'&eacute;v&egrave;nement.
      */
     virtual void setEventNotifier(IEventNotifier* eventNotifier)
     {
