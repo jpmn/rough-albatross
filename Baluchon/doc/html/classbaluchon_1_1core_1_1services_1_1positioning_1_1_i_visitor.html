@@ -76,11 +76,69 @@ Inheritance diagram for baluchon::core::services::positioning::IVisitor:<!-- end
 <table class="memberdecls">
 <tr><td colspan="2"><h2><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a6b2762b218e143386bd1e69fd381eaf2"></a><!-- doxytag: member="baluchon::core::services::positioning::IVisitor::visit" ref="a6b2762b218e143386bd1e69fd381eaf2" args="(Transform *t)=0" -->
-virtual void&#160;</td><td class="memItemRight" valign="bottom"><b>visit</b> (<a class="el" href="classbaluchon_1_1core_1_1services_1_1positioning_1_1_transform.html">Transform</a> *t)=0</td></tr>
-<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a1126885c296fba069fdef5a7f930794d"></a><!-- doxytag: member="baluchon::core::services::positioning::IVisitor::visit" ref="a1126885c296fba069fdef5a7f930794d" args="(FrameCube *fc)=0" -->
-virtual void&#160;</td><td class="memItemRight" valign="bottom"><b>visit</b> (<a class="el" href="classbaluchon_1_1core_1_1services_1_1positioning_1_1_frame_cube.html">FrameCube</a> *fc)=0</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a6bfc2f1c258526cf3edf03c66f04d745"></a><!-- doxytag: member="baluchon::core::services::positioning::IVisitor::~IVisitor" ref="a6bfc2f1c258526cf3edf03c66f04d745" args="(void)" -->
+virtual&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classbaluchon_1_1core_1_1services_1_1positioning_1_1_i_visitor.html#a6bfc2f1c258526cf3edf03c66f04d745">~IVisitor</a> (void)</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Destructeur virtuel de la classe. <br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classbaluchon_1_1core_1_1services_1_1positioning_1_1_i_visitor.html#a940430d9854bcbac258fe5da1007ca26">visit</a> (<a class="el" href="classbaluchon_1_1core_1_1services_1_1positioning_1_1_transform.html">Transform</a> *t)=0</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Fonction de visite d'une transformation.  <a href="#a940430d9854bcbac258fe5da1007ca26"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classbaluchon_1_1core_1_1services_1_1positioning_1_1_i_visitor.html#a907cb2c6d07792f0d4f8f387936e4b2b">visit</a> (<a class="el" href="classbaluchon_1_1core_1_1services_1_1positioning_1_1_frame_cube.html">FrameCube</a> *fc)=0</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Fonction de visite d'un squelette de cube.  <a href="#a907cb2c6d07792f0d4f8f387936e4b2b"></a><br/></td></tr>
 </table>
+<hr/><h2>Member Function Documentation</h2>
+<a class="anchor" id="a940430d9854bcbac258fe5da1007ca26"></a><!-- doxytag: member="baluchon::core::services::positioning::IVisitor::visit" ref="a940430d9854bcbac258fe5da1007ca26" args="(Transform *t)=0" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void baluchon::core::services::positioning::IVisitor::visit </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="classbaluchon_1_1core_1_1services_1_1positioning_1_1_transform.html">Transform</a> *&#160;</td>
+          <td class="paramname"> <em>t</em>&#160;)</td>
+          <td><code> [pure virtual]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Fonction de visite d'une transformation. </p>
+<dl><dt><b>Parameters:</b></dt><dd>
+  <table class="params">
+    <tr><td class="paramname">t</td><td>La transformation &agrave; visiter. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p>Implemented in <a class="el" href="classbaluchon_1_1core_1_1services_1_1positioning_1_1_positioning_visitor.html#a08f125269fb4f32b8a2b775d2f841863">baluchon::core::services::positioning::PositioningVisitor</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a907cb2c6d07792f0d4f8f387936e4b2b"></a><!-- doxytag: member="baluchon::core::services::positioning::IVisitor::visit" ref="a907cb2c6d07792f0d4f8f387936e4b2b" args="(FrameCube *fc)=0" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void baluchon::core::services::positioning::IVisitor::visit </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="classbaluchon_1_1core_1_1services_1_1positioning_1_1_frame_cube.html">FrameCube</a> *&#160;</td>
+          <td class="paramname"> <em>fc</em>&#160;)</td>
+          <td><code> [pure virtual]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Fonction de visite d'un squelette de cube. </p>
+<dl><dt><b>Parameters:</b></dt><dd>
+  <table class="params">
+    <tr><td class="paramname">t</td><td>Le cube &agrave; visiter. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p>Implemented in <a class="el" href="classbaluchon_1_1core_1_1services_1_1positioning_1_1_positioning_visitor.html#a91fc616919ffbc4c6fe2e05fa9833d8e">baluchon::core::services::positioning::PositioningVisitor</a>.</p>
+
+</div>
+</div>
 <hr/>The documentation for this class was generated from the following file:<ul>
 <li>C:/Users/Mathieu/Documents/Visual Studio 2010/Projects/Baluchon/Baluchon/<a class="el" href="_i_visitor_8h_source.html">IVisitor.h</a></li>
 </ul>
@@ -99,7 +157,7 @@ virtual void&#160;</td><td class="memItemRight" valign="bottom"><b>visit</b> (<a
 </iframe>
 </div>
 
-<hr class="footer"/><address class="footer"><small>Generated on Sun Dec 12 2010 02:06:40 for Baluchon by&#160;
+<hr class="footer"/><address class="footer"><small>Generated on Mon Dec 13 2010 03:56:47 for Baluchon by&#160;
 <a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.7.2 </small></address>
 </body>

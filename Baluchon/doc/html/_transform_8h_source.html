@@ -47,36 +47,45 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <h1>C:/Users/Mathieu/Documents/Visual Studio 2010/Projects/Baluchon/Baluchon/Transform.h</h1>  </div>
 </div>
 <div class="contents">
-<div class="fragment"><pre class="fragment"><a name="l00001"></a>00001 <span class="preprocessor">#pragma once</span>
-<a name="l00002"></a>00002 <span class="preprocessor"></span><span class="preprocessor">#include &quot;ivisitor.h&quot;</span>
-<a name="l00003"></a>00003 <span class="preprocessor">#include &quot;igraphic.h&quot;</span>
-<a name="l00004"></a>00004 
-<a name="l00005"></a>00005 <span class="keyword">namespace </span>baluchon { <span class="keyword">namespace </span>core { <span class="keyword">namespace </span>services { <span class="keyword">namespace </span>positioning {
-<a name="l00006"></a>00006 
-<a name="l00007"></a><a class="code" href="classbaluchon_1_1core_1_1services_1_1positioning_1_1_transform.html">00007</a> <span class="keyword">class </span><a class="code" href="classbaluchon_1_1core_1_1services_1_1positioning_1_1_transform.html">Transform</a> :
-<a name="l00008"></a>00008     <span class="keyword">public</span> <a class="code" href="classbaluchon_1_1core_1_1services_1_1positioning_1_1_i_graphic.html">IGraphic</a>
-<a name="l00009"></a>00009 {
-<a name="l00010"></a>00010 <span class="keyword">public</span>:
-<a name="l00011"></a>00011     <a class="code" href="classbaluchon_1_1core_1_1services_1_1positioning_1_1_transform.html">Transform</a>(<span class="keywordtype">void</span>);
-<a name="l00012"></a>00012 
-<a name="l00013"></a>00013     ~<a class="code" href="classbaluchon_1_1core_1_1services_1_1positioning_1_1_transform.html">Transform</a>(<span class="keywordtype">void</span>);
-<a name="l00014"></a>00014 
-<a name="l00015"></a>00015     <span class="keyword">virtual</span> <span class="keywordtype">void</span> add(<a class="code" href="classbaluchon_1_1core_1_1services_1_1positioning_1_1_i_graphic.html">IGraphic</a>* child);
-<a name="l00016"></a>00016     <span class="keyword">virtual</span> <span class="keywordtype">void</span> <span class="keyword">remove</span>(<a class="code" href="classbaluchon_1_1core_1_1services_1_1positioning_1_1_i_graphic.html">IGraphic</a>* child);
-<a name="l00017"></a>00017     <span class="keyword">virtual</span> vector&lt;IGraphic*&gt; getChildren();
-<a name="l00018"></a>00018     <span class="keyword">virtual</span> <span class="keywordtype">void</span> apply(CvMat* mul);
-<a name="l00019"></a>00019     <span class="keyword">virtual</span> CvMat* getMatrix();
-<a name="l00020"></a>00020     <span class="keyword">virtual</span> <span class="keywordtype">void</span> setMatrix(CvMat* matrix);
-<a name="l00021"></a>00021     <span class="keyword">virtual</span> <span class="keywordtype">void</span> accept(<a class="code" href="classbaluchon_1_1core_1_1services_1_1positioning_1_1_i_visitor.html">IVisitor</a>* v);
-<a name="l00022"></a>00022     <span class="keyword">virtual</span> <span class="keywordtype">void</span> reset();
-<a name="l00023"></a>00023 
-<a name="l00024"></a>00024 <span class="keyword">protected</span>:
-<a name="l00025"></a>00025     vector&lt;IGraphic*&gt; mChildren;
-<a name="l00026"></a>00026     CvMat* mMat;
-<a name="l00027"></a>00027     CvMat* mTransformedMat;
-<a name="l00028"></a>00028 };
-<a name="l00029"></a>00029 
-<a name="l00030"></a>00030 }}}};
+<a href="_transform_8h.html">Go to the documentation of this file.</a><div class="fragment"><pre class="fragment"><a name="l00001"></a>00001 
+<a name="l00012"></a>00012 <span class="preprocessor">#pragma once</span>
+<a name="l00013"></a>00013 <span class="preprocessor"></span><span class="preprocessor">#include &quot;<a class="code" href="_i_visitor_8h.html" title="Interface qui offre les signatures de fonctions pour un visiteur.">ivisitor.h</a>&quot;</span>
+<a name="l00014"></a>00014 <span class="preprocessor">#include &quot;<a class="code" href="_i_graphic_8h.html" title="Interface qui offre les signatures de fonctions pour un objet graphique.">igraphic.h</a>&quot;</span>
+<a name="l00015"></a>00015 
+<a name="l00016"></a>00016 <span class="keyword">namespace </span>baluchon { <span class="keyword">namespace </span>core { <span class="keyword">namespace </span>services { <span class="keyword">namespace </span>positioning {
+<a name="l00017"></a>00017 
+<a name="l00018"></a><a class="code" href="classbaluchon_1_1core_1_1services_1_1positioning_1_1_transform.html">00018</a> <span class="keyword">class </span><a class="code" href="classbaluchon_1_1core_1_1services_1_1positioning_1_1_transform.html">Transform</a> :
+<a name="l00019"></a>00019     <span class="keyword">public</span> <a class="code" href="classbaluchon_1_1core_1_1services_1_1positioning_1_1_i_graphic.html">IGraphic</a>
+<a name="l00020"></a>00020 {
+<a name="l00021"></a>00021 <span class="keyword">public</span>:
+<a name="l00022"></a>00022 
+<a name="l00027"></a>00027     <a class="code" href="classbaluchon_1_1core_1_1services_1_1positioning_1_1_transform.html#a86c429ca939632aeb2f92b2b18af9e06" title="Constructeur de la classe.">Transform</a>(<span class="keywordtype">void</span>);
+<a name="l00028"></a>00028 
+<a name="l00033"></a>00033     <a class="code" href="classbaluchon_1_1core_1_1services_1_1positioning_1_1_transform.html#a8670f44f848a9b0ecc0b2bb88a210662" title="Destructeur de la classe.">~Transform</a>(<span class="keywordtype">void</span>);
+<a name="l00034"></a>00034 
+<a name="l00040"></a>00040     <span class="keyword">virtual</span> <span class="keywordtype">void</span> <a class="code" href="classbaluchon_1_1core_1_1services_1_1positioning_1_1_transform.html#af791ac4fdb4572bf4008b812b5d662cf" title="Fonction d&amp;#39;ajout d&amp;#39;un graphique enfant.">add</a>(<a class="code" href="classbaluchon_1_1core_1_1services_1_1positioning_1_1_i_graphic.html">IGraphic</a>* child);
+<a name="l00041"></a>00041 
+<a name="l00047"></a>00047     <span class="keyword">virtual</span> <span class="keywordtype">void</span> <span class="keyword">remove</span>(<a class="code" href="classbaluchon_1_1core_1_1services_1_1positioning_1_1_i_graphic.html">IGraphic</a>* child);
+<a name="l00048"></a>00048 
+<a name="l00054"></a>00054     <span class="keyword">virtual</span> vector&lt;IGraphic*&gt; <a class="code" href="classbaluchon_1_1core_1_1services_1_1positioning_1_1_transform.html#ac62724749f07ca462c8865f1de022859" title="Retourne les enfants de la transformation.">getChildren</a>();
+<a name="l00055"></a>00055 
+<a name="l00061"></a>00061     <span class="keyword">virtual</span> <span class="keywordtype">void</span> <a class="code" href="classbaluchon_1_1core_1_1services_1_1positioning_1_1_transform.html#abc0558b31da888564b35de0765976d45" title="Fonction qui applique une matrice &amp;agrave; la transformation.">apply</a>(CvMat* mul);
+<a name="l00062"></a>00062 
+<a name="l00068"></a>00068     <span class="keyword">virtual</span> CvMat* <a class="code" href="classbaluchon_1_1core_1_1services_1_1positioning_1_1_transform.html#af586937d44b228cc257cdfd8012a7b51" title="Retourne la matrice de transformation.">getMatrix</a>();
+<a name="l00069"></a>00069 
+<a name="l00075"></a>00075     <span class="keyword">virtual</span> <span class="keywordtype">void</span> <a class="code" href="classbaluchon_1_1core_1_1services_1_1positioning_1_1_transform.html#aa611cb1225085139a77345305bb95ef0" title="Initialise la matrice de transformation.">setMatrix</a>(CvMat* matrix);
+<a name="l00076"></a>00076 
+<a name="l00082"></a>00082     <span class="keyword">virtual</span> <span class="keywordtype">void</span> <a class="code" href="classbaluchon_1_1core_1_1services_1_1positioning_1_1_transform.html#a44496e176b4c4ba9241ff3a9736a708c" title="Fonction d&amp;#39;acceptation d&amp;#39;un visiteur.">accept</a>(<a class="code" href="classbaluchon_1_1core_1_1services_1_1positioning_1_1_i_visitor.html">IVisitor</a>* v);
+<a name="l00083"></a>00083 
+<a name="l00088"></a>00088     <span class="keyword">virtual</span> <span class="keywordtype">void</span> <a class="code" href="classbaluchon_1_1core_1_1services_1_1positioning_1_1_transform.html#a8e2c1e0436e4fd678bf61b41c4b8de65" title="Fonction qui r&amp;eacute;initialise les points de l&amp;#39;objet graphique.">reset</a>();
+<a name="l00089"></a>00089 
+<a name="l00090"></a>00090 <span class="keyword">protected</span>:
+<a name="l00091"></a>00091     vector&lt;IGraphic*&gt; mChildren;
+<a name="l00092"></a>00092     CvMat* mMat;
+<a name="l00093"></a>00093     CvMat* mTransformedMat;
+<a name="l00094"></a>00094 };
+<a name="l00095"></a>00095 
+<a name="l00096"></a>00096 }}}};
 </pre></div></div>
 </div>
 <!--- window showing the filter options -->
@@ -93,7 +102,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 </iframe>
 </div>
 
-<hr class="footer"/><address class="footer"><small>Generated on Sun Dec 12 2010 02:06:36 for Baluchon by&#160;
+<hr class="footer"/><address class="footer"><small>Generated on Mon Dec 13 2010 03:56:44 for Baluchon by&#160;
 <a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.7.2 </small></address>
 </body>

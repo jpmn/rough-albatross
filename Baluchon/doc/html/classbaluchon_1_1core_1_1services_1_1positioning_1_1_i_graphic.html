@@ -81,14 +81,18 @@ Inheritance diagram for baluchon::core::services::positioning::IGraphic:<!-- end
 <table class="memberdecls">
 <tr><td colspan="2"><h2><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ab69cbfd7680bde9d3a23b0e15565fae5"></a><!-- doxytag: member="baluchon::core::services::positioning::IGraphic::accept" ref="ab69cbfd7680bde9d3a23b0e15565fae5" args="(IVisitor *v)=0" -->
-virtual void&#160;</td><td class="memItemRight" valign="bottom"><b>accept</b> (<a class="el" href="classbaluchon_1_1core_1_1services_1_1positioning_1_1_i_visitor.html">IVisitor</a> *v)=0</td></tr>
-<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a314eade8c4f5af820f9aaedbdd85c20a"></a><!-- doxytag: member="baluchon::core::services::positioning::IGraphic::apply" ref="a314eade8c4f5af820f9aaedbdd85c20a" args="(CvMat *mul)" -->
-virtual void&#160;</td><td class="memItemRight" valign="bottom"><b>apply</b> (CvMat *mul)</td></tr>
-<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="aa25f625ec6a7ab3a3c5f58b6995f2845"></a><!-- doxytag: member="baluchon::core::services::positioning::IGraphic::getPoints" ref="aa25f625ec6a7ab3a3c5f58b6995f2845" args="()" -->
-virtual vector&lt; CvPoint3D32f &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>getPoints</b> ()</td></tr>
-<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a67b00112161611a091deb6b8b2f7fa7b"></a><!-- doxytag: member="baluchon::core::services::positioning::IGraphic::reset" ref="a67b00112161611a091deb6b8b2f7fa7b" args="()" -->
-virtual void&#160;</td><td class="memItemRight" valign="bottom"><b>reset</b> ()</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="adbc0909e3eaa15855bbecd22c76391d7"></a><!-- doxytag: member="baluchon::core::services::positioning::IGraphic::~IGraphic" ref="adbc0909e3eaa15855bbecd22c76391d7" args="(void)" -->
+virtual&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classbaluchon_1_1core_1_1services_1_1positioning_1_1_i_graphic.html#adbc0909e3eaa15855bbecd22c76391d7">~IGraphic</a> (void)</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Destructeur virtuel de la classe. <br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classbaluchon_1_1core_1_1services_1_1positioning_1_1_i_graphic.html#a0fdef72241a8496e457039793667ab12">accept</a> (<a class="el" href="classbaluchon_1_1core_1_1services_1_1positioning_1_1_i_visitor.html">IVisitor</a> *v)=0</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Fonction d'acceptation d'un visiteur.  <a href="#a0fdef72241a8496e457039793667ab12"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classbaluchon_1_1core_1_1services_1_1positioning_1_1_i_graphic.html#a29d2d025b533c8aaea9c197354ab4a33">apply</a> (CvMat *mul)</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Fonction qui applique une matrice aux points de l'objet graphique.  <a href="#a29d2d025b533c8aaea9c197354ab4a33"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">virtual vector&lt; CvPoint3D32f &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classbaluchon_1_1core_1_1services_1_1positioning_1_1_i_graphic.html#af3c1b918914c4f0bbc566747714693cd">getPoints</a> ()</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Fonction qui retourne les points de l'objet graphique.  <a href="#af3c1b918914c4f0bbc566747714693cd"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ac2fed60e362ee012a4f2b0c88871b308"></a><!-- doxytag: member="baluchon::core::services::positioning::IGraphic::reset" ref="ac2fed60e362ee012a4f2b0c88871b308" args="()" -->
+virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classbaluchon_1_1core_1_1services_1_1positioning_1_1_i_graphic.html#ac2fed60e362ee012a4f2b0c88871b308">reset</a> ()</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Fonction qui r&eacute;initialise les points de l'objet graphique. <br/></td></tr>
 <tr><td colspan="2"><h2><a name="pro-attribs"></a>
 Protected Attributes</h2></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a1aa1a1df028f462ebdc3ed70e41e5c17"></a><!-- doxytag: member="baluchon::core::services::positioning::IGraphic::mInitialPoints" ref="a1aa1a1df028f462ebdc3ed70e41e5c17" args="" -->
@@ -96,6 +100,80 @@ vector&lt; CvPoint3D32f &gt;&#160;</td><td class="memItemRight" valign="bottom">
 <tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a3037046f9c8f76f72e0efa3e7378656b"></a><!-- doxytag: member="baluchon::core::services::positioning::IGraphic::mTransformedPoints" ref="a3037046f9c8f76f72e0efa3e7378656b" args="" -->
 vector&lt; CvPoint3D32f &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>mTransformedPoints</b></td></tr>
 </table>
+<hr/><h2>Member Function Documentation</h2>
+<a class="anchor" id="a0fdef72241a8496e457039793667ab12"></a><!-- doxytag: member="baluchon::core::services::positioning::IGraphic::accept" ref="a0fdef72241a8496e457039793667ab12" args="(IVisitor *v)=0" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void baluchon::core::services::positioning::IGraphic::accept </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="classbaluchon_1_1core_1_1services_1_1positioning_1_1_i_visitor.html">IVisitor</a> *&#160;</td>
+          <td class="paramname"> <em>v</em>&#160;)</td>
+          <td><code> [pure virtual]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Fonction d'acceptation d'un visiteur. </p>
+<dl><dt><b>Parameters:</b></dt><dd>
+  <table class="params">
+    <tr><td class="paramname">v</td><td>Le visiteur. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p>Implemented in <a class="el" href="classbaluchon_1_1core_1_1services_1_1positioning_1_1_frame_cube.html#a2d73073ea3d979e8bcdb3554a8c6e2f1">baluchon::core::services::positioning::FrameCube</a>, and <a class="el" href="classbaluchon_1_1core_1_1services_1_1positioning_1_1_transform.html#a44496e176b4c4ba9241ff3a9736a708c">baluchon::core::services::positioning::Transform</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a29d2d025b533c8aaea9c197354ab4a33"></a><!-- doxytag: member="baluchon::core::services::positioning::IGraphic::apply" ref="a29d2d025b533c8aaea9c197354ab4a33" args="(CvMat *mul)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void baluchon::core::services::positioning::IGraphic::apply </td>
+          <td>(</td>
+          <td class="paramtype">CvMat *&#160;</td>
+          <td class="paramname"> <em>mul</em>&#160;)</td>
+          <td><code> [inline, virtual]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Fonction qui applique une matrice aux points de l'objet graphique. </p>
+<dl><dt><b>Parameters:</b></dt><dd>
+  <table class="params">
+    <tr><td class="paramname">mul</td><td>Matrice &agrave; multiplier. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p>Reimplemented in <a class="el" href="classbaluchon_1_1core_1_1services_1_1positioning_1_1_transform.html#abc0558b31da888564b35de0765976d45">baluchon::core::services::positioning::Transform</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="af3c1b918914c4f0bbc566747714693cd"></a><!-- doxytag: member="baluchon::core::services::positioning::IGraphic::getPoints" ref="af3c1b918914c4f0bbc566747714693cd" args="()" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">vector&lt; CvPoint3D32f &gt; baluchon::core::services::positioning::IGraphic::getPoints </td>
+          <td>(</td>
+          <td class="paramname">&#160;)</td>
+          <td><code> [inline, virtual]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Fonction qui retourne les points de l'objet graphique. </p>
+<dl class="return"><dt><b>Returns:</b></dt><dd>mTransformedPoints Les points de l'objet graphique. </dd></dl>
+
+</div>
+</div>
 <hr/>The documentation for this class was generated from the following file:<ul>
 <li>C:/Users/Mathieu/Documents/Visual Studio 2010/Projects/Baluchon/Baluchon/<a class="el" href="_i_graphic_8h_source.html">IGraphic.h</a></li>
 </ul>
@@ -114,7 +192,7 @@ vector&lt; CvPoint3D32f &gt;&#160;</td><td class="memItemRight" valign="bottom">
 </iframe>
 </div>
 
-<hr class="footer"/><address class="footer"><small>Generated on Sun Dec 12 2010 02:06:40 for Baluchon by&#160;
+<hr class="footer"/><address class="footer"><small>Generated on Mon Dec 13 2010 03:56:47 for Baluchon by&#160;
 <a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.7.2 </small></address>
 </body>
