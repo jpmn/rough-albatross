@@ -1,3 +1,14 @@
+/**
+ * \file IGraphic.h
+ * \brief Interface qui offre les signatures de fonctions pour un objet graphique.
+ * \author Mathieu Plourde
+ * \author Jean-Philippe Morin
+ * \version 1.0
+ *
+ * Interface qui offre les signatures de fonctions pour un objet graphique.
+ *
+ */
+
 #pragma once
 
 #include <vector>
@@ -13,11 +24,24 @@ class IGraphic
 {
 public:
 
+    /**
+     * \fn virtual ~IGraphic(void)
+     * \brief Destructeur virtuel de la classe.
+     */
     virtual ~IGraphic(void) {};
 
+    /**
+     * \fn virtual void accept(IVisitor* v)
+     * \brief Fonction d'acceptation d'un visiteur.
+     * \param v Le visiteur.
+     */
     virtual void accept(IVisitor* v) = 0;
 
-    // transformation
+    /**
+     * \fn virtual void apply(CvMat* mul)
+     * \brief Fonction qui applique une matrice aux points de l'objet graphique.
+     * \param mul Matrice &agrave; multiplier.
+     */
     virtual void apply(CvMat* mul)
     {
         while(mTemporaryTransformedPoints.size() != mTransformedPoints.size())
@@ -40,11 +64,20 @@ public:
         }
     }
 
+    /**
+     * \fn virtual vector<CvPoint3D32f> getPoints()
+     * \brief Fonction qui retourne les points de l'objet graphique.
+     * \return mTransformedPoints Les points de l'objet graphique.
+     */
     virtual vector<CvPoint3D32f> getPoints()
     {
         return mTransformedPoints;
     }
 
+    /**
+     * \fn virtual void reset()
+     * \brief Fonction qui r&eacute;initialise les points de l'objet graphique.
+     */
     virtual void reset()
     {
         mTransformedPoints.clear();

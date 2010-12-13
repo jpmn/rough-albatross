@@ -2,11 +2,11 @@
 
 namespace baluchon { namespace core { namespace services { namespace positioning {
 
-Scaling::Scaling(float x, float y, float z)
+Scaling::Scaling(CvPoint3D32f factors)
 {
-    cvmSet(mMat, 0, 0, x);
-    cvmSet(mMat, 1, 1, y);
-    cvmSet(mMat, 2, 2, z);
+    cvmSet(mMat, 0, 0, factors.x);
+    cvmSet(mMat, 1, 1, factors.y);
+    cvmSet(mMat, 2, 2, factors.z);
 }
 
 

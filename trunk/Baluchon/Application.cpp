@@ -69,16 +69,16 @@ int main() {
 
     IPositioningService* wPositioningService = new PositioningService("intrinsic.xml", "distortion.xml");
     Transform *base = new Transform();
-    Translation *t = new Translation(400,0,0);
-    Rotation *r = new Rotation(45,0,0,-1);
-    Scaling *s = new Scaling(2,2,2);
+    Translation *t = new Translation(cvPoint3D32f(400,0,0));
+    Rotation *r = new Rotation(45,cvPoint3D32f(0,0,-1));
+    Scaling *s = new Scaling(cvPoint3D32f(2,2,2));
     IGraphic *f = new FrameCube(cvPoint3D32f(50.0f, 50.0f, -300.0f), (float)(arrowModPattern->getWidth()-100), CV_RGB(0, 0, 255));
     IGraphic *f2 = new FrameCube(cvPoint3D32f(75.0f, 75.0f, -300.0f - arrowModPattern->getWidth()+150), (float)(arrowModPattern->getWidth()-150), CV_RGB(255, 0, 0));
     IGraphic *f3 = new FrameCube(cvPoint3D32f(100.0f, 100.0f, -300.0f - arrowModPattern->getWidth()+200 - arrowModPattern->getWidth()+150), (float)(arrowModPattern->getWidth()-200), CV_RGB(0, 255, 0));
     IGraphic *fArrow = new FrameCube(cvPoint3D32f(50.0f, 50.0f, -300.0f), (float)(arrowModPattern->getWidth()-100), CV_RGB(0, 0, 255));
 
     //t->add(f);
-    //base->add(r);
+    base->add(r);
     base->add(f);
     base->add(f2);
     base->add(f3);
