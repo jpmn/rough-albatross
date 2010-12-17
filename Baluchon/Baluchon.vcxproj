@@ -118,6 +118,7 @@
     <ClInclude Include="IPatternDetectionService.h" />
     <ClInclude Include="IService.h" />
     <ClInclude Include="IServiceLayer.h" />
+    <ClInclude Include="ISizeable.h" />
     <ClInclude Include="Marker.h" />
     <ClInclude Include="MathUtility.h" />
     <ClInclude Include="ObjectDetectionService.h" />

@@ -288,6 +288,9 @@
     <ClInclude Include="RectangleDetector.h">
       <Filter>Fichiers d%27en-tête\core\services\objectdetection</Filter>
     </ClInclude>
+    <ClInclude Include="isizeable.h">
+      <Filter>Fichiers d%27en-tête\core\datas</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="ServiceLayer.cpp">
