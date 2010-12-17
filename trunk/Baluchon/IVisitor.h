@@ -15,6 +15,7 @@ namespace baluchon { namespace core { namespace services { namespace positioning
 
 class Transform;
 class FrameCube;
+class FrameBox;
 
 class IVisitor
 {
@@ -39,6 +40,7 @@ public:
      * \param t Le cube &agrave; visiter.
      */
     virtual void visit(FrameCube *fc) = 0;
+	virtual void visit(FrameBox *fb) = 0;
 };
 
 }}}};

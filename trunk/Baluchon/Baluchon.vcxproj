@@ -15,16 +15,14 @@
     <RootNamespace>Baluchon</RootNamespace>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
-    <ConfigurationType>Application</ConfigurationType>
-    <UseDebugLibraries>true</UseDebugLibraries>
-    <CharacterSet>MultiByte</CharacterSet>
-  </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
     <ConfigurationType>Application</ConfigurationType>
     <UseDebugLibraries>false</UseDebugLibraries>
     <WholeProgramOptimization>true</WholeProgramOptimization>
     <CharacterSet>MultiByte</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Label="Configuration" Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <WholeProgramOptimization>true</WholeProgramOptimization>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
   <ImportGroup Label="ExtensionSettings">
@@ -36,15 +34,6 @@
     <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
-    <IncludePath>C:\OpenCV2.1\include\opencv;$(IncludePath)</IncludePath>
-  </PropertyGroup>
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
-    <LibraryPath>C:\OpenCV2.1\lib;$(LibraryPath)</LibraryPath>
-  </PropertyGroup>
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
-    <SourcePath>C:\OpenCV2.1\src\cv;C:\OpenCV2.1\src\cvaux;C:\OpenCV2.1\src\cxcore;C:\OpenCV2.1\src\highgui;C:\OpenCV2.1\src\ml;$(SourcePath)</SourcePath>
-  </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <IncludePath>C:\Program Files\OpenCV2.1\include\opencv;$(IncludePath)</IncludePath>
   </PropertyGroup>
@@ -54,23 +43,15 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <SourcePath>C:\Program Files\OpenCV2.1\src\cv;C:\Program Files\OpenCV2.1\src\cvaux;C:\Program Files\OpenCV2.1\src\cxcore;C:\Program Files\OpenCV2.1\src\highgui;C:\Program Files\OpenCV2.1\src\ml;$(SourcePath)</SourcePath>
   </PropertyGroup>
-  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
-    <ClCompile>
-      <WarningLevel>Level3</WarningLevel>
-      <Optimization>Disabled</Optimization>
-      <AdditionalIncludeDirectories>C:\OpenCV2.1\include\opencv;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
-    </ClCompile>
-    <Link>
-      <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalDependencies>cv210d.lib;cvaux210d.lib;cxcore210d.lib;cxts210.lib;highgui210d.lib;ml210d.lib;opencv_ffmpeg210d.lib;cv210.lib;cvaux210.lib;cxcore210.lib;highgui210.lib;ml210.lib;opencv_ffmpeg210.lib;freeglut.lib;glu32.lib;opengl32.lib;glew32.lib;%(AdditionalDependencies)</AdditionalDependencies>
-      <NoEntryPoint>true</NoEntryPoint>
-      <AdditionalLibraryDirectories>C:\OpenCV2.1\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
-    </Link>
-  </ItemDefinitionGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <IncludePath>C:\Program Files\OpenCV2.1\include\opencv;$(IncludePath)</IncludePath>
+    <LibraryPath>C:\Program Files\OpenCV2.1\lib;$(LibraryPath)</LibraryPath>
+    <SourcePath>C:\Program Files\OpenCV2.1\src\cv;C:\Program Files\OpenCV2.1\src\cvaux;C:\Program Files\OpenCV2.1\src\cxcore;C:\Program Files\OpenCV2.1\src\highgui;C:\Program Files\OpenCV2.1\src\ml;$(SourcePath)</SourcePath>
+  </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <ClCompile>
       <WarningLevel>Level3</WarningLevel>
-      <Optimization>MaxSpeed</Optimization>
+      <Optimization>Disabled</Optimization>
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
     </ClCompile>
@@ -82,36 +63,54 @@
       <NoEntryPoint>true</NoEntryPoint>
     </Link>
   </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <Link>
+      <AdditionalDependencies>cv210.lib;cvaux210.lib;cxcore210.lib;highgui210.lib;ml210.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+    </Link>
+    <ClCompile>
+      <Optimization>Disabled</Optimization>
+    </ClCompile>
+  </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="AugmentedColorButton.h" />
     <ClInclude Include="AugmentedInterfaceService.h" />
     <ClInclude Include="Blob.h" />
     <ClInclude Include="CameraCaptureService.h" />
+    <ClInclude Include="CircularFacet.h" />
     <ClInclude Include="ColorButtonEvent.h" />
     <ClInclude Include="ColorDetectionService.h" />
     <ClInclude Include="ColorUtility.h" />
-    <ClInclude Include="Cube.h" />
+    <ClInclude Include="BoxPrism.h" />
     <ClInclude Include="DetectedPattern.h" />
+    <ClInclude Include="DetectionVisitor.h" />
     <ClInclude Include="DisplayImageService.h" />
     <ClInclude Include="Engine.h" />
-    <ClInclude Include="Face.h" />
+    <ClInclude Include="RectangleDetector.h" />
+    <ClInclude Include="FacetFactory.h" />
+    <ClInclude Include="FrameBox.h" />
     <ClInclude Include="FrameCube.h" />
     <ClInclude Include="IAugmentedComponent.h" />
     <ClInclude Include="IAugmentedInterfaceService.h" />
     <ClInclude Include="IBlob.h" />
     <ClInclude Include="ICaptureService.h" />
     <ClInclude Include="IColorable.h" />
+    <ClInclude Include="IDetectable.h" />
     <ClInclude Include="IDetectedPattern.h" />
+    <ClInclude Include="IDetector.h" />
     <ClInclude Include="IEvent.h" />
     <ClInclude Include="IEventHandler.h" />
     <ClInclude Include="IEventNotifier.h" />
+    <ClInclude Include="IFacet.h" />
     <ClInclude Include="IGraphic.h" />
     <ClInclude Include="IMarker.h" />
     <ClInclude Include="IObjectDetectionService.h" />
     <ClInclude Include="IPattern.h" />
     <ClInclude Include="IPoseEstimatedPattern.h" />
     <ClInclude Include="IPoseEstimationService.h" />
+    <ClInclude Include="IPositionable.h" />
     <ClInclude Include="IPositioningService.h" />
+    <ClInclude Include="IPrism.h" />
     <ClInclude Include="IVisitor.h" />
     <ClInclude Include="IWriterService.h" />
     <ClInclude Include="IColorDetectionService.h" />
@@ -128,6 +127,9 @@
     <ClInclude Include="PoseEstimationService.h" />
     <ClInclude Include="PositioningService.h" />
     <ClInclude Include="PositioningVisitor.h" />
+    <ClInclude Include="BoxDetector.h" />
+    <ClInclude Include="PrismFactory.h" />
+    <ClInclude Include="RectangularFacet.h" />
     <ClInclude Include="Rotation.h" />
     <ClInclude Include="Scaling.h" />
     <ClInclude Include="ServiceLayer.h" />
@@ -142,18 +144,22 @@
     <ClCompile Include="AugmentedInterfaceService.cpp" />
     <ClCompile Include="Blob.cpp" />
     <ClCompile Include="CameraCaptureService.cpp" />
+    <ClCompile Include="CircularFacet.cpp" />
     <ClCompile Include="ColorButtonEvent.cpp" />
     <ClCompile Include="ColorDetectionService.cpp" />
-    <ClCompile Include="ColorUtility.cpp" />
-    <ClCompile Include="Cube.cpp" />
+    <ClCompile Include="BoxPrism.cpp" />
     <ClCompile Include="DetectedPattern.cpp" />
+    <ClCompile Include="DetectionVisitor.cpp" />
     <ClCompile Include="DisplayImageService.cpp" />
     <ClCompile Include="Engine.cpp" />
-    <ClCompile Include="Face.cpp" />
+    <ClCompile Include="PrismFactory.cpp" />
+    <ClCompile Include="RectangularFacet.cpp" />
+    <ClCompile Include="RectangleDetector.cpp" />
+    <ClCompile Include="FacetFactory.cpp" />
+    <ClCompile Include="FrameBox.cpp" />
     <ClCompile Include="FrameCube.cpp" />
     <ClCompile Include="IDisplayService.h" />
     <ClCompile Include="Marker.cpp" />
-    <ClCompile Include="MathUtility.cpp" />
     <ClCompile Include="ObjectDetectionService.cpp" />
     <ClCompile Include="Pattern.cpp" />
     <ClCompile Include="PatternDetectionService.cpp" />
@@ -161,6 +167,7 @@
     <ClCompile Include="PoseEstimationService.cpp" />
     <ClCompile Include="PositioningService.cpp" />
     <ClCompile Include="PositioningVisitor.cpp" />
+    <ClCompile Include="BoxDetector.cpp" />
     <ClCompile Include="Rotation.cpp" />
     <ClCompile Include="Scaling.cpp" />
     <ClCompile Include="ServiceLayer.cpp" />

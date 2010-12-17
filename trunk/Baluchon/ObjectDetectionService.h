@@ -2,8 +2,6 @@
 
 #include "IObjectDetectionService.h"
 #include "ICaptureService.h"
-#include "Face.h"
-#include "Cube.h"
 
 using namespace baluchon::core::services::capture;
 
@@ -13,7 +11,7 @@ class ObjectDetectionService : public IObjectDetectionService
 {
 public:
 	ObjectDetectionService(void);
-	~ObjectDetectionService(void);
+	virtual ~ObjectDetectionService(void);
 
 	virtual void init(void);
 	virtual void initDone(void);
@@ -21,14 +19,14 @@ public:
 	virtual void reset(void);
 	virtual void dispose(void);
 
-	virtual void setCornerTolerance(int tolerance);
-
-	virtual void drawFace(IplImage* img, Face* f, CvFont font, CvScalar color, bool showNumbers);
-	virtual void drawCube(IplImage* img, Cube* c, CvScalar color);
+	virtual vector<IDetectable*> getListDetectables(void);
+	virtual void addDetector(IDetector* detector);
 
 private:
 	ICaptureService* mCaptureService;
-	int mCornerTolerance;
+	vector<IDetector*> mListDetectors;
+	vector<IDetectable*> mListDetectables;
+	IplConvKernel* mKernel;
 };
 
 }}}};

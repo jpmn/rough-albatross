@@ -13,11 +13,13 @@
 #include "ipositioningservice.h"
 #include "IPoseEstimationService.h"
 #include "IPoseEstimatedPattern.h"
+#include "IObjectDetectionService.h"
 #include "ICaptureService.h"
 #include "PositioningVisitor.h"
 #include <vector>
 #include <map>
 
+using namespace baluchon::core::services::objectdetection;
 using namespace baluchon::core::services::poseestimation;
 using namespace baluchon::core::services::capture;
 
@@ -80,6 +82,7 @@ public:
 
 private:
     IPoseEstimationService* mPoseEstimationService;
+	IObjectDetectionService* mObjectDetectionService;
     ICaptureService* mCaptureService;
     PositioningVisitor* mVisitor;
     char* mIntrinsicPath;
