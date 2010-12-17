@@ -4,7 +4,10 @@
 #include "CameraCaptureService.h"
 #include "ColorDetectionService.h"
 #include "PatternDetectionService.h"
+
 #include "ObjectDetectionService.h"
+#include "BoxDetector.h"
+
 #include "VideoWriterService.h"
 #include "DisplayImageService.h"
 #include "PoseEstimationService.h"
@@ -54,7 +57,7 @@ int main() {
 	{
 		wColorDetectionService->setMaxMarkerCount(2);
 	}
-
+	
     IPattern* aPattern = new Pattern("a_pattern.jpg");
     IPattern* arrowModPattern = new Pattern("arrow_pattern_mod.jpg");
 
@@ -84,19 +87,24 @@ int main() {
     base->add(f3);
     wPositioningService->addSceneGraph(arrowModPattern, base);
     wPositioningService->addSceneGraph(aPattern, fArrow);
-
-	/*IObjectDetectionService* wObjectDetectionService = new ObjectDetectionService();
+	
+	IObjectDetectionService* wObjectDetectionService = new ObjectDetectionService();
 	{
-		wObjectDetectionService->setCornerTolerance(25);
-	}*/
+		BoxDetector* wBoxDetector = new BoxDetector();
+		{
+			wBoxDetector->setDistanceTolerance(25);
+		}
+
+		wObjectDetectionService->addDetector(wBoxDetector);
+	}
 
 	IServiceLayer* wFilterLayer = new ServiceLayer();
 	{
 		wFilterLayer->addService(wColorDetectionService);
 		wFilterLayer->addService(wPatternDetectionService);
-		//wFilterLayer->addService(wObjectDetectionService);
+		wFilterLayer->addService(wObjectDetectionService);
 	}
-
+	
     IServiceLayer* wPoseLayer = new ServiceLayer();
 	{
 		wPoseLayer->addService(wPoseEstimationService);
@@ -106,7 +114,7 @@ int main() {
 	{
 		wPositioningLayer->addService(wPositioningService);
 	}
-
+	
     IAugmentedComponent* component = new AugmentedColorButton(wColorDetectionService, cvPoint(50, 50), 50, 50);
     component->addEventHandler(new TestEventHandler(wCaptureService));
 
@@ -152,7 +160,7 @@ int main() {
 		wEngine->addServiceLayer(wInputLayer);
 		wEngine->addServiceLayer(wFilterLayer);
         wEngine->addServiceLayer(wPoseLayer);
-        wEngine->addServiceLayer(wPositioningLayer);
+		wEngine->addServiceLayer(wPositioningLayer);
         wEngine->addServiceLayer(wAugmentedInterfaceLayer);
         wEngine->addServiceLayer(wDisplayLayer);
 		//wEngine->addServiceLayer(wWriterLayer);

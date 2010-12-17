@@ -1,7 +1,9 @@
 #include "PositioningService.h"
 #include "PoseEstimationService.h"
+#include "ObjectDetectionService.h"
 #include "CameraCaptureService.h"
 #include "IServiceLayer.h"
+#include "FrameBox.h"
 
 namespace baluchon { namespace core { namespace services { namespace positioning { 
 
@@ -20,14 +22,18 @@ void PositioningService::init(void) {
     mPoseEstimationService = new PoseEstimationService(0,0);
     mPoseEstimationService = (IPoseEstimationService*) mServiceLayer->findService(mPoseEstimationService);
 
+	mObjectDetectionService = new ObjectDetectionService();
+	mObjectDetectionService = (IObjectDetectionService*) mServiceLayer->findService(mObjectDetectionService);
+
     mCaptureService= new CameraCaptureService();
     mCaptureService = (ICaptureService*) mServiceLayer->findService(mCaptureService);
+}
 
-    CvMat* intrinsic = (CvMat*)cvLoad(mIntrinsicPath);
+void PositioningService::initDone(void) {
+	CvMat* intrinsic = (CvMat*)cvLoad(mIntrinsicPath);
     CvMat* distortion = (CvMat*)cvLoad(mDistortionPath);
 
     mVisitor = new PositioningVisitor(intrinsic, distortion);
-
 
     unsigned int cpt;
     bool found;
@@ -51,10 +57,6 @@ void PositioningService::init(void) {
     }
 }
 
-void PositioningService::initDone(void) {
-
-}
-
 void PositioningService::execute(void) {
     mVisitor->setImage(mCaptureService->getImage());
 
@@ -70,6 +72,14 @@ void PositioningService::execute(void) {
             iter->second->accept(mVisitor);
         }
     }
+	
+	vector<IDetectable*> wListDetectables = mObjectDetectionService->getListDetectables();
+
+	for (unsigned int i = 0; i < wListDetectables.size(); i++) {
+		IGraphic* fb = new FrameBox(static_cast<BoxPrism*>(wListDetectables[i]), CV_RGB(0, 255, 255));
+		fb->reset();
+		fb->accept(mVisitor);
+	}
 }
 
 void PositioningService::reset(void) {
