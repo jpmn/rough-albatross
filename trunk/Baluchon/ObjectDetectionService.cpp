@@ -49,11 +49,11 @@ void ObjectDetectionService::execute(void) {
 	//cvCanny(mImageGray, mImageContours, 0, 100, 3);
 
 	cvSmooth(mImageGray, mImageGray, CV_MEDIAN, 7, 7);
-	cvShowImage("Canny", mImageGray);
+	//cvShowImage("Canny", mImageGray);
 	cvCanny(mImageGray, mImageContours, 400, 800, 5);
 	cvDilate(mImageContours, mImageContours, mKernel, 1);
 
-	cvShowImage("Gray", mImageContours);
+	//cvShowImage("Gray", mImageContours);
 
 	mListDetectables.clear();
 
@@ -65,7 +65,7 @@ void ObjectDetectionService::execute(void) {
 		}
 	}
 
-	cvShowImage("Contours", mImageColors);
+	//cvShowImage("Contours", mImageColors);
 	
 	cvReleaseImage(&mImageColors);
 	cvReleaseImage(&mImageEdges);
