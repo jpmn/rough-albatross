@@ -7,22 +7,13 @@
 #include "IColorable.h"
 
 using namespace std;
-using namespace baluchon::core::datas;
 
-namespace baluchon { namespace core { namespace services { namespace colordetection {
+namespace baluchon { namespace core { namespace datas { namespace detection {
 
-class IMarker : public IColorable
+class IMarker
 {
 public:
 	virtual ~IMarker(void) {}
-
-	virtual void addBlob(IBlob*) = 0;
-	virtual vector<IBlob*> getBlobs(void) = 0;
-	virtual void clearBlobs(void) = 0;
-	virtual void findBlobs(IplImage* img) = 0;
-
-	virtual void setColorTolerance(int tolerance) = 0;
-	virtual int getColorTolerance(void) = 0;
 };
 
 }}}};

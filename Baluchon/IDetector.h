@@ -6,9 +6,8 @@
 #include "IDetectable.h"
 
 using namespace std;
-using namespace baluchon::core::datas;
 
-namespace baluchon { namespace core { namespace services { namespace objectdetection {
+namespace baluchon { namespace core { namespace datas { namespace detection {
 
 class IDetector 
 {

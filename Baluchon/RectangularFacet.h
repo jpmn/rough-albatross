@@ -3,9 +3,7 @@
 #include "IFacet.h"
 #include "IDetectable.h"
 
-using namespace baluchon::core::datas;
-
-namespace baluchon { namespace core { namespace services { namespace objectdetection {
+namespace baluchon { namespace core { namespace datas { namespace detection {
 
 class RectangularFacet : public IFacet, public IDetectable
 {

@@ -94,6 +94,27 @@
     <Filter Include="Fichiers sources\core\services\augmentedinterface">
       <UniqueIdentifier>{02fcba74-3a97-4e72-8fc9-1049a9ecb54d}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Fichiers d%27en-tête\core\datas\detection">
+      <UniqueIdentifier>{1a454bfc-e463-42aa-921b-4f990b34ed48}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Fichiers d%27en-tête\core\datas\animation">
+      <UniqueIdentifier>{1a712f49-326d-4f8e-8f04-cca2c2fc0560}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Fichiers sources\core\datas">
+      <UniqueIdentifier>{b73e1cbd-7d5b-45f6-ab9a-d511fff5f6bf}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Fichiers sources\core\datas\dectection">
+      <UniqueIdentifier>{e71b8086-21f6-47e3-8c3a-f5d6f075109c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Fichiers sources\core\datas\animation">
+      <UniqueIdentifier>{de332664-bc82-43e4-80f5-7f7bbf87d89a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Fichiers sources\core\services\animation">
+      <UniqueIdentifier>{19f5272b-91f8-48c7-8661-f2a5a72710ca}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Fichiers d%27en-tête\core\services\animation">
+      <UniqueIdentifier>{d41555fe-0443-4625-b52e-3030a3452330}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="IService.h">
@@ -180,29 +201,17 @@
     <ClInclude Include="Rotation.h">
       <Filter>Fichiers d%27en-tête\core\services\positioning</Filter>
     </ClInclude>
-    <ClInclude Include="Blob.h">
-      <Filter>Fichiers d%27en-tête\core\services\colordetection</Filter>
-    </ClInclude>
     <ClInclude Include="ColorUtility.h">
       <Filter>Fichiers d%27en-tête\utilities</Filter>
     </ClInclude>
-    <ClInclude Include="IBlob.h">
-      <Filter>Fichiers d%27en-tête\core\services\colordetection</Filter>
-    </ClInclude>
     <ClInclude Include="IColorable.h">
       <Filter>Fichiers d%27en-tête\core\datas</Filter>
-    </ClInclude>
-    <ClInclude Include="IMarker.h">
-      <Filter>Fichiers d%27en-tête\core\services\colordetection</Filter>
     </ClInclude>
     <ClInclude Include="IObjectDetectionService.h">
       <Filter>Fichiers d%27en-tête\core\services\objectdetection</Filter>
     </ClInclude>
     <ClInclude Include="IPoseEstimationService.h">
       <Filter>Fichiers d%27en-tête\core\services\poseestimation</Filter>
-    </ClInclude>
-    <ClInclude Include="Marker.h">
-      <Filter>Fichiers d%27en-tête\core\services\colordetection</Filter>
     </ClInclude>
     <ClInclude Include="MathUtility.h">
       <Filter>Fichiers d%27en-tête\utilities</Filter>
@@ -249,28 +258,10 @@
     <ClInclude Include="FrameBox.h">
       <Filter>Fichiers d%27en-tête\core\services\positioning</Filter>
     </ClInclude>
-    <ClInclude Include="DetectionVisitor.h">
-      <Filter>Fichiers d%27en-tête\core\services\positioning</Filter>
-    </ClInclude>
-    <ClInclude Include="IDetectable.h">
-      <Filter>Fichiers d%27en-tête\core\datas</Filter>
-    </ClInclude>
     <ClInclude Include="IPositionable.h">
       <Filter>Fichiers d%27en-tête\core\datas</Filter>
     </ClInclude>
     <ClInclude Include="FacetFactory.h">
-      <Filter>Fichiers d%27en-tête\core\services\objectdetection</Filter>
-    </ClInclude>
-    <ClInclude Include="IPrism.h">
-      <Filter>Fichiers d%27en-tête\core\services\objectdetection</Filter>
-    </ClInclude>
-    <ClInclude Include="IFacet.h">
-      <Filter>Fichiers d%27en-tête\core\services\objectdetection</Filter>
-    </ClInclude>
-    <ClInclude Include="IDetector.h">
-      <Filter>Fichiers d%27en-tête\core\services\objectdetection</Filter>
-    </ClInclude>
-    <ClInclude Include="BoxPrism.h">
       <Filter>Fichiers d%27en-tête\core\services\objectdetection</Filter>
     </ClInclude>
     <ClInclude Include="BoxDetector.h">
@@ -279,17 +270,71 @@
     <ClInclude Include="PrismFactory.h">
       <Filter>Fichiers d%27en-tête\core\services\objectdetection</Filter>
     </ClInclude>
-    <ClInclude Include="RectangularFacet.h">
-      <Filter>Fichiers d%27en-tête\core\services\objectdetection</Filter>
-    </ClInclude>
-    <ClInclude Include="CircularFacet.h">
-      <Filter>Fichiers d%27en-tête\core\services\objectdetection</Filter>
-    </ClInclude>
     <ClInclude Include="RectangleDetector.h">
       <Filter>Fichiers d%27en-tête\core\services\objectdetection</Filter>
     </ClInclude>
     <ClInclude Include="isizeable.h">
       <Filter>Fichiers d%27en-tête\core\datas</Filter>
+    </ClInclude>
+    <ClInclude Include="IDetectable.h">
+      <Filter>Fichiers d%27en-tête\core\datas\detection</Filter>
+    </ClInclude>
+    <ClInclude Include="IDetector.h">
+      <Filter>Fichiers d%27en-tête\core\datas\detection</Filter>
+    </ClInclude>
+    <ClInclude Include="IFacet.h">
+      <Filter>Fichiers d%27en-tête\core\datas\detection</Filter>
+    </ClInclude>
+    <ClInclude Include="IPrism.h">
+      <Filter>Fichiers d%27en-tête\core\datas\detection</Filter>
+    </ClInclude>
+    <ClInclude Include="RectangularFacet.h">
+      <Filter>Fichiers d%27en-tête\core\datas\detection</Filter>
+    </ClInclude>
+    <ClInclude Include="CircularFacet.h">
+      <Filter>Fichiers d%27en-tête\core\datas\detection</Filter>
+    </ClInclude>
+    <ClInclude Include="BoxPrism.h">
+      <Filter>Fichiers d%27en-tête\core\datas\detection</Filter>
+    </ClInclude>
+    <ClInclude Include="IAnimation.h">
+      <Filter>Fichiers d%27en-tête\core\datas\animation</Filter>
+    </ClInclude>
+    <ClInclude Include="AnimationSequence.h">
+      <Filter>Fichiers d%27en-tête\core\datas\animation</Filter>
+    </ClInclude>
+    <ClInclude Include="IAnimationService.h">
+      <Filter>Fichiers d%27en-tête\core\services\animation</Filter>
+    </ClInclude>
+    <ClInclude Include="AnimationService.h">
+      <Filter>Fichiers d%27en-tête\core\services\animation</Filter>
+    </ClInclude>
+    <ClInclude Include="IAnimable.h">
+      <Filter>Fichiers d%27en-tête\core\datas\animation</Filter>
+    </ClInclude>
+    <ClInclude Include="Animation.h">
+      <Filter>Fichiers d%27en-tête\core\datas\animation</Filter>
+    </ClInclude>
+    <ClInclude Include="IMarker.h">
+      <Filter>Fichiers d%27en-tête\core\datas\detection</Filter>
+    </ClInclude>
+    <ClInclude Include="Blob.h">
+      <Filter>Fichiers d%27en-tête\core\datas\detection</Filter>
+    </ClInclude>
+    <ClInclude Include="IBlob.h">
+      <Filter>Fichiers d%27en-tête\core\datas\detection</Filter>
+    </ClInclude>
+    <ClInclude Include="ColorDetector.h">
+      <Filter>Fichiers d%27en-tête\core\services\colordetection</Filter>
+    </ClInclude>
+    <ClInclude Include="MarkerFactory.h">
+      <Filter>Fichiers d%27en-tête\core\services\colordetection</Filter>
+    </ClInclude>
+    <ClInclude Include="ColoredMarker.h">
+      <Filter>Fichiers d%27en-tête\core\datas\detection</Filter>
+    </ClInclude>
+    <ClInclude Include="IDetectionService.h">
+      <Filter>Fichiers d%27en-tête\core\services</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -347,9 +392,6 @@
     <ClCompile Include="PoseEstimationService.cpp">
       <Filter>Fichiers sources\core\services\poseestimation</Filter>
     </ClCompile>
-    <ClCompile Include="Blob.cpp">
-      <Filter>Fichiers sources\core\services\colordetection</Filter>
-    </ClCompile>
     <ClCompile Include="ObjectDetectionService.cpp">
       <Filter>Fichiers sources\core\services\objectdetection</Filter>
     </ClCompile>
@@ -371,19 +413,10 @@
     <ClCompile Include="Scaling.cpp">
       <Filter>Fichiers sources\core\services\positioning</Filter>
     </ClCompile>
-    <ClCompile Include="Marker.cpp">
-      <Filter>Fichiers sources\core\services\colordetection</Filter>
-    </ClCompile>
     <ClCompile Include="FrameBox.cpp">
       <Filter>Fichiers sources\core\services\positioning</Filter>
     </ClCompile>
-    <ClCompile Include="DetectionVisitor.cpp">
-      <Filter>Fichiers sources\core\services\positioning</Filter>
-    </ClCompile>
     <ClCompile Include="FacetFactory.cpp">
-      <Filter>Fichiers sources\core\services\objectdetection</Filter>
-    </ClCompile>
-    <ClCompile Include="BoxPrism.cpp">
       <Filter>Fichiers sources\core\services\objectdetection</Filter>
     </ClCompile>
     <ClCompile Include="BoxDetector.cpp">
@@ -392,14 +425,38 @@
     <ClCompile Include="PrismFactory.cpp">
       <Filter>Fichiers sources\core\services\objectdetection</Filter>
     </ClCompile>
-    <ClCompile Include="RectangularFacet.cpp">
-      <Filter>Fichiers sources\core\services\objectdetection</Filter>
-    </ClCompile>
-    <ClCompile Include="CircularFacet.cpp">
-      <Filter>Fichiers sources\core\services\objectdetection</Filter>
-    </ClCompile>
     <ClCompile Include="RectangleDetector.cpp">
       <Filter>Fichiers sources\core\services\objectdetection</Filter>
+    </ClCompile>
+    <ClCompile Include="BoxPrism.cpp">
+      <Filter>Fichiers sources\core\datas\dectection</Filter>
+    </ClCompile>
+    <ClCompile Include="CircularFacet.cpp">
+      <Filter>Fichiers sources\core\datas\dectection</Filter>
+    </ClCompile>
+    <ClCompile Include="RectangularFacet.cpp">
+      <Filter>Fichiers sources\core\datas\dectection</Filter>
+    </ClCompile>
+    <ClCompile Include="AnimationSequence.cpp">
+      <Filter>Fichiers sources\core\datas\animation</Filter>
+    </ClCompile>
+    <ClCompile Include="AnimationService.cpp">
+      <Filter>Fichiers sources\core\services\animation</Filter>
+    </ClCompile>
+    <ClCompile Include="Animation.cpp">
+      <Filter>Fichiers sources\core\datas\animation</Filter>
+    </ClCompile>
+    <ClCompile Include="ColorDetector.cpp">
+      <Filter>Fichiers sources\core\services\colordetection</Filter>
+    </ClCompile>
+    <ClCompile Include="Blob.cpp">
+      <Filter>Fichiers sources\core\datas\dectection</Filter>
+    </ClCompile>
+    <ClCompile Include="MarkerFactory.cpp">
+      <Filter>Fichiers sources\core\services\colordetection</Filter>
+    </ClCompile>
+    <ClCompile Include="ColoredMarker.cpp">
+      <Filter>Fichiers sources\core\datas\dectection</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

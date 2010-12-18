@@ -5,7 +5,7 @@
 
 using namespace std;
 
-namespace baluchon { namespace core { namespace services { namespace objectdetection {
+namespace baluchon { namespace core { namespace datas { namespace detection {
 
 class IFacet
 {

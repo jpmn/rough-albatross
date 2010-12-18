@@ -1,9 +1,6 @@
 #pragma once
 
 #include <cv.h>
-#include "RectangularFacet.h"
-
-using namespace baluchon::core::services::objectdetection;
 
 namespace baluchon { namespace utilities {
 

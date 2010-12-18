@@ -7,7 +7,7 @@
 
 using namespace baluchon::core::datas;
 
-namespace baluchon { namespace core { namespace services { namespace colordetection {
+namespace baluchon { namespace core { namespace datas { namespace detection {
 
 class IBlob : public IPositionable, ISizeable
 {

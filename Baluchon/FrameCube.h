@@ -10,13 +10,18 @@
  */
 
 #pragma once
-#include "igraphic.h"
-#include "ivisitor.h"
+
+#include "IGraphic.h"
+#include "IVisitor.h"
+#include "IColorable.h"
+#include "IAnimable.h"
+
+using namespace baluchon::core::datas;
+using namespace baluchon::core::datas::animation;
 
 namespace baluchon { namespace core { namespace services { namespace positioning { 
 
-class FrameCube :
-    public IGraphic
+class FrameCube : public IGraphic, public IColorable, public IAnimable
 {
 public:
 
@@ -41,23 +46,6 @@ public:
      * \param v Le visiteur.
      */
     void accept(IVisitor* v);
-
-    /**
-     * \fn void setColor(CvScalar color)
-     * \brief Fonction qui initialise la couleur du cube.
-     * \param color La couleur du cube.
-     */
-    void setColor(CvScalar color);
-
-    /**
-     * \fn CvScalar getColor()
-     * \brief Fonction qui retourne la couleur du cube.
-     * \return La couleur du cube.
-     */
-    CvScalar getColor();
-
-private:
-    CvScalar mColor;
 };
 
 }}}};

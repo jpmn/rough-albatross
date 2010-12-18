@@ -73,7 +73,7 @@ void PositioningService::execute(void) {
         }
     }
 	
-	vector<IDetectable*> wListDetectables = mObjectDetectionService->getListDetectables();
+	vector<IDetectable*> wListDetectables = mObjectDetectionService->getDetectables();
 
 	for (unsigned int i = 0; i < wListDetectables.size(); i++) {
 		IGraphic* fb = new FrameBox(static_cast<BoxPrism*>(wListDetectables[i]), CV_RGB(0, 255, 255));

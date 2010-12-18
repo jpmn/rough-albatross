@@ -20,22 +20,21 @@ public:
 
 public:
 	DisplayImageService(void);
-	~DisplayImageService(void);
+	virtual ~DisplayImageService(void);
 
-	virtual void init(void);
-	virtual void initDone(void);
-	virtual void execute(void);
-	virtual void reset(void);
-	virtual void dispose(void);
+	void init(void);
+	void initDone(void);
+	void execute(void);
+	void reset(void);
+	void dispose(void);
 
-	virtual void setWindowName(char* name);
-	virtual IplImage* getImage();
+	void setWindowName(char* name);
+	IplImage* getImage();
 
 private:
 	ICaptureService* mCaptureService;
-	IColorDetectionService* mMarkerService;
-    IPatternDetectionService* mPatternService;
-    IPoseEstimationService* mPose;
+	IColorDetectionService* mColorDetectionService;
+
 	char* mWindowName;
 	IplImage* mImage;
 };

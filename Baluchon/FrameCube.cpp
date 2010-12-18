@@ -34,14 +34,4 @@ void FrameCube::accept(IVisitor* v)
     v->visit(this);
 }
 
-void FrameCube::setColor(CvScalar color)
-{
-    mColor = color;
-}
-
-CvScalar FrameCube::getColor()
-{
-    return mColor;
-}
-
 }}}};

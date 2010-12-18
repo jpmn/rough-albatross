@@ -3,6 +3,8 @@
 #include "RectangularFacet.h"
 #include "CircularFacet.h"
 
+using namespace baluchon::core::datas::detection;
+
 namespace baluchon { namespace core { namespace services { namespace objectdetection {
 
 class FacetFactory

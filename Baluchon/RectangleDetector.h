@@ -4,6 +4,8 @@
 #include "FacetFactory.h"
 #include "RectangularFacet.h"
 
+using namespace baluchon::core::datas::detection;
+
 namespace baluchon { namespace core { namespace services { namespace objectdetection {
 
 class RectangleDetector : public IDetector

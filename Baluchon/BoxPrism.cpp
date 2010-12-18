@@ -1,6 +1,6 @@
 #include "BoxPrism.h"
 
-namespace baluchon { namespace core { namespace services { namespace objectdetection {
+namespace baluchon { namespace core { namespace datas { namespace detection {
 
 BoxPrism::BoxPrism(void) {
 
