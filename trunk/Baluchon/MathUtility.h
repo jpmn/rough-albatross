@@ -64,8 +64,8 @@ public:
 		float a2 = (float)(line2Pt2.y - line2Pt1.y) / (line2Pt2.x - line2Pt1.x);
 		float b2 = (line2Pt1.y - (a2 * line2Pt1.x));
 		
-		int x = (b1 - b2) / (a2 - a1);
-		int y = (a1 * x) + b1;
+		int x = (int) ((b1 - b2) / (a2 - a1));
+		int y = (int) ((a1 * x) + b1);
 		
 		return cvPoint(x, y);
 	}

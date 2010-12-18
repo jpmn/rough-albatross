@@ -1,7 +1,6 @@
 #include "ColoredMarker.h"
 
 #include "ColorUtility.h"
-#include "Blob.h"
 
 using namespace baluchon::utilities;
 
@@ -23,8 +22,8 @@ void ColoredMarker::setContours(CvSeq* contours) {
 	CvMoments moments;
 	cvContourMoments(mContours, &moments); 
 
-	mPosition.x = moments.m10 / moments.m00;
-	mPosition.y = moments.m01 / moments.m00;
+	mPosition.x = (int) (moments.m10 / moments.m00);
+	mPosition.y = (int) (moments.m01 / moments.m00);
 }
 
 CvSeq* ColoredMarker::getContours(void) {
