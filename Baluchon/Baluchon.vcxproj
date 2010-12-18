@@ -78,7 +78,6 @@
     <ClInclude Include="AnimationService.h" />
     <ClInclude Include="AugmentedColorButton.h" />
     <ClInclude Include="AugmentedInterfaceService.h" />
-    <ClInclude Include="Blob.h" />
     <ClInclude Include="CameraCaptureService.h" />
     <ClInclude Include="CircularFacet.h" />
     <ClInclude Include="ColorButtonEvent.h" />
@@ -100,7 +99,6 @@
     <ClInclude Include="FrameCube.h" />
     <ClInclude Include="IAugmentedComponent.h" />
     <ClInclude Include="IAugmentedInterfaceService.h" />
-    <ClInclude Include="IBlob.h" />
     <ClInclude Include="ICaptureService.h" />
     <ClInclude Include="IColorable.h" />
     <ClInclude Include="IDetectable.h" />
@@ -154,7 +152,6 @@
     <ClCompile Include="Application.cpp" />
     <ClCompile Include="AugmentedColorButton.cpp" />
     <ClCompile Include="AugmentedInterfaceService.cpp" />
-    <ClCompile Include="Blob.cpp" />
     <ClCompile Include="CameraCaptureService.cpp" />
     <ClCompile Include="CircularFacet.cpp" />
     <ClCompile Include="ColorButtonEvent.cpp" />

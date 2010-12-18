@@ -10,7 +10,7 @@ class TestEventHandler :
 {
 public:
     TestEventHandler(ICaptureService* capture);
-    ~TestEventHandler(void);
+    virtual ~TestEventHandler(void);
 
     void handle(IEvent* e);
 

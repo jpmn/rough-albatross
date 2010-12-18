@@ -103,9 +103,6 @@
     <Filter Include="Fichiers sources\core\datas">
       <UniqueIdentifier>{b73e1cbd-7d5b-45f6-ab9a-d511fff5f6bf}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Fichiers sources\core\datas\dectection">
-      <UniqueIdentifier>{e71b8086-21f6-47e3-8c3a-f5d6f075109c}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Fichiers sources\core\datas\animation">
       <UniqueIdentifier>{de332664-bc82-43e4-80f5-7f7bbf87d89a}</UniqueIdentifier>
     </Filter>
@@ -114,6 +111,9 @@
     </Filter>
     <Filter Include="Fichiers d%27en-tête\core\services\animation">
       <UniqueIdentifier>{d41555fe-0443-4625-b52e-3030a3452330}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Fichiers sources\core\datas\detection">
+      <UniqueIdentifier>{e71b8086-21f6-47e3-8c3a-f5d6f075109c}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -318,12 +318,6 @@
     <ClInclude Include="IMarker.h">
       <Filter>Fichiers d%27en-tête\core\datas\detection</Filter>
     </ClInclude>
-    <ClInclude Include="Blob.h">
-      <Filter>Fichiers d%27en-tête\core\datas\detection</Filter>
-    </ClInclude>
-    <ClInclude Include="IBlob.h">
-      <Filter>Fichiers d%27en-tête\core\datas\detection</Filter>
-    </ClInclude>
     <ClInclude Include="ColorDetector.h">
       <Filter>Fichiers d%27en-tête\core\services\colordetection</Filter>
     </ClInclude>
@@ -429,13 +423,13 @@
       <Filter>Fichiers sources\core\services\objectdetection</Filter>
     </ClCompile>
     <ClCompile Include="BoxPrism.cpp">
-      <Filter>Fichiers sources\core\datas\dectection</Filter>
+      <Filter>Fichiers sources\core\datas\detection</Filter>
     </ClCompile>
     <ClCompile Include="CircularFacet.cpp">
-      <Filter>Fichiers sources\core\datas\dectection</Filter>
+      <Filter>Fichiers sources\core\datas\detection</Filter>
     </ClCompile>
     <ClCompile Include="RectangularFacet.cpp">
-      <Filter>Fichiers sources\core\datas\dectection</Filter>
+      <Filter>Fichiers sources\core\datas\detection</Filter>
     </ClCompile>
     <ClCompile Include="AnimationSequence.cpp">
       <Filter>Fichiers sources\core\datas\animation</Filter>
@@ -449,14 +443,11 @@
     <ClCompile Include="ColorDetector.cpp">
       <Filter>Fichiers sources\core\services\colordetection</Filter>
     </ClCompile>
-    <ClCompile Include="Blob.cpp">
-      <Filter>Fichiers sources\core\datas\dectection</Filter>
-    </ClCompile>
     <ClCompile Include="MarkerFactory.cpp">
       <Filter>Fichiers sources\core\services\colordetection</Filter>
     </ClCompile>
     <ClCompile Include="ColoredMarker.cpp">
-      <Filter>Fichiers sources\core\datas\dectection</Filter>
+      <Filter>Fichiers sources\core\datas\detection</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
