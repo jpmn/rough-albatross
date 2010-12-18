@@ -13,7 +13,7 @@ ColorDetector::ColorDetector(void) {
 
 	mMarkerFactory = new MarkerFactory();
 
-	mMinimumSize = 100.0f;
+	mMinimumSize = 100;
 }
 
 ColorDetector::~ColorDetector(void) {

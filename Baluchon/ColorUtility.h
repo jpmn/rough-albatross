@@ -9,7 +9,7 @@ class ColorUtility
 public:
 
 	static CvScalar convertColorBGRtoHSV(CvScalar bgr) {
-		return convertColorBGRtoHSV(bgr.val[0], bgr.val[1], bgr.val[2]);
+		return convertColorBGRtoHSV((int) bgr.val[0], (int) bgr.val[1], (int) bgr.val[2]);
 	}
 
 	static CvScalar convertColorBGRtoHSV(int ib, int ig, int ir) {
@@ -17,9 +17,9 @@ public:
 		float h, s, v;
 		float r, g, b;
 
-		r = ir / 255.0;
-		g = ig / 255.0;
-		b = ib / 255.0;
+		r = (float) (ir / 255.0);
+		g = (float) (ig / 255.0);
+		b = (float) (ib / 255.0);
 
 		v = MathUtility::max<float>(r, g, b);
 
@@ -42,7 +42,7 @@ public:
 	}
 
 	static CvScalar convertColorHSVtoBGR(CvScalar hsv) {
-		return convertColorHSVtoBGR(hsv.val[0], hsv.val[1], hsv.val[2]);
+		return convertColorHSVtoBGR((int) hsv.val[0], (int) hsv.val[1], (int) hsv.val[2]);
 	}
 
 	static CvScalar convertColorHSVtoBGR(int ih, int is, int iv) {
@@ -52,9 +52,9 @@ public:
 		float f, p, q, t;
 		int i;
 
-		h = ih * 2.0;
-		s = is / 255.0;
-		v = iv / 255.0;
+		h = (float) (ih * 2.0);
+		s = (float) (is / 255.0);
+		v = (float) (iv / 255.0);
 
 		if (s == 0) {
 			r = g = b = v;
