@@ -1,30 +1,34 @@
 
 #include <iostream>
 
+#include "Engine.h"
+#include "ServiceLayer.h"
+
 #include "CameraCaptureService.h"
+
 #include "ColorDetectionService.h"
+#include "ColorDetector.h"
+
 #include "PatternDetectionService.h"
+#include "Pattern.h"
 
 #include "ObjectDetectionService.h"
 #include "BoxDetector.h"
 
-#include "VideoWriterService.h"
-#include "DisplayImageService.h"
 #include "PoseEstimationService.h"
+
 #include "PositioningService.h"
-#include "AugmentedInterfaceService.h"
-
-#include "Engine.h"
-#include "Pattern.h"
-#include "ServiceLayer.h"
-
+#include "PositioningVisitor.h"
 #include "Translation.h"
 #include "Rotation.h"
 #include "Scaling.h"
 #include "FrameCube.h"
-#include "PositioningVisitor.h"
 
+#include "AugmentedInterfaceService.h"
 #include "AugmentedColorButton.h"
+
+#include "DisplayImageService.h"
+#include "VideoWriterService.h"
 
 #include "TestEventHandler.h"
 
@@ -41,114 +45,140 @@ using namespace baluchon::core::services::augmentedinterface;
 
 int main() {
 
-	// Layer 1
-	ICaptureService* wCaptureService = new CameraCaptureService();
-	{
-		wCaptureService->setCapture(cvCreateCameraCapture(0));
-	}
+	// Services
+	ICaptureService* wCaptureService;
+	IPatternDetectionService* wPatternDetectionService;
+	IColorDetectionService* wColorDetectionService;
+	IObjectDetectionService* wObjectDetectionService;
+	IPoseEstimationService* wPoseEstimationService;
+	IPositioningService* wPositioningService;
+	IAugmentedInterfaceService* wAugmentedInterfaceService;
+	IDisplayService* wDisplayImageService;
+	//IServiceLayer* wWriterLayer;
 
+	IPattern* aPattern;
+	IPattern* arrowModPattern;
+
+	// Layer 1
 	IServiceLayer* wInputLayer = new ServiceLayer();
 	{
+		wCaptureService = new CameraCaptureService();
+		{
+			wCaptureService->setCapture(cvCreateCameraCapture(0));
+		}
+
 		wInputLayer->addService(wCaptureService);
 	}
 
 	// Layer 2
-	IColorDetectionService* wColorDetectionService = new ColorDetectionService();
-	{
-		wColorDetectionService->setMaxMarkerCount(2);
-	}
-	
-    IPattern* aPattern = new Pattern("a_pattern.jpg");
-    IPattern* arrowModPattern = new Pattern("arrow_pattern_mod.jpg");
-
-    IPatternDetectionService* wPatternDetectionService = new PatternDetectionService();
-	{
-        wPatternDetectionService->addPattern(aPattern);
-        wPatternDetectionService->addPattern(arrowModPattern);
-	}
-
-
-    IPoseEstimationService* wPoseEstimationService = new PoseEstimationService("intrinsic.xml", "distortion.xml");
-
-    IPositioningService* wPositioningService = new PositioningService("intrinsic.xml", "distortion.xml");
-    Transform *base = new Transform();
-    Translation *t = new Translation(cvPoint3D32f(400,0,0));
-    Rotation *r = new Rotation(45,cvPoint3D32f(0,0,-1));
-    Scaling *s = new Scaling(cvPoint3D32f(2,2,2));
-    IGraphic *f = new FrameCube(cvPoint3D32f(50.0f, 50.0f, -300.0f), (float)(arrowModPattern->getWidth()-100), CV_RGB(0, 0, 255));
-    IGraphic *f2 = new FrameCube(cvPoint3D32f(75.0f, 75.0f, -300.0f - arrowModPattern->getWidth()+150), (float)(arrowModPattern->getWidth()-150), CV_RGB(255, 0, 0));
-    IGraphic *f3 = new FrameCube(cvPoint3D32f(100.0f, 100.0f, -300.0f - arrowModPattern->getWidth()+200 - arrowModPattern->getWidth()+150), (float)(arrowModPattern->getWidth()-200), CV_RGB(0, 255, 0));
-    IGraphic *fArrow = new FrameCube(cvPoint3D32f(50.0f, 50.0f, -300.0f), (float)(arrowModPattern->getWidth()-100), CV_RGB(0, 0, 255));
-
-    //t->add(f);
-    base->add(r);
-    base->add(f);
-    base->add(f2);
-    base->add(f3);
-    wPositioningService->addSceneGraph(arrowModPattern, base);
-    wPositioningService->addSceneGraph(aPattern, fArrow);
-	
-	IObjectDetectionService* wObjectDetectionService = new ObjectDetectionService();
-	{
-		BoxDetector* wBoxDetector = new BoxDetector();
-		{
-			wBoxDetector->setDistanceTolerance(25);
-		}
-
-		wObjectDetectionService->addDetector(wBoxDetector);
-	}
-
 	IServiceLayer* wFilterLayer = new ServiceLayer();
 	{
+		wColorDetectionService = new ColorDetectionService();
+		{
+			ColorDetector* wColorDetector = new ColorDetector();
+			{
+				wColorDetector->addColor(CV_RGB(200, 45, 65), 40);
+				wColorDetector->setMinimumSize(200.0f);
+			}
+
+			wColorDetectionService->addDetector(wColorDetector);
+		}
+	
+		wObjectDetectionService = new ObjectDetectionService();
+		{
+			BoxDetector* wBoxDetector = new BoxDetector();
+			{
+				wBoxDetector->setDistanceTolerance(25);
+			}
+
+			wObjectDetectionService->addDetector(wBoxDetector);
+		}
+
+		wPatternDetectionService = new PatternDetectionService();
+		{
+			aPattern = new Pattern("a_pattern.jpg");
+			arrowModPattern = new Pattern("arrow_pattern_mod.jpg");
+
+			wPatternDetectionService->addPattern(aPattern);
+			wPatternDetectionService->addPattern(arrowModPattern);
+		}
+
 		wFilterLayer->addService(wColorDetectionService);
-		wFilterLayer->addService(wPatternDetectionService);
 		wFilterLayer->addService(wObjectDetectionService);
+		wFilterLayer->addService(wPatternDetectionService);
 	}
 	
+	// Layer 3
     IServiceLayer* wPoseLayer = new ServiceLayer();
 	{
+		wPoseEstimationService = new PoseEstimationService("intrinsic.xml", "distortion.xml");
+
 		wPoseLayer->addService(wPoseEstimationService);
 	}
 
+	// Layer 4
     IServiceLayer* wPositioningLayer = new ServiceLayer();
 	{
+		wPositioningService = new PositioningService("intrinsic.xml", "distortion.xml"); 
+		{
+			Transform *base = new Transform();
+			Translation *t = new Translation(cvPoint3D32f(400,0,0));
+			Rotation *r = new Rotation(45,cvPoint3D32f(0,0,-1));
+			Scaling *s = new Scaling(cvPoint3D32f(2,2,2));
+
+			IGraphic *f = new FrameCube(cvPoint3D32f(50.0f, 50.0f, -300.0f), (float)(arrowModPattern->getWidth()-100), CV_RGB(0, 0, 255));
+			IGraphic *f2 = new FrameCube(cvPoint3D32f(75.0f, 75.0f, -300.0f - arrowModPattern->getWidth()+150), (float)(arrowModPattern->getWidth()-150), CV_RGB(255, 0, 0));
+			IGraphic *f3 = new FrameCube(cvPoint3D32f(100.0f, 100.0f, -300.0f - arrowModPattern->getWidth()+200 - arrowModPattern->getWidth()+150), (float)(arrowModPattern->getWidth()-200), CV_RGB(0, 255, 0));
+			IGraphic *fArrow = new FrameCube(cvPoint3D32f(50.0f, 50.0f, -300.0f), (float)(arrowModPattern->getWidth()-100), CV_RGB(0, 0, 255));
+
+			//t->add(f);
+			base->add(r);
+			base->add(f);
+			base->add(f2);
+			base->add(f3);
+
+			wPositioningService->addSceneGraph(arrowModPattern, base);
+			wPositioningService->addSceneGraph(aPattern, fArrow);
+		}
+
 		wPositioningLayer->addService(wPositioningService);
 	}
-	
-    IAugmentedComponent* component = new AugmentedColorButton(wColorDetectionService, cvPoint(50, 50), 50, 50);
-    component->addEventHandler(new TestEventHandler(wCaptureService));
 
     // Interface layer
-	IAugmentedInterfaceService* wAugmentedInterfaceService = new AugmentedInterfaceService();
-	{
-		wAugmentedInterfaceService->addAugmentedComponent(component);
-	}
-
     IServiceLayer* wAugmentedInterfaceLayer = new ServiceLayer();
 	{
+		wAugmentedInterfaceService = new AugmentedInterfaceService();
+		{
+			IAugmentedComponent* component = new AugmentedColorButton(wColorDetectionService, cvPoint(50, 50), 50, 50);
+			{
+				component->addEventHandler(new TestEventHandler(wCaptureService));
+			}
+
+			wAugmentedInterfaceService->addAugmentedComponent(component);
+		}
+
 		wAugmentedInterfaceLayer->addService(wAugmentedInterfaceService);
 	}
 
-
-	// Layer 3
-	IDisplayService* wDisplayImageService = new DisplayImageService();
-	{
-		wDisplayImageService->setWindowName("Baluchon");
-	}
-
+	// Layer 6
     IServiceLayer* wDisplayLayer = new ServiceLayer();
 	{
+		wDisplayImageService = new DisplayImageService();
+		{
+			wDisplayImageService->setWindowName("Baluchon");
+		}
+
 		wDisplayLayer->addService(wDisplayImageService);
 	}
 
-	// Layer 4
-	//IWriterService* wWriterService = new VideoWriterService();
+	// Layer 7
+    //wWriterLayer = new ServiceLayer();
 	//{
-		//wWriterService->disable();
-	//}
+		//IWriterService* wWriterService = new VideoWriterService();
+		//{
+			//wWriterService->disable();
+		//}
 
-    //IServiceLayer* wWriterLayer = new ServiceLayer();
-	//{
 	//	wWriterLayer->addService(wWriterService);
 	//}
 

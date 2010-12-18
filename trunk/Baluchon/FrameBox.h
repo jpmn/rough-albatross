@@ -5,7 +5,7 @@
 #include "BoxPrism.h"
 
 using namespace baluchon::core::datas;
-using namespace baluchon::core::services::objectdetection;
+using namespace baluchon::core::datas::detection;
 
 namespace baluchon { namespace core { namespace services { namespace positioning { 
 

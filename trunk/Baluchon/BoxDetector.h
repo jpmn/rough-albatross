@@ -5,6 +5,8 @@
 #include "PrismFactory.h"
 #include "RectangleDetector.h"
 
+using namespace baluchon::core::datas::detection;
+
 namespace baluchon { namespace core { namespace services { namespace objectdetection {
 
 class BoxDetector : public IDetector

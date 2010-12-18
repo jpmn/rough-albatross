@@ -5,12 +5,9 @@
 
 #include "CameraCaptureService.h"
 #include "ColorDetectionService.h"
-#include "PatternDetectionService.h"
-#include "PoseEstimationService.h"
 
-#include "IPattern.h"
-#include "Marker.h"
-#include "Blob.h"
+#include "ColoredMarker.h"
+#include "ColorDetector.h"
 #include "ColorUtility.h"
 
 using namespace baluchon::utilities;
@@ -29,14 +26,8 @@ void DisplayImageService::init(void) {
     mCaptureService = new CameraCaptureService();
     mCaptureService = (ICaptureService*) mServiceLayer->findService(mCaptureService);
 
-	mMarkerService = new ColorDetectionService();
-	mMarkerService = (IColorDetectionService*) mServiceLayer->findService(mMarkerService);
-
-    mPatternService= new PatternDetectionService();
-    mPatternService = (IPatternDetectionService*) mServiceLayer->findService(mPatternService);
-
-    mPose= new PoseEstimationService(0,0);
-    mPose = (IPoseEstimationService*) mServiceLayer->findService(mPose);
+	mColorDetectionService = new ColorDetectionService();
+	mColorDetectionService = (IColorDetectionService*) mServiceLayer->findService(mColorDetectionService);
 }
 
 void DisplayImageService::initDone(void) {
@@ -47,21 +38,19 @@ void DisplayImageService::initDone(void) {
 
 void DisplayImageService::execute(void) {
 
-    IplImage *initial = mCaptureService->getImage();
+    IplImage* initial = mCaptureService->getImage();
 
-	// temporaire... juste pour afficher les blobs
-	vector<IMarker*> markers = mMarkerService->getMarkers();
-	for (unsigned int i = 0; i < markers.size(); i++) {
-		vector<IBlob*> blobs = markers[i]->getBlobs();
-		for (unsigned int j = 0; j < blobs.size(); j++) {
-			
-			//cvDrawContours(initial, blobs[j]->getContours(), CV_RGB(0, 0, 255), color, -1, 2, 8);
+	vector<IDetectable*> wListDetectables = mColorDetectionService->getDetectables();
 
-			CvRect box = cvBoundingRect(blobs[j]->getContours(), 1);
-			cvDrawRect(initial, cvPoint(box.x, box.y), cvPoint(box.x + box.width, box.y + box.height), CV_RGB(255, 255, 0), 2, 8);
+	for (unsigned int i = 0; i < wListDetectables.size(); i++) {
+		ColoredMarker* wMarker = static_cast<ColoredMarker*>(wListDetectables[i]);
+		
+		//cvDrawContours(initial, blobs[j]->getContours(), CV_RGB(0, 0, 255), color, -1, 2, 8);
+
+		CvRect box = cvBoundingRect(wMarker->getContours(), 1);
+		cvDrawRect(initial, cvPoint(box.x, box.y), cvPoint(box.x + box.width, box.y + box.height), CV_RGB(255, 255, 0), 2, 8);
 			
-			cvDrawCircle(initial, blobs[j]->getPosition(), 5, CV_RGB(0, 255, 0), CV_FILLED, 8);
-		}
+		cvDrawCircle(initial, wMarker->getPosition(), 5, CV_RGB(0, 255, 0), CV_FILLED, 8);
 	}
 
 	//cvFlip(initial, initial, 1);
@@ -78,8 +67,7 @@ void DisplayImageService::dispose(void) {
 	cvDestroyWindow(mWindowName);
 
 	delete mCaptureService;
-	delete mMarkerService;
-	delete mPatternService;
+	delete mColorDetectionService;
 }
 
 void DisplayImageService::setWindowName(char* name) {
@@ -98,15 +86,14 @@ void DisplayImageService::onMouseClick(int event, int x, int y, int flags, void*
 
 		IplImage* img = wDisplayService->mCaptureService->getImage();
 		
-		CvScalar colorImageBGR = cvGet2D(img, y, x);
+		CvScalar wColorBGR = cvGet2D(img, y, x);
 
-		IMarker* wMarker = new Marker();
+		ColorDetector* wDetector = new ColorDetector();
 		{
-			wMarker->setColor(colorImageBGR);
-			wMarker->setColorTolerance(30);
+			wDetector->addColor(wColorBGR, 40);
 		}
 
-		wDisplayService->mMarkerService->addMarker(wMarker);
+		wDisplayService->mColorDetectionService->addDetector(wDetector);
 	}
 }
 

@@ -1,6 +1,6 @@
 #include "Blob.h"
 
-namespace baluchon {  namespace core { namespace services { namespace colordetection {
+namespace baluchon {  namespace core { namespace datas { namespace detection {
 
 Blob::Blob(void) {
 	mStorage = cvCreateMemStorage(0);

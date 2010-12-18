@@ -2,7 +2,7 @@
 
 #include "IBlob.h"
 
-namespace baluchon { namespace core { namespace services { namespace colordetection {
+namespace baluchon { namespace core { namespace datas { namespace detection {
 
 class Blob : public IBlob
 {

@@ -29,7 +29,7 @@ vector<IDetectable*> RectangleDetector::find(IplImage* img, IplImage* src) {
 		// Un carré est un polygon convexe
 		// Un carré a seulement 4 segments
 		// Un carré de taille intéressante
-		if (cvCheckContourConvexity(approx) && approx->total == 4 && cvContourArea(approx, CV_WHOLE_SEQ) > 250) {
+		if (cvCheckContourConvexity(approx) && approx->total == 4 && cvContourArea(approx, CV_WHOLE_SEQ) > 1000) {
 
 			double s = 0.0f; 
 			double t = 0.0f;
@@ -40,7 +40,7 @@ vector<IDetectable*> RectangleDetector::find(IplImage* img, IplImage* src) {
 				if( i >= 2 ) 
 				{ 
 					t = std::fabs(MathUtility::angle((CvPoint*)cvGetSeqElem(approx, i), (CvPoint*)cvGetSeqElem(approx, i-2), (CvPoint*)cvGetSeqElem(approx, i-1))); 
-					s = std::max(s, t); //s = s > t ? s : t; 
+					s = s > t ? s : t; 
 				}
 			}
 
@@ -52,12 +52,14 @@ vector<IDetectable*> RectangleDetector::find(IplImage* img, IplImage* src) {
 
 				RectangularFacet* facet = mFacetFactory->createRectangularFacet(pt1, pt2, pt3, pt4);
 				
+				wListFacets.push_back(facet);
+
+				/*
 				cvLine(src, facet->getTopLeftVertex(), facet->getTopRightVertex(), CV_RGB(255,0,0), 3);
 				cvLine(src, facet->getTopRightVertex(), facet->getBottomRightVertex(), CV_RGB(0,255,0), 3);
 				cvLine(src, facet->getBottomRightVertex(), facet->getBottomLeftVertex(), CV_RGB(0,0,255), 3);
 				cvLine(src, facet->getBottomLeftVertex(), facet->getTopLeftVertex(), CV_RGB(255,0,255), 3);
-
-				wListFacets.push_back(facet);
+				*/
 			}
 		}
 

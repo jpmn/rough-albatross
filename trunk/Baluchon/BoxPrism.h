@@ -4,9 +4,7 @@
 #include "IDetectable.h"
 #include "RectangularFacet.h"
 
-using namespace baluchon::core::datas;
-
-namespace baluchon { namespace core { namespace services { namespace objectdetection {
+namespace baluchon { namespace core { namespace datas { namespace detection {
 
 class BoxPrism : public IPrism, public IDetectable
 {

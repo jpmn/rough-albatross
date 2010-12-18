@@ -1,6 +1,6 @@
 #include "CircularFacet.h"
 
-namespace baluchon { namespace core { namespace services { namespace objectdetection {
+namespace baluchon { namespace core { namespace datas { namespace detection {
 
 CircularFacet::CircularFacet(void) {
 

@@ -1,5 +1,8 @@
 #include "AugmentedColorButton.h"
 #include "ColorButtonEvent.h"
+#include "ColoredMarker.h"
+
+using namespace baluchon::core::datas::detection;
 
 namespace baluchon { namespace core { namespace services { namespace augmentedinterface {
 
@@ -20,10 +23,10 @@ AugmentedColorButton::~AugmentedColorButton(void)
 
 void AugmentedColorButton::execute()
 {
-    vector<IMarker*> markers = mColorDetectionService->getMarkers();
+	vector<IDetectable*> wListDetectables = mColorDetectionService->getDetectables();
+
     bool found = false;
     unsigned int cpt = 0;
-    unsigned int cpt2 = 0;
     if(mHover)
     {
         mCpt++;
@@ -35,25 +38,19 @@ void AugmentedColorButton::execute()
         }
     }
 
-    while(!found && cpt < markers.size())
+    while(!found && cpt < wListDetectables.size())
     {
-        while(!found && cpt2 < markers[cpt]->getBlobs().size())
-        {
-            if(markers[cpt]->getBlobs()[cpt2]->getPosition().x >= mPos.x &&
-                markers[cpt]->getBlobs()[cpt2]->getPosition().x <= mPos.x + mWidth &&
-                markers[cpt]->getBlobs()[cpt2]->getPosition().y >= mPos.y &&
-                markers[cpt]->getBlobs()[cpt2]->getPosition().y <= mPos.y + mHeight)
-            {
-                mHover = true;
-                found = true;
-            }
-            else
-            {
-                cpt2++;
-            }
-        }
+		ColoredMarker* wMarker = static_cast<ColoredMarker*>(wListDetectables[cpt]);
+		CvPoint wMarkerPosition = wMarker->getPosition();
 
-        cpt++;
+        if(wMarkerPosition.x >= mPos.x && wMarkerPosition.x <= mPos.x + mWidth &&
+            wMarkerPosition.y >= mPos.y && wMarkerPosition.y <= mPos.y + mHeight)
+        {
+            mHover = true;
+            found = true;
+        }
+        
+		cpt++;
     }
 
     if(found)

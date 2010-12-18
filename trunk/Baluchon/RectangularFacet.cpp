@@ -4,7 +4,7 @@
 
 using namespace baluchon::utilities;
 
-namespace baluchon { namespace core { namespace services { namespace objectdetection {
+namespace baluchon { namespace core { namespace datas { namespace detection {
 
 RectangularFacet::RectangularFacet(void) {
 
