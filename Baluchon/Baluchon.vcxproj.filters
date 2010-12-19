@@ -106,12 +106,6 @@
     <Filter Include="Fichiers sources\core\datas\animation">
       <UniqueIdentifier>{de332664-bc82-43e4-80f5-7f7bbf87d89a}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Fichiers sources\core\services\animation">
-      <UniqueIdentifier>{19f5272b-91f8-48c7-8661-f2a5a72710ca}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Fichiers d%27en-tête\core\services\animation">
-      <UniqueIdentifier>{d41555fe-0443-4625-b52e-3030a3452330}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Fichiers sources\core\datas\detection">
       <UniqueIdentifier>{e71b8086-21f6-47e3-8c3a-f5d6f075109c}</UniqueIdentifier>
     </Filter>
@@ -297,24 +291,6 @@
     <ClInclude Include="BoxPrism.h">
       <Filter>Fichiers d%27en-tête\core\datas\detection</Filter>
     </ClInclude>
-    <ClInclude Include="IAnimation.h">
-      <Filter>Fichiers d%27en-tête\core\datas\animation</Filter>
-    </ClInclude>
-    <ClInclude Include="AnimationSequence.h">
-      <Filter>Fichiers d%27en-tête\core\datas\animation</Filter>
-    </ClInclude>
-    <ClInclude Include="IAnimationService.h">
-      <Filter>Fichiers d%27en-tête\core\services\animation</Filter>
-    </ClInclude>
-    <ClInclude Include="AnimationService.h">
-      <Filter>Fichiers d%27en-tête\core\services\animation</Filter>
-    </ClInclude>
-    <ClInclude Include="IAnimable.h">
-      <Filter>Fichiers d%27en-tête\core\datas\animation</Filter>
-    </ClInclude>
-    <ClInclude Include="Animation.h">
-      <Filter>Fichiers d%27en-tête\core\datas\animation</Filter>
-    </ClInclude>
     <ClInclude Include="IMarker.h">
       <Filter>Fichiers d%27en-tête\core\datas\detection</Filter>
     </ClInclude>
@@ -329,6 +305,21 @@
     </ClInclude>
     <ClInclude Include="IDetectionService.h">
       <Filter>Fichiers d%27en-tête\core\services</Filter>
+    </ClInclude>
+    <ClInclude Include="AnimatedTransform.h">
+      <Filter>Fichiers d%27en-tête\core\datas\animation</Filter>
+    </ClInclude>
+    <ClInclude Include="AnimatedTranslation.h">
+      <Filter>Fichiers d%27en-tête\core\datas\animation</Filter>
+    </ClInclude>
+    <ClInclude Include="AnimatedRotation.h">
+      <Filter>Fichiers d%27en-tête\core\datas\animation</Filter>
+    </ClInclude>
+    <ClInclude Include="AnimatedSliding.h">
+      <Filter>Fichiers d%27en-tête\core\datas\animation</Filter>
+    </ClInclude>
+    <ClInclude Include="AnimatedScaling.h">
+      <Filter>Fichiers d%27en-tête\core\datas\animation</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -431,15 +422,6 @@
     <ClCompile Include="RectangularFacet.cpp">
       <Filter>Fichiers sources\core\datas\detection</Filter>
     </ClCompile>
-    <ClCompile Include="AnimationSequence.cpp">
-      <Filter>Fichiers sources\core\datas\animation</Filter>
-    </ClCompile>
-    <ClCompile Include="AnimationService.cpp">
-      <Filter>Fichiers sources\core\services\animation</Filter>
-    </ClCompile>
-    <ClCompile Include="Animation.cpp">
-      <Filter>Fichiers sources\core\datas\animation</Filter>
-    </ClCompile>
     <ClCompile Include="ColorDetector.cpp">
       <Filter>Fichiers sources\core\services\colordetection</Filter>
     </ClCompile>
@@ -448,6 +430,21 @@
     </ClCompile>
     <ClCompile Include="ColoredMarker.cpp">
       <Filter>Fichiers sources\core\datas\detection</Filter>
+    </ClCompile>
+    <ClCompile Include="AnimatedTranslation.cpp">
+      <Filter>Fichiers sources\core\datas\animation</Filter>
+    </ClCompile>
+    <ClCompile Include="AnimatedTransform.cpp">
+      <Filter>Fichiers sources\core\datas\animation</Filter>
+    </ClCompile>
+    <ClCompile Include="AnimatedRotation.cpp">
+      <Filter>Fichiers sources\core\datas\animation</Filter>
+    </ClCompile>
+    <ClCompile Include="AnimatedSliding.cpp">
+      <Filter>Fichiers sources\core\datas\animation</Filter>
+    </ClCompile>
+    <ClCompile Include="AnimatedScaling.cpp">
+      <Filter>Fichiers sources\core\datas\animation</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

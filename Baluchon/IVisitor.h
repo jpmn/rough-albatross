@@ -13,6 +13,7 @@
 
 namespace baluchon { namespace core { namespace services { namespace positioning { 
 
+class AnimatedTransform;
 class Transform;
 class FrameCube;
 class FrameBox;
@@ -33,6 +34,7 @@ public:
      * \param t La transformation &agrave; visiter.
      */
     virtual void visit(Transform *t) = 0;
+	virtual void visit(AnimatedTransform *t) = 0;
 
     /**
      * \fn virtual void visit(FrameCube *fc)

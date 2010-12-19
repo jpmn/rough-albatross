@@ -14,14 +14,12 @@
 #include "IGraphic.h"
 #include "IVisitor.h"
 #include "IColorable.h"
-#include "IAnimable.h"
 
 using namespace baluchon::core::datas;
-using namespace baluchon::core::datas::animation;
 
 namespace baluchon { namespace core { namespace services { namespace positioning { 
 
-class FrameCube : public IGraphic, public IColorable, public IAnimable
+class FrameCube : public IGraphic, public IColorable
 {
 public:
 
@@ -46,6 +44,8 @@ public:
      * \param v Le visiteur.
      */
     void accept(IVisitor* v);
+
+	void animate(void);
 };
 
 }}}};

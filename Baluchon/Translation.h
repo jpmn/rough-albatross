@@ -10,12 +10,12 @@
  */
 
 #pragma once
-#include "transform.h"
+
+#include "Transform.h"
 
 namespace baluchon { namespace core { namespace services { namespace positioning { 
 
-class Translation :
-    public Transform
+class Translation : public Transform
 {
 public:
 
