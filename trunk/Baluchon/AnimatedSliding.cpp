@@ -2,7 +2,7 @@
 
 namespace baluchon { namespace core { namespace datas { namespace animation {
 
-AnimatedSliding::AnimatedSliding(CvPoint3D32f vector, CvPoint3D32f limit, float increment) {
+AnimatedSliding::AnimatedSliding(CvPoint3D32f vector, CvPoint3D32f limit, CvPoint3D32f increment) {
 	mVector = vector;
 	mIncrement = increment;
 	mInitial = vector;
@@ -30,9 +30,9 @@ void AnimatedSliding::applyIncrement(void) {
 			mSide.x = -1;
 
 		if (mSide.x == 1)
-			x -= mIncrement;
+			x -= mIncrement.x;
 		else 
-			x += mIncrement;
+			x += mIncrement.x;
 	}
 
 	float y = mVector.y;
@@ -43,9 +43,9 @@ void AnimatedSliding::applyIncrement(void) {
 			mSide.y = -1;
 
 		if (mSide.y == 1)
-			y -= mIncrement;
+			y -= mIncrement.y;
 		else 
-			y += mIncrement;
+			y += mIncrement.y;
 	}
 
 	float z = mVector.z;
@@ -56,9 +56,9 @@ void AnimatedSliding::applyIncrement(void) {
 			mSide.z = -1;
 
 		if (mSide.z == 1)
-			z -= mIncrement;
+			z -= mIncrement.z;
 		else 
-			z += mIncrement;
+			z += mIncrement.z;
 	}
 
 	mVector.x = x;

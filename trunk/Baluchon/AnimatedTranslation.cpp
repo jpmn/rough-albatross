@@ -2,7 +2,7 @@
 
 namespace baluchon { namespace core { namespace datas { namespace animation {
 
-AnimatedTranslation::AnimatedTranslation(CvPoint3D32f vector, float increment) {
+AnimatedTranslation::AnimatedTranslation(CvPoint3D32f vector, CvPoint3D32f increment) {
 	mVector = vector;
 	mIncrement = increment;
 }
@@ -20,9 +20,14 @@ void AnimatedTranslation::applyIncrement(void) {
     cvmSet(mMat, 2, 3, mVector.z);
     cvmSet(mTransformedMat, 2, 3, mVector.z);
 
-	mVector.x += mIncrement;
-	mVector.y += mIncrement;
-	mVector.z += mIncrement;
+	if (mVector.x != 0)
+		mVector.x += mIncrement.x;
+
+	if (mVector.y != 0)
+		mVector.y += mIncrement.y;
+
+	if (mVector.z != 0)
+		mVector.z += mIncrement.z;
 }
 
 }}}};

@@ -11,7 +11,7 @@ namespace baluchon { namespace core { namespace datas { namespace animation {
 class AnimatedSliding : public AnimatedTransform
 {
 public:
-	AnimatedSliding(CvPoint3D32f vector, CvPoint3D32f limit, float increment);
+	AnimatedSliding(CvPoint3D32f vector, CvPoint3D32f limit, CvPoint3D32f increment);
 	virtual ~AnimatedSliding(void);
 
 	virtual void applyIncrement(void);
@@ -21,7 +21,7 @@ private:
 	CvPoint3D32f mLimit;
 	CvPoint3D32f mInitial;
 	CvPoint3D32f mSide;
-	float mIncrement;
+	CvPoint3D32f mIncrement;
 };
 
 }}}};

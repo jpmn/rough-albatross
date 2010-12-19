@@ -2,7 +2,7 @@
 
 namespace baluchon { namespace core { namespace datas { namespace animation {
 
-AnimatedScaling::AnimatedScaling(CvPoint3D32f factors, float increment) {
+AnimatedScaling::AnimatedScaling(CvPoint3D32f factors, CvPoint3D32f increment) {
 	mFactors = factors;
 	mIncrement = increment;
 }
@@ -17,9 +17,9 @@ void AnimatedScaling::applyIncrement(void) {
     cvmSet(mMat, 1, 1, mFactors.y);
     cvmSet(mMat, 2, 2, mFactors.z);
 
-	mFactors.x *= mIncrement;
-	mFactors.y *= mIncrement;
-	mFactors.z *= mIncrement;
+	mFactors.x *= mIncrement.x;
+	mFactors.y *= mIncrement.y;
+	mFactors.z *= mIncrement.z;
 }
 
 }}}};

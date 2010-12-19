@@ -26,6 +26,7 @@
 #include "AnimatedSliding.h"
 #include "AnimatedTranslation.h"
 #include "AnimatedRotation.h"
+#include "AnimatedScaling.h"
 
 #include "AugmentedInterfaceService.h"
 #include "AugmentedColorButton.h"
@@ -128,21 +129,21 @@ int main() {
 		wPositioningService = new PositioningService("intrinsic.xml", "distortion.xml"); 
 		{
 			AnimatedTransform* base = new AnimatedTransform();
-			AnimatedTranslation* t = new AnimatedTranslation(cvPoint3D32f(0,0,0), 3.0f);
-			AnimatedRotation* r = new AnimatedRotation(cvPoint3D32f(0,0,-1), 45.0f, 3.0f);
-			AnimatedSliding* s = new AnimatedSliding(cvPoint3D32f(0,0,0), cvPoint3D32f(0,0,200), 5.0f);
+			AnimatedTranslation* t = new AnimatedTranslation(cvPoint3D32f(0,0,0), cvPoint3D32f(3.0f,0,0));
+			AnimatedRotation* r = new AnimatedRotation(cvPoint3D32f(0,0,-1), 0.0f, 2.0f);
+			AnimatedSliding* s = new AnimatedSliding(cvPoint3D32f(0,0,0), cvPoint3D32f(0,0,200), cvPoint3D32f(0,0,10.0f));
+			//AnimatedScaling* c = new AnimatedScaling(cvPoint3D32f(0,0,0), cvPoint3D32f(1.002f,1.002f,1.002f));
 
 			FrameCube *f = new FrameCube(cvPoint3D32f(50.0f, 50.0f, -300.0f), (float)(arrowModPattern->getWidth()-100), CV_RGB(0, 0, 255));
 			IGraphic *f2 = new FrameCube(cvPoint3D32f(75.0f, 75.0f, -300.0f - arrowModPattern->getWidth()+150), (float)(arrowModPattern->getWidth()-150), CV_RGB(255, 0, 0));
 			IGraphic *f3 = new FrameCube(cvPoint3D32f(100.0f, 100.0f, -300.0f - arrowModPattern->getWidth()+200 - arrowModPattern->getWidth()+150), (float)(arrowModPattern->getWidth()-200), CV_RGB(0, 255, 0));
 			IGraphic *fArrow = new FrameCube(cvPoint3D32f(50.0f, 50.0f, -300.0f), (float)(arrowModPattern->getWidth()-100), CV_RGB(0, 0, 255));
 			
-			
-			s->add(f);
-			s->add(f2);
-			s->add(f3);
-			t->add(s);
-			r->add(t);
+			r->add(f);
+			r->add(f2);
+			r->add(f3);
+			//t->add(s);
+			s->add(r);
 			base->add(s);
 
 			wPositioningService->addSceneGraph(arrowModPattern, base);
@@ -162,7 +163,7 @@ int main() {
 				component->addEventHandler(new TestEventHandler(wCaptureService));
 			}
 
-			//wAugmentedInterfaceService->addAugmentedComponent(component);
+			wAugmentedInterfaceService->addAugmentedComponent(component);
 		}
 
 		wAugmentedInterfaceLayer->addService(wAugmentedInterfaceService);
