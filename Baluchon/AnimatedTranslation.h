@@ -11,14 +11,14 @@ namespace baluchon { namespace core { namespace datas { namespace animation {
 class AnimatedTranslation : public AnimatedTransform
 {
 public:
-	AnimatedTranslation(CvPoint3D32f vector, float increment);
+	AnimatedTranslation(CvPoint3D32f vector, CvPoint3D32f increment);
 	virtual ~AnimatedTranslation(void);
 
 	virtual void applyIncrement(void);
 
 private:
 	CvPoint3D32f mVector;
-	float mIncrement;
+	CvPoint3D32f mIncrement;
 };
 
 }}}};
