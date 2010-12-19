@@ -46,7 +46,7 @@ void AnimatedRotation::applyIncrement(void) {
     cvmSet(mMat, 2, 2, 1+oneMinusCosAngle*(mAxis.z*mAxis.z-1));
     cvmSet(mTransformedMat, 2, 2, 1+oneMinusCosAngle*(mAxis.z*mAxis.z-1));
 
-	mAngle = (int)(mAngle + mIncrement) % 360;
+	mAngle = (float) ((int)(mAngle + mIncrement) % 360);
 }
 
 }}}};

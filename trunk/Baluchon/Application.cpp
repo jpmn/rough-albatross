@@ -82,10 +82,11 @@ int main() {
 			ColorDetector* wColorDetector = new ColorDetector();
 			{
 				wColorDetector->addColor(CV_RGB(200, 45, 65), 40);
-				wColorDetector->setMinimumSize(200.0f);
+				wColorDetector->setMinimumSize(200);
 			}
 
 			wColorDetectionService->addDetector(wColorDetector);
+            wColorDetectionService->disable();
 		}
 	
 		wObjectDetectionService = new ObjectDetectionService();
@@ -96,7 +97,7 @@ int main() {
 			}
 
 			wObjectDetectionService->addDetector(wBoxDetector);
-			wObjectDetectionService->disable();
+            wObjectDetectionService->disable();
 		}
 
 		wPatternDetectionService = new PatternDetectionService();
