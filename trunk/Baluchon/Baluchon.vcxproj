@@ -73,9 +73,10 @@
     </ClCompile>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClInclude Include="Animation.h" />
-    <ClInclude Include="AnimationSequence.h" />
-    <ClInclude Include="AnimationService.h" />
+    <ClInclude Include="AnimatedRotation.h" />
+    <ClInclude Include="AnimatedScaling.h" />
+    <ClInclude Include="AnimatedSliding.h" />
+    <ClInclude Include="AnimatedTransform.h" />
     <ClInclude Include="AugmentedColorButton.h" />
     <ClInclude Include="AugmentedInterfaceService.h" />
     <ClInclude Include="CameraCaptureService.h" />
@@ -88,9 +89,6 @@
     <ClInclude Include="DetectedPattern.h" />
     <ClInclude Include="DisplayImageService.h" />
     <ClInclude Include="Engine.h" />
-    <ClInclude Include="IAnimable.h" />
-    <ClInclude Include="IAnimation.h" />
-    <ClInclude Include="IAnimationService.h" />
     <ClInclude Include="IDetectionService.h" />
     <ClInclude Include="MarkerFactory.h" />
     <ClInclude Include="RectangleDetector.h" />
@@ -143,12 +141,14 @@
     <ClInclude Include="TestEventHandler.h" />
     <ClInclude Include="Transform.h" />
     <ClInclude Include="Translation.h" />
+    <ClInclude Include="AnimatedTranslation.h" />
     <ClInclude Include="VideoWriterService.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="Animation.cpp" />
-    <ClCompile Include="AnimationSequence.cpp" />
-    <ClCompile Include="AnimationService.cpp" />
+    <ClCompile Include="AnimatedRotation.cpp" />
+    <ClCompile Include="AnimatedScaling.cpp" />
+    <ClCompile Include="AnimatedSliding.cpp" />
+    <ClCompile Include="AnimatedTransform.cpp" />
     <ClCompile Include="Application.cpp" />
     <ClCompile Include="AugmentedColorButton.cpp" />
     <ClCompile Include="AugmentedInterfaceService.cpp" />
@@ -184,6 +184,7 @@
     <ClCompile Include="TestEventHandler.cpp" />
     <ClCompile Include="Transform.cpp" />
     <ClCompile Include="Translation.cpp" />
+    <ClCompile Include="AnimatedTranslation.cpp" />
     <ClCompile Include="VideoWriterService.cpp" />
   </ItemGroup>
   <ItemGroup>

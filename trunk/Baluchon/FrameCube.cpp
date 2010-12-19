@@ -25,8 +25,8 @@ FrameCube::FrameCube(CvPoint3D32f pt1, float size, CvScalar color)
 }
 
 
-FrameCube::~FrameCube(void)
-{
+FrameCube::~FrameCube(void) {
+
 }
 
 void FrameCube::accept(IVisitor* v)

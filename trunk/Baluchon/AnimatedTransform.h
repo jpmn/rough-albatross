@@ -1,5 +1,5 @@
 /**
- * \file Transform.h
+ * \file AnimatedTransform.h
  * \brief Classe qui offre les fonctionnalit&eacute;s pour une transformation.
  * \author Mathieu Plourde
  * \author Jean-Philippe Morin
@@ -10,26 +10,29 @@
  */
 
 #pragma once
+
 #include "IVisitor.h"
 #include "IGraphic.h"
 
+using namespace baluchon::core::services::positioning;
+
 namespace baluchon { namespace core { namespace services { namespace positioning {
 
-class Transform : public IGraphic
+class AnimatedTransform : public IGraphic
 {
 public:
 
     /**
-     * \fn Transform(void)
+     * \fn AnimatedTransform(void)
      * \brief Constructeur de la classe.
      */
-    Transform(void);
+    AnimatedTransform(void);
 
     /**
-     * \fn ~Transform(void)
+     * \fn ~AnimatedTransform(void)
      * \brief Destructeur de la classe.
      */
-    ~Transform(void);
+    virtual ~AnimatedTransform(void);
 
     /**
      * \fn virtual void add(IGraphic* child)
@@ -85,6 +88,8 @@ public:
      * \brief Fonction qui r&eacute;initialise les points de l'objet graphique.
      */
     virtual void reset();
+
+	virtual void applyIncrement(void);
 
 protected:
     vector<IGraphic*> mChildren;

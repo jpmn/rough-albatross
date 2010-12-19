@@ -1,8 +1,8 @@
-#include "Transform.h"
+#include "AnimatedTransform.h"
 
-namespace baluchon { namespace core { namespace services { namespace positioning { 
+namespace baluchon { namespace core { namespace services { namespace positioning {
 
-Transform::Transform(void)
+AnimatedTransform::AnimatedTransform(void) 
 {
     mMat = cvCreateMat(4, 4, CV_32FC1);
     mTransformedMat = cvCreateMat(4, 4, CV_32FC1);
@@ -24,13 +24,13 @@ Transform::Transform(void)
     }
 }
 
-Transform::~Transform(void)
+AnimatedTransform::~AnimatedTransform(void)
 {
     cvReleaseMat(&mTransformedMat);
     cvReleaseMat(&mMat);
 }
 
-void Transform::accept(IVisitor* v)
+void AnimatedTransform::accept(IVisitor* v)
 {
     v->visit(this);
     for(unsigned int i = 0; i < mChildren.size(); i++)
@@ -39,12 +39,12 @@ void Transform::accept(IVisitor* v)
     }
 }
 
-void Transform::add(IGraphic* child)
+void AnimatedTransform::add(IGraphic* child)
 {
     mChildren.push_back(child);
 }
 
-void Transform::remove(IGraphic* child)
+void AnimatedTransform::remove(IGraphic* child)
 {
     bool found = false;
     unsigned int cpt = 0;
@@ -65,13 +65,15 @@ void Transform::remove(IGraphic* child)
     }
 }
 
-vector<IGraphic*> Transform::getChildren()
+vector<IGraphic*> AnimatedTransform::getChildren()
 {
     return mChildren;
 }
 
-void Transform::apply(CvMat* mul)
+void AnimatedTransform::apply(CvMat* mul)
 {
+	this->applyIncrement();
+
     double temp;
     CvMat* matTemp = cvCreateMat(4, 4, CV_32FC1);
 
@@ -92,12 +94,12 @@ void Transform::apply(CvMat* mul)
     mTransformedMat = matTemp;
 }
 
-CvMat* Transform::getMatrix()
+CvMat* AnimatedTransform::getMatrix()
 {
     return mTransformedMat;
 }
 
-void Transform::setMatrix(CvMat* matrix)
+void AnimatedTransform::setMatrix(CvMat* matrix)
 {
     cvReleaseMat(&mMat);
     mMat = matrix;
@@ -110,7 +112,7 @@ void Transform::setMatrix(CvMat* matrix)
     }
 }
 
-void Transform::reset()
+void AnimatedTransform::reset()
 {
     // used for animation
     for(int i = 0; i < 4; i++)
@@ -125,6 +127,10 @@ void Transform::reset()
     {
         mChildren[i]->reset();
     }
+}
+
+void AnimatedTransform::applyIncrement(void) {
+
 }
 
 }}}};

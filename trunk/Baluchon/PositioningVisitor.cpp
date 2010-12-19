@@ -1,6 +1,7 @@
 #include "PositioningVisitor.h"
 #include "FrameCube.h"
 #include "Transform.h"
+#include "AnimatedTransform.h"
 #include "FrameBox.h"
 
 namespace baluchon { namespace core { namespace services { namespace positioning { 
@@ -13,12 +14,21 @@ PositioningVisitor::PositioningVisitor(CvMat* intrinsicMat, CvMat* distortionMat
     mTranslationMat = 0;
 }
 
-
-PositioningVisitor::~PositioningVisitor(void)
-{
+PositioningVisitor::~PositioningVisitor(void) {
 }
 
 void PositioningVisitor::visit(Transform *t)
+{
+    if(t->getMatrix() != 0)
+    {
+        for(unsigned int i = 0; i < t->getChildren().size(); i++)
+        {   
+            t->getChildren()[i]->apply(t->getMatrix());
+        }
+    }
+}
+
+void PositioningVisitor::visit(AnimatedTransform *t)
 {
     if(t->getMatrix() != 0)
     {
@@ -66,6 +76,7 @@ void PositioningVisitor::visit(FrameCube *cube)
         cvReleaseMat(&dstPoints2D);
     }
 
+	//cube->animate();
 
     //transformation avec les matrices de rotation et translation
 

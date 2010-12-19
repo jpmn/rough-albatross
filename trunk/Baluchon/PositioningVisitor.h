@@ -10,17 +10,19 @@
  */
 
 #pragma once
+
+#include <cv.h>
+
 #include "IVisitor.h"
-#include "cv.h"
 
 namespace baluchon { namespace core { namespace services { namespace positioning { 
 
-class FrameCube;
+class AnimatedTransform;
 class Transform;
+class FrameCube;
 class FrameBox;
 
-class PositioningVisitor :
-    public IVisitor
+class PositioningVisitor : public IVisitor
 {
 public:
 
@@ -43,7 +45,8 @@ public:
      * \brief Fonction de visite d'une transformation.
      * \param t La transformation &agrave; visiter.
      */
-    void visit(Transform *t);
+	void visit(Transform *t);
+    void visit(AnimatedTransform *t);
 	void visit(FrameBox *fb);
 
     /**
