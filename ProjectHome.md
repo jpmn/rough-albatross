@@ -1,0 +1,1 @@
+Projet de fin d'études visant le développement d'une plateforme facilitant l'implémentation d'une application de réalité augmentée. Principalement, le projet vise à expérimenter diverses technologies telle que le traitement d'images par ordinateur avec C++/OpenCV pour générer du contenu virtuel 3D OpenGL/Glut.
